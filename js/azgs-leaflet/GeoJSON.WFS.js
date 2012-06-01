@@ -3,8 +3,10 @@ L.GeoJSON.WFS = L.GeoJSON.extend({
 		options = options || {};
 		L.GeoJSON.prototype.initialize.call(this, null, options);
 		
-		this.getFeatureUrl = serviceUrl + "?request=GetFeature&typeName=" + featureType + "&outputformat=json";
-		if (options.filter && options.filter instanceof DateFilter) { this.getFeatureUrl += "&CQL_FILTER=" + filter.cql; }
+		var wfsVersion = options.wfsVersion || "1.0.0";
+		this.getFeatureUrl = serviceUrl + "?request=GetFeature&outputformat=json&version=" + wfsVersion + "&typeName=" + featureType;
+		if (options.filter && options.filter instanceof DateFilter) { this.getFeatureUrl += "&CQL_FILTER=" + options.filter.cql; }
+		if (options.filter && options.filter instanceof PropertyFilter) { this.getFeatureUrl += "&CQL_FILTER=" + options.filter.cql; }
 		
 		this.on("featureparse", function(e) {
 			if (options.popupObj && options.popupOptions) {
@@ -47,39 +49,10 @@ L.GeoJSON.WFS = L.GeoJSON.extend({
 			success: function(response) {
 				if (response.type && response.type == "FeatureCollection") {
 					that.jsonData = response;
-					that.toGeographicCoords(that.options.inputCrs || "EPSG:900913");
 					callback();
 				}				
 			},
 			dataType: "json"
 		});
-	},
-	
-	toGeographicCoords: function() {
-		function projectPoint(coordinates /* [x,y] */, inputCrs) {
-			var source = new Proj4js.Proj(inputCrs || "EPSG:900913"),
-				dest = new Proj4js.Proj("EPSG:4326"),
-				x = coordinates[0], 
-				y = coordinates[1],
-				p = new Proj4js.Point(x,y);
-			Proj4js.transform(source, dest, p);
-			return [p.x, p.y];
-		}
-		
-		features = this.jsonData.features || [];
-		for (var f = 0; f < features.length; f++) {
-			switch (features[f].geometry.type) {
-				case "Point":
-					projectedCoords = projectPoint(features[f].geometry.coordinates);
-					features[f].geometry.coordinates = projectedCoords;
-					break;
-				case "MultiPoint":
-					for (var p = 0; p < features[f].geometry.coordinates.length; p++) {
-						projectedCoords = projectPoint(features[f].geometry.coordinates[p]);
-						features[f].geometry.coordinates[p] = projectedCoords;
-					}
-					break;
-			}
-		}
 	}
 });

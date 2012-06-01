@@ -13,3 +13,13 @@ DateFilter = L.Class.extend({
 		this.cql = escape(this.fldName + " AFTER " + ISODateString(this.startDate) + " AND " + this.fldName + " BEFORE " + ISODateString(this.endDate));	
 	}
 });
+
+PropertyFilter = L.Class.extend({
+	initialize: function(objPropPairs){
+		var rCql = [];
+		for(key in objPropPairs){
+			rCql.push(key + "=" + objPropPairs[key]);
+		}
+		this.cql = escape(rCql.join(" AND "));
+	}
+});
