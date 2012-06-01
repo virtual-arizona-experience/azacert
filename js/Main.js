@@ -11,7 +11,7 @@ function init(){
 		pointToLayer: function(latlng) { 
 			return new L.Marker(latlng, { 
 				icon: new L.Icon({ 
-					iconUrl: "style/images/yellow-circle.png", 
+					iconUrl: "style/images/logos/?Agency?png", /// ? + property name used as the image name + ? + image type
 					iconSize: new L.Point(40, 40) 
 				}) 
 			});
@@ -19,7 +19,7 @@ function init(){
 		popupObj: new JadeContent("templates/example.jade"),
 		popupOptions: { maxWidth: 1000, centered: true },
 		hoverFld: "Name",
-		filter: new PropertyFilter({"Agency": "'NPS'"})
+		filter: new PropertyFilter({})
 	}); 
 	
 	var center = new L.LatLng(34.1618, -111.53332);

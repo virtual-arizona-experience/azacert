@@ -141,7 +141,12 @@ L.Control.Filter = L.Control.extend({
 			var input = inputs[i];
 			
 			if (input.checked) {
-				objPairs[input.fName] = input.value;
+				if(input.value == "*"){ /// Wildcard "*" is to search for everything
+					delete objPairs[input.fName];
+				}else{
+					objPairs[input.fName] = input.value;
+				}
+				
 			}
 		}
 		
@@ -158,7 +163,7 @@ L.Control.Filter = L.Control.extend({
 			pointToLayer: function(latlng) { 
 				return new L.Marker(latlng, { 
 					icon: new L.Icon({ 
-						iconUrl: "style/images/yellow-circle.png", 
+						iconUrl: "style/images/logos/?Agency?png", 
 						iconSize: new L.Point(40, 40) 
 					}) 
 				});

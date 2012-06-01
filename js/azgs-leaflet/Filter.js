@@ -16,10 +16,13 @@ DateFilter = L.Class.extend({
 
 PropertyFilter = L.Class.extend({
 	initialize: function(objPropPairs){
-		var rCql = [];
-		for(key in objPropPairs){
-			rCql.push(key + "=" + objPropPairs[key]);
+		if (objPropPairs || objPropPairs != {}){
+			var rCql = [];
+			for(key in objPropPairs){
+				rCql.push(key + "=" + objPropPairs[key]);
+			}
+			this.cql = escape(rCql.join(" AND "));			
 		}
-		this.cql = escape(rCql.join(" AND "));
+
 	}
 });

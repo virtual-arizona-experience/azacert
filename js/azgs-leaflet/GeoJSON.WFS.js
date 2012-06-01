@@ -5,10 +5,20 @@ L.GeoJSON.WFS = L.GeoJSON.extend({
 		
 		var wfsVersion = options.wfsVersion || "1.0.0";
 		this.getFeatureUrl = serviceUrl + "?request=GetFeature&outputformat=json&version=" + wfsVersion + "&typeName=" + featureType;
-		if (options.filter && options.filter instanceof DateFilter) { this.getFeatureUrl += "&CQL_FILTER=" + options.filter.cql; }
-		if (options.filter && options.filter instanceof PropertyFilter) { this.getFeatureUrl += "&CQL_FILTER=" + options.filter.cql; }
+
+		if (options.filter && options.filter.cql) { this.getFeatureUrl += "&CQL_FILTER=" + options.filter.cql; }
 		
 		this.on("featureparse", function(e) {
+			///Parse the icon url
+			if(e.layer.hasOwnProperty("options")){
+				var iconUrl = e.layer.options.icon.options.iconUrl;
+				if(iconUrl.split("?").length == 3) { ///If the the iconUrl contains two parameters (with '?')
+					var iconBaseUrl = iconUrl.split("?")[0];
+					var imgName = e.properties[iconUrl.split("?")[1]].replace(/\s/g, "") + "." + iconUrl.split("?")[2];
+					e.layer.options.icon.options.iconUrl = iconBaseUrl + imgName;	
+				}	
+			}	
+			
 			if (options.popupObj && options.popupOptions) {
 				e.layer.on("click", function(evt) {
 					e.layer._map.openPopup(options.popupObj.generatePopup(e, options.popupOptions));
