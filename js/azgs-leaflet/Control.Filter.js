@@ -8,29 +8,43 @@ L.Control.Filter = L.Control.extend({
 	initialize: function(rFilterItems, options){
 		L.Util.setOptions(this, options);
 		
-		this._listItems = []; ///Item objects in the popup
+		this._listItems = []; /// Item objects in the popup
+		this._groups = []; /// Section IDs in the popup
+		
+		var isRadio, formId;
 		
 		for(var i = 0; i < rFilterItems.length; i ++){
-			for(var j = 0; j < rFilterItems[i].length; j ++){
+			this._groups.push("filter-group-" + i);		
+			
+			for(var j = 0; j < rFilterItems[i].length; j ++){				
+				
+				if(rFilterItems[i][j].vPairs.length == 1) {
+					isRadio = true;
+				}else{
+					isRadio = false;
+				}
+				
 				for(var k = 0; k < rFilterItems[i][j].vPairs.length; k ++){
-					this._addFilterObj(false, rFilterItems[i][j].fName, rFilterItems[i][j].vPairs[k].display, rFilterItems[i][j].vPairs[k].value);
+					this._addFilterObj(isRadio, 
+							"filter-group-" + i,
+							rFilterItems[i][j].fName, 
+							rFilterItems[i][j].vPairs[k].display, 
+							rFilterItems[i][j].vPairs[k].value);
 				}					
 			}
 			
-			if(i != rFilterItems.length - 1){
-				this._addFilterObj(true);
-			}			
 		}
 	},
 	
-	_addFilterObj: function(isSeparator, fName, label, value){ /// name: field name in attribute table; label: the text shown in the popup
+	_addFilterObj: function(isRadio, group, fName, label, value){ /// name: field name in attribute table; label: the text shown in the popup
 		
 		/// Item objects in the popup
 		this._listItems.push({
-			"isSeparator": isSeparator,
+			"isRadio": isRadio,
 			"fName": fName,
 			"label": label,
-			"value": value
+			"value": value,
+			"group": group
 		});
 	},
 	
@@ -70,7 +84,17 @@ L.Control.Filter = L.Control.extend({
 			this._expand();
 		}
 		
-		this._filterList = L.DomUtil.create('div', className + '-overlays', form); /// Filter item list
+		this._filterList = {};
+		
+		var isTop = true;
+		for(var id in this._groups){
+			if(!isTop){
+				L.DomUtil.create('div', 'acert-control-filter-separator', form);
+			}			
+			this._filterList[this._groups[id]] = L.DomUtil.create('div', this._groups[id], form);
+			
+			isTop = false;
+		}		
 		
 		container.appendChild(form);
 	},
@@ -85,18 +109,17 @@ L.Control.Filter = L.Control.extend({
 
 		for (var i = 0; i < this._listItems.length; i ++) {
 			var obj = this._listItems[i];
-			if(obj.isSeparator){
-				this._addSeparator();
-			}else{
-				this._addItem(obj);
-			}			
+
+			this._addItem(obj);
+						
 		}
 	},
 	
 	_addItem: function(obj, onclick) {
 		var ele = document.createElement('label');
 		var eleInput = document.createElement('input');	
-		eleInput.type = 'checkbox';
+		eleInput.type = obj.isRadio ? 'checkbox' : 'radio';
+		eleInput.name = obj.group;
 		eleInput.fName = obj.fName;
 		eleInput.value = obj.value;
 		
@@ -105,15 +128,8 @@ L.Control.Filter = L.Control.extend({
 		var eleLabel = document.createTextNode(' ' + obj.label);
 		ele.appendChild(eleInput);
 		ele.appendChild(eleLabel);
-		
-		this._filterList.appendChild(ele);
-	},
-	
-	_addSeparator: function() {
-		var ele = document.createElement('label');
-		var eleLabel = document.createTextNode("----------------");
-		ele.appendChild(eleLabel);
-		L.DomUtil.create('div', 'acert-control-filter-separator', this._filterList);
+
+		this._filterList[obj.group].appendChild(ele);
 	},
 	
 	_onInputClick: function () {
