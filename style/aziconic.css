@@ -1,47 +1,94 @@
-
 /* Hover highlight */
 /*
-.leaflet-marker-icon {
-  	opacity: 0 !important;
-  	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)" !important;
-}
+ .leaflet-marker-icon {
+ opacity: 0 !important;
+ -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)" !important;
+ }
 
-.leaflet-marker-icon:hover {
-    opacity: 1 !important;
-    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)" !important;
-}*/
+ .leaflet-marker-icon:hover {
+ opacity: 1 !important;
+ -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)" !important;
+ }*/
 
 /* Define hover tips style*/
 .custom-hover {
 }
-
 .custom-control-hover-label {
 	color: white;
 	-ms-filter: "progid:DXImageTransform.Microsoft.Glow(Strength=2, Color=#003366)";
 	text-shadow: -2px -2px 2px #036, 2px 2px 2px #036;
 }
-
-
 /* Define popup style*/
 .leaflet-popup-content-wrapper {
 	background-color: #036;
 	-ms-filter: "progid:DXImageTransform.Microsoft.Glow(Strength=2, Color=#FFFFFF)";
 	box-shadow: -2px -2px 2px white, 2px 2px 2px white;
 }
-
 .leaflet-popup-close-button {
 	background-color: transparent;
 	background-repeat: no-repeat;
 	width: 20px;
-	height: 20px;	
+	height: 20px;
 }
-
 .leaflet-popup-content {
 	margin: 12px;
 }
-
 #popup-title {
 	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
 	color: white;
 }
+/*
+ *
+ * */
+.acert-control-filter a {
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	display: block;
+}
+.acert-control-filter {
+	-moz-box-shadow: 0 0 7px #999;
+	-webkit-box-shadow: 0 0 7px #999;
+	box-shadow: 0 0 7px #999;
+	background: #f8f8f9;
+	
+	-webkit-border-radius: 7px;
+	border-radius: 7px;
+}
+.acert-control-filter a {
+	background-image: url(images/layers.png);
+	width: 30px;
+	height: 30px;
+}
+.leaflet-big-buttons .acert-control-filter a {
+	width: 40px;
+	height: 40px;
+}
+.acert-control-filter .acert-control-filter-list, .acert-control-filter-expanded .acert-control-filter-toggle {
+	display: none;
+}
+.acert-control-filter-expanded .acert-control-filter-list {
+	display: block;
+	position: relative;
+}
+.acert-control-filter-expanded {
+	padding: 3px 10px 3px 5px;
+	font: 12px "Helvetica Neue", Arial, Helvetica, sans-serif;
+	color: #333;
+	background: #fff;
+}
+.acert-control-filter input {
+	margin-top: 1px;
+	margin-bottom: 0.5px;
+	position: relative;
+}
+.acert-control-filter label {
+	display: block;
+}
+.acert-control-filter-separator {
+	height: 0;
+	border-top: 1px solid #ddd;
+	margin: 3px -10px 2px -6px;
+}
+
+
 

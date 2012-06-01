@@ -1,37 +1,3 @@
-var filterItems = {
-		"FeeArea": "Fee Area",
-		"SeasonalUs": "Seasonal Use",
-		"DisabledAc": "Disabled Access",
-		"Interpreti": "Interpretive Exhibits",
-		"VisitorInf": "Visitor Infomation",
-		"Restrooms": "Restrooms",
-		"DrinkingWa": "Drinking Water",
-		"Showers": "Showers",
-		"DumpStatio": "Dump Station",
-		"ElectricHo": "Electric Hookups",
-		"DevelopedC": "Developed Campsites",
-		"PrimitiveC": "Primitive Camping",
-		"GroupCamp_": "Group Camp/Picnic",
-		"PicnicArea": "Picnic Area",
-		"Backcountr": "Backcountry Use Permit",
-		"HikingTrai": "Hiking Trails",
-		"BicycleTra": "Bicycle Trails",
-		"OHVTrails": "OHV Trails",
-		"Equestrian": "Equestrian Trails",
-		"SelfGuided": "Self-Guided Tours",
-		"Historical": "Historical/Archaeological",
-		"Geological": "Geological/Natural Area",
-		"Wildlife_B": "Wildlife/Birding Viewing",
-		"ScenicView": "Scenic View",
-		"Swimming_H": "Swimming/Hot Springs",
-		"Canoe_Raft": "Canoe/Rafting",
-		"Fishing": "Fishing",
-		"BoatingFac": "Boating Facilities",
-		"Boating": "Boating",
-		"WaterSport": "Water Sport",
-		"WinterSpor": "Winter Sport"		
-};
-
 var map;
 function init(){
 	map = new L.Map("map");
@@ -66,7 +32,7 @@ function init(){
 	
 	map.addLayer(wfsLayer);
 	
-	var filterControl = new L.Control.Filter(filterItems);
+	var filterControl = new L.Control.Filter([agencyFilterItems, facilityFilterItems]);
 	map.addControl(filterControl);
 
 }

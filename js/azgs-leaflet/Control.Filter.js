@@ -5,22 +5,32 @@ L.Control.Filter = L.Control.extend({
 	},
 	
 	/// 1st step
-	initialize: function(objFilter, options){
+	initialize: function(rFilterItems, options){
 		L.Util.setOptions(this, options);
 		
 		this._listItems = []; ///Item objects in the popup
 		
-		for(var name in objFilter){
-			this._addFilterObj(name, objFilter[name]); 
+		for(var i = 0; i < rFilterItems.length; i ++){
+			for(var j = 0; j < rFilterItems[i].length; j ++){
+				for(var k = 0; k < rFilterItems[i][j].vPairs.length; k ++){
+					this._addFilterObj(false, rFilterItems[i][j].fName, rFilterItems[i][j].vPairs[k].display, rFilterItems[i][j].vPairs[k].value);
+				}					
+			}
+			
+			if(i != rFilterItems.length - 1){
+				this._addFilterObj(true);
+			}			
 		}
 	},
 	
-	_addFilterObj: function(name, label){ /// name: field name in attribute table; label: the text shown in the popup
+	_addFilterObj: function(isSeparator, fName, label, value){ /// name: field name in attribute table; label: the text shown in the popup
 		
 		/// Item objects in the popup
 		this._listItems.push({
-			"name": name,
-			"label": label
+			"isSeparator": isSeparator,
+			"fName": fName,
+			"label": label,
+			"value": value
 		});
 	},
 	
@@ -33,7 +43,7 @@ L.Control.Filter = L.Control.extend({
 	},
 	
 	_initLayout: function(){
-		var className = "leaflet-control-layers";
+		var className = "acert-control-filter";
 		var container = this._container = L.DomUtil.create("div", className); /// 
 		
 		if (!L.Browser.touch) {
@@ -75,15 +85,19 @@ L.Control.Filter = L.Control.extend({
 
 		for (var i = 0; i < this._listItems.length; i ++) {
 			var obj = this._listItems[i];
-			this._addItem(obj);
+			if(obj.isSeparator){
+				this._addSeparator();
+			}else{
+				this._addItem(obj);
+			}			
 		}
 	},
 	
-	_addItem: function(obj, onclick){
+	_addItem: function(obj, onclick) {
 		var ele = document.createElement('label');
 		var eleInput = document.createElement('input');	
 		eleInput.type = 'checkbox';
-		eleInput.name = obj.name;
+		eleInput.name = obj.fName;
 		
 		L.DomEvent.addListener(eleInput, 'click', this._onInputClick, this);
 
@@ -92,6 +106,13 @@ L.Control.Filter = L.Control.extend({
 		ele.appendChild(eleLabel);
 		
 		this._filterList.appendChild(ele);
+	},
+	
+	_addSeparator: function() {
+		var ele = document.createElement('label');
+		var eleLabel = document.createTextNode("----------------");
+		ele.appendChild(eleLabel);
+		L.DomUtil.create('div', 'acert-control-filter-separator', this._filterList);
 	},
 	
 	_onInputClick: function () {
@@ -106,7 +127,7 @@ L.Control.Filter = L.Control.extend({
 			
 
 			if (input.checked) {
-				alert(input.name);
+				console.log(input.name);
 			} else {
 				
 			}
@@ -114,10 +135,10 @@ L.Control.Filter = L.Control.extend({
 	},
 	
 	_expand: function () {
-		L.DomUtil.addClass(this._container, 'leaflet-control-layers-expanded');
+		L.DomUtil.addClass(this._container, 'acert-control-filter-expanded');
 	},
 
 	_collapse: function () {
-		this._container.className = this._container.className.replace('leaflet-control-layers-expanded', '');
+		this._container.className = this._container.className.replace('acert-control-filter-expanded', '');
 	}
 })
