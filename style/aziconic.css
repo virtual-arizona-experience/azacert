@@ -84,10 +84,16 @@
 .acert-control-filter label {
 	display: block;
 }
+
+.acert-control-filter-overlays label:hover {
+	color: #036;
+	font-weight: bold;
+}
+
 .acert-control-filter-separator {
 	height: 0;
 	border-top: 1px solid #ddd;
-	margin: 3px -10px 2px -6px;
+	margin: 3px -8px 2px -4px;
 }
 
 

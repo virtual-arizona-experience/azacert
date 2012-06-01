@@ -97,7 +97,8 @@ L.Control.Filter = L.Control.extend({
 		var ele = document.createElement('label');
 		var eleInput = document.createElement('input');	
 		eleInput.type = 'checkbox';
-		eleInput.name = obj.fName;
+		eleInput.fName = obj.fName;
+		eleInput.value = obj.value;
 		
 		L.DomEvent.addListener(eleInput, 'click', this._onInputClick, this);
 
@@ -117,22 +118,44 @@ L.Control.Filter = L.Control.extend({
 	
 	_onInputClick: function () {
 		///Change codes here
-		
-		var i, input, obj,
-			inputs = this._form.getElementsByTagName('input'),
-			inputsLen = inputs.length;
+		var inputs = this._form.getElementsByTagName('input');
+		var objPairs = {};
 
-		for (var i = 0; i < inputsLen; i ++) {
-			input = inputs[i];
+		for (var i = 0; i < inputs.length; i ++) {
+			var input = inputs[i];
 			
-
 			if (input.checked) {
-				console.log(input.name);
-			} else {
-				
+				objPairs[input.fName] = input.value;
 			}
 		}
+		
+		this._updateMap(objPairs);
+		
 	},
+	
+	_updateMap: function(objPropsFilter) {
+		if(this._map.wfsLayer){
+			this._map.removeLayer(this._map.wfsLayer);
+		}
+		
+		var wfsLayer = this._map.wfsLayer = new L.GeoJSON.WFS("http://opengis.azexperience.org/geoserver/wfs", "vae:ACERT", {
+			pointToLayer: function(latlng) { 
+				return new L.Marker(latlng, { 
+					icon: new L.Icon({ 
+						iconUrl: "style/images/yellow-circle.png", 
+						iconSize: new L.Point(40, 40) 
+					}) 
+				});
+			},
+			popupObj: new JadeContent("templates/example.jade"),
+			popupOptions: { maxWidth: 1000, centered: true },
+			hoverFld: "Name",
+			filter: new PropertyFilter(objPropsFilter)
+		});
+		
+		this._map.addLayer(wfsLayer);
+	},
+	
 	
 	_expand: function () {
 		L.DomUtil.addClass(this._container, 'acert-control-filter-expanded');

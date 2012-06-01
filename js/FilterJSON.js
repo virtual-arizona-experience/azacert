@@ -1,16 +1,16 @@
 var agencyFilterItems = [ {
 	"fName" : "Agency",
 	"vPairs" : [ {
-		"value" : "AZGFD",
+		"value" : "'AZGFD'",
 		"display" : "Arizona Game and Fish Department"
 	}, {
-		"value" : "SP",
+		"value" : "'SP'",
 		"display" : "Arizona State Parks"
 	}, {
-		"value" : "NPS",
+		"value" : "'NPS'",
 		"display" : "National Park Service"
 	}, {
-		"value" : "USFWS",
+		"value" : "'USFWS'",
 		"display" : "U.S. Fish and Wildlife Service"
 	} ]
 } ];
