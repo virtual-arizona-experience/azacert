@@ -11,22 +11,22 @@ L.Control.Filter = L.Control.extend({
 		this._listItems = []; /// Item objects in the popup
 		this._groups = []; /// Section IDs in the popup
 		
-		var isRadio, formId;
+		var isRestric, formId;
 		
 		for(var i = 0; i < rFilterItems.length; i ++){
-			this._groups.push("filter-group-" + i);		
+			this._groups.push("group-" + i);		
 			
 			for(var j = 0; j < rFilterItems[i].length; j ++){				
 				
 				if(rFilterItems[i][j].vPairs.length == 1) {
-					isRadio = true;
+					isRestric = true;
 				}else{
-					isRadio = false;
+					isRestric = false;
 				}
 				
 				for(var k = 0; k < rFilterItems[i][j].vPairs.length; k ++){
-					this._addFilterObj(isRadio, 
-							"filter-group-" + i,
+					this._addFilterObj(isRestric, 
+							"group-" + i,
 							rFilterItems[i][j].fName, 
 							rFilterItems[i][j].vPairs[k].display, 
 							rFilterItems[i][j].vPairs[k].value);
@@ -36,11 +36,11 @@ L.Control.Filter = L.Control.extend({
 		}
 	},
 	
-	_addFilterObj: function(isRadio, group, fName, label, value){ /// name: field name in attribute table; label: the text shown in the popup
+	_addFilterObj: function(isRestric, group, fName, label, value){ /// name: field name in attribute table; label: the text shown in the popup
 		
 		/// Item objects in the popup
 		this._listItems.push({
-			"isRadio": isRadio,
+			"isRestric": isRestric,
 			"fName": fName,
 			"label": label,
 			"value": value,
@@ -118,10 +118,11 @@ L.Control.Filter = L.Control.extend({
 	_addItem: function(obj, onclick) {
 		var ele = document.createElement('label');
 		var eleInput = document.createElement('input');	
-		eleInput.type = obj.isRadio ? 'checkbox' : 'radio';
-		eleInput.name = obj.group;
+		eleInput.type = 'checkbox';
+		eleInput.group = obj.group;
 		eleInput.fName = obj.fName;
 		eleInput.value = obj.value;
+		eleInput.isRestric = obj.isRestric;
 		
 		L.DomEvent.addListener(eleInput, 'click', this._onInputClick, this);
 
@@ -135,26 +136,34 @@ L.Control.Filter = L.Control.extend({
 	_onInputClick: function () {
 		///Change codes here
 		var inputs = this._form.getElementsByTagName('input');
-		var objPairs = {};
+		var objFilter = {};
 
 		for (var i = 0; i < inputs.length; i ++) {
 			var input = inputs[i];
 			
-			if (input.checked) {
-				if(input.value == "*"){ /// Wildcard "*" is to search for everything
-					delete objPairs[input.fName];
-				}else{
-					objPairs[input.fName] = input.value;
-				}
+			if (input.checked) {				
+				var grp = input.isRestric ? "default" : input.group;
 				
+				if(objFilter.hasOwnProperty(grp)){
+					objFilter[grp].push({
+						"fName": input.fName,
+						"value": input.value,						
+					})
+				}else{
+					objFilter[grp] = [];
+					objFilter[grp].push({
+						"fName": input.fName,
+						"value": input.value,						
+					})					
+				}				
 			}
 		}
 		
-		this._updateMap(objPairs);
+		this._updateMap(objFilter);
 		
 	},
 	
-	_updateMap: function(objPropsFilter) {
+	_updateMap: function(objFilter) {
 		if(this._map.wfsLayer){
 			this._map.removeLayer(this._map.wfsLayer);
 		}
@@ -171,7 +180,7 @@ L.Control.Filter = L.Control.extend({
 			popupObj: new JadeContent("templates/example.jade"),
 			popupOptions: { maxWidth: 1000, centered: true },
 			hoverFld: "Name",
-			filter: new PropertyFilter(objPropsFilter)
+			filter: new PropertyFilter(objFilter)
 		});
 		
 		this._map.addLayer(wfsLayer);

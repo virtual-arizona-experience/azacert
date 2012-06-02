@@ -18,8 +18,7 @@ function init(){
 		},
 		popupObj: new JadeContent("templates/example.jade"),
 		popupOptions: { maxWidth: 1000, centered: true },
-		hoverFld: "Name",
-		filter: new PropertyFilter({})
+		hoverFld: "Name"
 	}); 
 	
 	var center = new L.LatLng(34.1618, -111.53332);

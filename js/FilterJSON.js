@@ -1,9 +1,6 @@
 var agencyFilterItems = [ {
 	"fName" : "Agency",
 	"vPairs" : [ {
-		"value" : "*",
-		"display" : "All Agencies"
-	}, {
 		"value" : "'AZGFD'",
 		"display" : "Arizona Game and Fish Department"
 	}, {
