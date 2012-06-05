@@ -23,7 +23,7 @@ function init(){
 			return new L.Marker(latlng, { 
 				icon: new L.Icon({ 
 					iconUrl: "style/images/logos/?Agency?png", /// ? + property name used as the image name + ? + image type
-					iconSize: new L.Point(50, 50) 
+					iconSize: new L.Point(32, 32) 
 				}) 
 			});
 		},
