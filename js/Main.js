@@ -35,10 +35,6 @@ function init(){
 	var center = new L.LatLng(34.1618, -111.53332);
 	
 	map.setView(center, 7).addLayer(cloudmade).addLayer(wmsLayer);
-
-	setTimeout(function(){
-		map.addLayer(boundLayer);},
-		100);
 	
 	map.addLayer(wfsLayer);
 	

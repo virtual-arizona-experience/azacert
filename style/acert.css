@@ -14,9 +14,10 @@
 .custom-hover {
 }
 .custom-control-hover-label {
-	color: white;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Glow(Strength=2, Color=#003366)";
-	text-shadow: -2px -2px 2px #036, 2px 2px 2px #036;
+	color: #036;
+	font-weight: bold;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Glow(Strength=2, Color=#FFFFFF)";
+	text-shadow: -2px -2px 2px white, 2px 2px 2px white;
 }
 /* Define popup style*/
 .leaflet-popup-content-wrapper {
@@ -33,9 +34,21 @@
 .leaflet-popup-content {
 	margin: 12px;
 }
-#popup-title {
+.popup-title {
 	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
-	color: white;
+	color: white !important;
+	display: block;
+	font-size: 1.17em;
+	-webkit-margin-before: 1em;
+	-webkit-margin-after: 1em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.popup-title:hover {
+	text-decoration: underline;
 }
 /*
  *
@@ -50,7 +63,6 @@
 	-webkit-box-shadow: 0 0 7px #999;
 	box-shadow: 0 0 7px #999;
 	background: #f8f8f9;
-	
 	-webkit-border-radius: 7px;
 	border-radius: 7px;
 }
@@ -84,17 +96,13 @@
 .acert-control-filter label {
 	display: block;
 }
-
 .acert-control-filter-overlays label:hover {
 	color: #036;
 	font-weight: bold;
 }
-
 .acert-control-filter-separator {
 	height: 0;
 	border-top: 1px solid #ddd;
 	margin: 3px -8px 2px -4px;
 }
-
-
 
