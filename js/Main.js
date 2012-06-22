@@ -40,5 +40,9 @@ function init(){
 	
 	var filterControl = new L.Control.Filter([agencyFilterItems, facilityFilterItems]);
 	map.addControl(filterControl);
+	
+	var searchControl = new L.Control.Search();
+	map.addControl(searchControl);
+	searchControl.enableAutocomplete();
 
 }
