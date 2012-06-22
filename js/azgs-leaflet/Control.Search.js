@@ -11,13 +11,12 @@ L.Control.Search = L.Control.extend({
 	},
 	
 	onAdd: function(map) {
-		var that = this;
 		this._initLayout();
 		
 		return this._container;
 	},
 	
-	_setSearchList: function(){
+	_setSearchList: function() {
 		
 	},
 	
@@ -25,6 +24,7 @@ L.Control.Search = L.Control.extend({
 		var className = "acert-control-search";
 		var container = this._container = L.DomUtil.create("div", className);	
 		
+		// Resolve conflicts between this control the map activities
 		if (!L.Browser.touch) {
 			L.DomEvent.disableClickPropagation(container);
 		} else {
@@ -37,8 +37,23 @@ L.Control.Search = L.Control.extend({
 		
 	},
 	
-	enableAutocomplete: function() {
-		$("#" + this._input.id).autocomplete({source: ["test1", "test2"]})
+	setAutocompleteItems: function(jsonLayer, labelField) {
+		var that = this;
+		this.autocompleteItems = [];
+		var features = this._features = jsonLayer.jsonData.features;		
+		
+		for(var i = 0; i < features.length; i ++) {
+			var thisFeature = features[i];
+			var obj = {};
+			obj["label"] = thisFeature.properties[labelField];
+			obj["value"] = i;
+			
+			this.autocompleteItems.push(thisFeature.properties[labelField]);
+		}
+		
+		this.autocompleteItems.sort();
+		
+		$("#" + this._input.id).autocomplete({source: that.autocompleteItems});
 	}
 	
 	

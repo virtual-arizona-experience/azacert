@@ -1,4 +1,4 @@
-var map;
+var map, searchControl;
 function init(){
 	map = new L.Map("map");
 	
@@ -41,8 +41,12 @@ function init(){
 	var filterControl = new L.Control.Filter([agencyFilterItems, facilityFilterItems]);
 	map.addControl(filterControl);
 	
-	var searchControl = new L.Control.Search();
+	searchControl = new L.Control.Search();
 	map.addControl(searchControl);
-	searchControl.enableAutocomplete();
+	
+	map.on("layeradd", function(e){
+		searchControl.setAutocompleteItems(this.wfsLayer, "Name");
+	});
+	
 
 }
