@@ -27,7 +27,7 @@ function init(){
 				}) 
 			});
 		},
-		popupObj: new JadeContent("templates/example.jade"),
+		popupObj: new JadeContent("templates/wfsIdentify.jade"),
 		popupOptions: { maxWidth: 1000, centered: true },
 		hoverFld: "Name"
 	}); 
@@ -41,7 +41,9 @@ function init(){
 	var filterControl = new L.Control.Filter([agencyFilterItems, facilityFilterItems]);
 	map.addControl(filterControl);
 	
-	searchControl = new L.Control.Search();
+	searchControl = new L.Control.Search({
+		highlightSymbolUrl: "style/images/red-circle.png"
+	});
 	map.addControl(searchControl);
 	
 	map.on("layeradd", function(e){

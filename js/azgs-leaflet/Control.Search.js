@@ -1,6 +1,5 @@
 L.Control.Search = L.Control.extend({
 	options: {
-		collapsed: true,
 		position: "topright"
 	},
 	
@@ -16,10 +15,6 @@ L.Control.Search = L.Control.extend({
 		return this._container;
 	},
 	
-	_setSearchList: function() {
-		
-	},
-	
 	_initLayout: function() {
 		var className = "acert-control-search";
 		var container = this._container = L.DomUtil.create("div", className);	
@@ -31,15 +26,43 @@ L.Control.Search = L.Control.extend({
 			L.DomEvent.addListener(container, 'click', L.DomEvent.stopPropagation);
 		}
 		
-		var input = this._input = L.DomUtil.create("input", className + "-input", container);
+		/// Create control button element
+		var controlIcon = this._controlIcon = L.DomUtil.create("a", "acert-control", container); /// Control icon
+		controlIcon.href = '#';
+		controlIcon.title = 'Search';
+			
+		this.show(controlIcon);
+		
+		L.DomEvent.addListener(controlIcon, 'click', this._showPopup, this);
+
+		/// Create the element containing search functions
+		var form = this._form = L.DomUtil.create("div", className + '-items');
+		
+		var input = this._input = L.DomUtil.create("input", className + "-input", form);
 		input.id = this._input.id = "search-input";
 		
-		var button = this._button = L.DomUtil.create("button", className + "-button", container);
-		L.DomEvent.addListener(button, 'click', this._search, this);
+		var searchIcon = this._searchIcon = L.DomUtil.create("button", className + "-button", form);
+		L.DomEvent.addListener(searchIcon, 'click', this._search, this);
+		
+		var collapseIcon = this._collapseIcon = L.DomUtil.create("button", className + "-collapse", form);
+		L.DomEvent.addListener(collapseIcon, 'click', this._hidePopup, this);
+		
+		this.hide(form);
+		container.appendChild(form);
 		
 	},
 	
-	_search: function(evt) {
+	_showPopup: function() {
+		this.show(this._form);
+		this.hide(this._controlIcon);
+	},
+	
+	_hidePopup: function() {
+		this.show(this._controlIcon);
+		this.hide(this._form);
+	},
+	
+	_search: function() {
 		if(this._map.highlight) { map.removeLayer(this._map.highlight); }
 		
 		var searchTerm = $("#search-input").val()
@@ -52,7 +75,7 @@ L.Control.Search = L.Control.extend({
 		
 		var highlight = this._map.highlight = new L.Marker(latLng, {
 			icon: new L.Icon({ 
-				iconUrl: "style/images/yellow-circle.png",
+				iconUrl: this.options.highlightSymbolUrl || "style/images/red-circle.png",
 				iconSize: new L.Point(32, 32) 
 			}) 
 		});
@@ -80,6 +103,22 @@ L.Control.Search = L.Control.extend({
 		$("#" + this._input.id).autocomplete({
 			source: that.autocompleteItems
 		});
+	},
+
+	show: function (dom) {
+		if(dom.classList.contains("acert-control-hide")){
+			dom.classList.remove("acert-control-hide")
+		}
+		
+		dom.classList.add("acert-control-show");
+	},
+
+	hide: function (dom) {
+		if(dom.classList.contains("acert-control-show")){
+			dom.classList.remove("acert-control-show")
+		}
+		
+		dom.classList.add("acert-control-hide");
 	}
 		
 })
