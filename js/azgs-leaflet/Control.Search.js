@@ -3,12 +3,14 @@ L.Control.Search = L.Control.extend({
 		position: "topright"
 	},
 	
+	/// 1st step; runs when this control is constructed
 	initialize: function(options){
 		L.Util.setOptions(this, options);			
 		
 		this._isMouseOnMap = true; 
 	},
 	
+	/// 2nd step; runs when this control is added onto map
 	onAdd: function(map) {
 		this._initLayout();
 		
@@ -27,39 +29,36 @@ L.Control.Search = L.Control.extend({
 		}
 		
 		/// Create control button element
-		var controlIcon = this._controlIcon = L.DomUtil.create("a", "acert-control", container); /// Control icon
+		var controlIcon = this._controlIcon = L.DomUtil.create("a", "acert-control acert-control-show", container); /// Control icon
 		controlIcon.href = '#';
 		controlIcon.title = 'Search';
-			
-		this.show(controlIcon);
 		
-		L.DomEvent.addListener(controlIcon, 'click', this._showPopup, this);
+		L.DomEvent.addListener(controlIcon, 'click', this.showPopup, this);
 
 		/// Create the element containing search functions
-		var form = this._form = L.DomUtil.create("div", className + '-items');
+		var form = this._form = L.DomUtil.create("div", className + "-items " + "acert-control-form acert-control-hide");
 		
 		var input = this._input = L.DomUtil.create("input", className + "-input", form);
 		input.id = this._input.id = "search-input";
 		
-		var searchIcon = this._searchIcon = L.DomUtil.create("button", className + "-button", form);
+		var searchIcon = this._searchIcon = L.DomUtil.create("span", "acert-control-tools ui-icon ui-icon-search", form);
 		L.DomEvent.addListener(searchIcon, 'click', this._search, this);
 		
-		var collapseIcon = this._collapseIcon = L.DomUtil.create("button", className + "-collapse", form);
-		L.DomEvent.addListener(collapseIcon, 'click', this._hidePopup, this);
+		var collapseIcon = this._collapseIcon = L.DomUtil.create("span", "acert-control-tools ui-icon ui-icon-carat-1-e", form);
+		L.DomEvent.addListener(collapseIcon, 'click', this.hidePopup, this);
 		
-		this.hide(form);
 		container.appendChild(form);
 		
 	},
 	
-	_showPopup: function() {
-		this.show(this._form);
-		this.hide(this._controlIcon);
+	showPopup: function() {
+		this._show(this._form);
+		this._hide(this._controlIcon);
 	},
 	
-	_hidePopup: function() {
-		this.show(this._controlIcon);
-		this.hide(this._form);
+	hidePopup: function() {
+		this._show(this._controlIcon);
+		this._hide(this._form);
 	},
 	
 	_search: function() {
@@ -76,7 +75,7 @@ L.Control.Search = L.Control.extend({
 		var highlight = this._map.highlight = new L.Marker(latLng, {
 			icon: new L.Icon({ 
 				iconUrl: this.options.highlightSymbolUrl || "style/images/red-circle.png",
-				iconSize: new L.Point(32, 32) 
+				iconSize: new L.Point(16, 16) 
 			}) 
 		});
 		
@@ -84,6 +83,8 @@ L.Control.Search = L.Control.extend({
 	},
 	
 	setAutocompleteItems: function(jsonLayer, labelField) {
+		if(!jsonLayer.jsonData) { return ; }
+		
 		var that = this;
 		this.autocompleteItems = [];
 		this._featureKVP = {};
@@ -104,16 +105,18 @@ L.Control.Search = L.Control.extend({
 			source: that.autocompleteItems
 		});
 	},
-
-	show: function (dom) {
+	
+	/// Expand the search dialog
+	_show: function (dom) {
 		if(dom.classList.contains("acert-control-hide")){
 			dom.classList.remove("acert-control-hide")
 		}
 		
 		dom.classList.add("acert-control-show");
 	},
-
-	hide: function (dom) {
+	
+	/// Collapse the search dialog
+	_hide: function (dom) {
 		if(dom.classList.contains("acert-control-show")){
 			dom.classList.remove("acert-control-show")
 		}

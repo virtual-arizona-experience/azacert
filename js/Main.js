@@ -23,7 +23,7 @@ function init(){
 			return new L.Marker(latlng, { 
 				icon: new L.Icon({ 
 					iconUrl: "style/images/logos/?Agency?png", /// ? + property name used as the image name + ? + image type
-					iconSize: new L.Point(32, 32) 
+					iconSize: new L.Point(16, 16) 
 				}) 
 			});
 		},
@@ -38,13 +38,13 @@ function init(){
 	
 	map.addLayer(wfsLayer);
 	
-	var filterControl = new L.Control.Filter([agencyFilterItems, facilityFilterItems]);
-	map.addControl(filterControl);
-	
 	searchControl = new L.Control.Search({
 		highlightSymbolUrl: "style/images/red-circle.png"
 	});
 	map.addControl(searchControl);
+	
+	var filterControl = new L.Control.Filter([accessItems, infoItems]);
+	map.addControl(filterControl);
 	
 	map.on("layeradd", function(e){
 		searchControl.setAutocompleteItems(this.wfsLayer, "Name");

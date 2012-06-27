@@ -9,26 +9,29 @@ L.Control.Filter = L.Control.extend({
 		L.Util.setOptions(this, options);
 		
 		this._listItems = []; /// Item objects in the popup
-		this._groups = []; /// Section IDs in the popup
+		this._categories = []; /// Section IDs in the popup
 		
-		var isRestric, formId;
+		var isBinaryField, formId;
 		
 		for(var i = 0; i < rFilterItems.length; i ++){
-			this._groups.push("group-" + i);		
+			this._categories.push("category-" + i);		
 			
 			for(var j = 0; j < rFilterItems[i].length; j ++){				
 				
+				/// Identify if it works on multiple fields with binary values 
+				/// or on a single field with multiple values
 				if(rFilterItems[i][j].vPairs.length == 1) {
-					isRestric = true;
+					isBinaryField = true;
 				}else{
-					isRestric = false;
+					isBinaryField = false;
 				}
 				
+				/// Save the list item objects
 				for(var k = 0; k < rFilterItems[i][j].vPairs.length; k ++){
-					this._addFilterObj(isRestric, 
-							"group-" + i,
+					this._addFilterObj(isBinaryField, 
+							"category-" + i,
 							rFilterItems[i][j].fName, 
-							rFilterItems[i][j].vPairs[k].display, 
+							rFilterItems[i][j].vPairs[k].label, 
 							rFilterItems[i][j].vPairs[k].value);
 				}					
 			}
@@ -36,15 +39,17 @@ L.Control.Filter = L.Control.extend({
 		}
 	},
 	
-	_addFilterObj: function(isRestric, group, fName, label, value){ /// name: field name in attribute table; label: the text shown in the popup
+	/// name: field name in attribute table
+	/// label: the text shown in the popup
+	_addFilterObj: function(isBinaryField, category, fName, label, value){ 
 		
 		/// Item objects in the popup
 		this._listItems.push({
-			"isRestric": isRestric,
+			"isBinaryField": isBinaryField,
 			"fName": fName,
 			"label": label,
 			"value": value,
-			"group": group
+			"category": category
 		});
 	},
 	
@@ -58,40 +63,33 @@ L.Control.Filter = L.Control.extend({
 	
 	_initLayout: function(){
 		var className = "acert-control-filter";
-		var container = this._container = L.DomUtil.create("div", className); /// 
+		var container = this._container = L.DomUtil.create("div", className); 
 		
+		/// Resolve conflicts between this control the map activities
 		if (!L.Browser.touch) {
 			L.DomEvent.disableClickPropagation(container);
 		} else {
 			L.DomEvent.addListener(container, 'click', L.DomEvent.stopPropagation);
 		}
 		
-		var form = this._form = L.DomUtil.create('form', className + '-list'); /// List container
-		
-		if (this.options.collapsed) {
-			L.DomEvent.addListener(container, 'mouseover', this._expand, this);
-			L.DomEvent.addListener(container, 'mouseout', this._collapse, this);
+		/// The control tool - top category
+		var control = this._control = L.DomUtil.create("a", "acert-control acert-control-show", container);
+		control.href = "#";
+		control.title = "control";
+		L.DomEvent.addListener(control, "click", this.showPopop, this);
 
-			var link = this._layersLink = L.DomUtil.create('a', className + '-toggle', container); /// Button
-			link.href = '#';
-			link.title = 'Layers';
-
-			L.DomEvent.addListener(link, L.Browser.touch ? 'click' : 'focus', this._expand, this);
-
-			this._map.on('movestart', this._collapse, this);
-			
-		} else {
-			this._expand();
-		}
+		/// The list of sub-categories
+		var form = this._form = L.DomUtil.create("form", "acert-control-form acert-control-hide"); /// List container
+		this._filterList = {};		
 		
-		this._filterList = {};
-		
+		/// Create 'div' sections for different categories
 		var isTop = true;
-		for(var id in this._groups){
+		for(var id in this._categories){
 			if(!isTop){
+				/// Divide categories with the separator 
 				L.DomUtil.create('div', 'acert-control-filter-separator', form);
 			}			
-			this._filterList[this._groups[id]] = L.DomUtil.create('div', this._groups[id], form);
+			this._filterList[this._categories[id]] = L.DomUtil.create('div', this._categories[id], form);
 			
 			isTop = false;
 		}		
@@ -99,63 +97,77 @@ L.Control.Filter = L.Control.extend({
 		container.appendChild(form);
 	},
 	
+	showPopop: function () {
+		this._show(this._form);
+		this._hide(this._control);
+	},
+	
 	_update: function () {
 		if (!this._container) {
 			return;
 		}
 
-		this._filterList.innerHTML = '';
-
-
 		for (var i = 0; i < this._listItems.length; i ++) {
 			var obj = this._listItems[i];
 
-			this._addItem(obj);
-						
+			this._addItem(obj);					
 		}
 	},
 	
+	/// Create list items
 	_addItem: function(obj, onclick) {
-		var ele = document.createElement('label');
-		var eleInput = document.createElement('input');	
-		eleInput.type = 'checkbox';
-		eleInput.group = obj.group;
-		eleInput.fName = obj.fName;
-		eleInput.value = obj.value;
-		eleInput.isRestric = obj.isRestric;
+
+		var img = L.DomUtil.create("img", "acert-list-icon", this._filterList[obj.category]);
+		img.category = obj.category;
+		img.fName = obj.fName;
+		img.value = obj.value;
+		img.toggle = false;
+		img.isBinaryField = obj.isBinaryField;
 		
-		L.DomEvent.addListener(eleInput, 'click', this._onInputClick, this);
+		img.src = "style/images/inactive/" + obj.fName + ".png";
+		img.style.width = "32px";
+		img.style.height = "32px";
+		img.style.display = "inline-block";
+		img.style.cursor = "pointer";
+		img.style.margin = "5px";
+		
+		L.DomEvent.addListener(img, "click", this._onInputClick, this);
 
-		var eleLabel = document.createTextNode(' ' + obj.label);
-		ele.appendChild(eleInput);
-		ele.appendChild(eleLabel);
-
-		this._filterList[obj.group].appendChild(ele);
 	},
 	
-	_onInputClick: function () {
-		///Change codes here
-		var inputs = this._form.getElementsByTagName('input');
+	_onInputClick: function (evt) {
+		var clickImg = evt.target;
+		
+		var imgs = this._form.getElementsByTagName("img");
 		var objFilter = {};
 
-		for (var i = 0; i < inputs.length; i ++) {
-			var input = inputs[i];
+		for (var i = 0; i < imgs.length; i ++) {
+			var img = imgs[i];
 			
-			if (input.checked) {				
-				var grp = input.isRestric ? "default" : input.group;
+			if (img.fName == clickImg.fName) {
+				img.toggle = !img.toggle;
+			}
+			
+			/// 
+			if (img.toggle) {
+				img.src = "style/images/active/" + img.fName + ".png";
+				var category = img.isBinaryField ? "default" : img.category;
 				
-				if(objFilter.hasOwnProperty(grp)){
-					objFilter[grp].push({
-						"fName": input.fName,
-						"value": input.value,						
+				if(objFilter.hasOwnProperty(category)){
+					objFilter[category].push({
+						"fName": img.fName,
+						"value": img.value,						
 					})
 				}else{
-					objFilter[grp] = [];
-					objFilter[grp].push({
-						"fName": input.fName,
-						"value": input.value,						
+					objFilter[category] = [];
+					objFilter[category].push({
+						"fName": img.fName,
+						"value": img.value,						
 					})					
-				}				
+				}
+				
+			}else{
+				img.src = "style/images/inactive/" + img.fName + ".png";
 			}
 		}
 		
@@ -173,25 +185,34 @@ L.Control.Filter = L.Control.extend({
 				return new L.Marker(latlng, { 
 					icon: new L.Icon({ 
 						iconUrl: "style/images/logos/?Agency?png", 
-						iconSize: new L.Point(40, 40) 
+						iconSize: new L.Point(16, 16) 
 					}) 
 				});
 			},
-			popupObj: new JadeContent("templates/example.jade"),
+			popupObj: new JadeContent("templates/wfsIdentify.jade"),
 			popupOptions: { maxWidth: 1000, centered: true },
 			hoverFld: "Name",
-			filter: new PropertyFilter(objFilter)
+			filter: new PropertyFilter(objFilter) /// PropertyFilter class is defined in "Filter.js"
 		});
 		
 		this._map.addLayer(wfsLayer);
 	},
 	
-	
-	_expand: function () {
-		L.DomUtil.addClass(this._container, 'acert-control-filter-expanded');
+	/// Expand the popup
+	_show: function (dom) {
+		if(dom.classList.contains("acert-control-hide")){
+			dom.classList.remove("acert-control-hide")
+		}
+		
+		dom.classList.add("acert-control-show");
 	},
-
-	_collapse: function () {
-		this._container.className = this._container.className.replace('acert-control-filter-expanded', '');
+	
+	/// Collapse the popup
+	_hide: function (dom) {
+		if(dom.classList.contains("acert-control-show")){
+			dom.classList.remove("acert-control-show")
+		}
+		
+		dom.classList.add("acert-control-hide");
 	}
 })

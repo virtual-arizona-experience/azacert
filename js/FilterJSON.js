@@ -2,41 +2,50 @@ var agencyFilterItems = [ {
 	"fName" : "Agency",
 	"vPairs" : [ {
 		"value" : "'AZGFD'",
-		"display" : "Arizona Game and Fish Department"
+		"label" : "Arizona Game and Fish Department"
 	}, {
 		"value" : "'SP'",
-		"display" : "Arizona State Parks"
+		"label" : "Arizona State Parks"
 	}, {
 		"value" : "'NPS'",
-		"display" : "National Park Service"
+		"label" : "National Park Service"
 	}, {
 		"value" : "'USFS'",
-		"display" : "USDA Forest Service"
+		"label" : "USDA Forest Service"
 	}, {
 		"value" : "'USFWS'",
-		"display" : "U.S. Fish and Wildlife Service"
+		"label" : "U.S. Fish and Wildlife Service"
 	} ]
 } ];
 
-var facilityFilterItems = [ {
+
+var accessItems = [ {
 	"fName" : "FeeArea",
 	"vPairs" : [ {
 		"value" : "1",
-		"display" : "Fee Area"
+		"label" : "Fee Area"
 	} ]
 }, {
 	"fName" : "SeasonalUs",
 	"vPairs" : [ {
 		"value" : "1",
-		"display" : "Seasonal Use"
+		"label" : "Seasonal Use"
 	} ]
 }, {
 	"fName" : "DisabledAc",
 	"vPairs" : [ {
 		"value" : "1",
-		"display" : "Disabled Access"
+		"label" : "Disabled Access"
 	} ]
 }, {
+	"fName" : "Backcountr",
+	"vPairs" : [ {
+		"value" : "1",
+		"display" : "Backcountry Use Permit"
+	} ]
+} ];
+
+var infoItems = [ {
 	"fName" : "Interpreti",
 	"vPairs" : [ {
 		"value" : "1",
@@ -48,7 +57,9 @@ var facilityFilterItems = [ {
 		"value" : "1",
 		"display" : "Visitor Infomation"
 	} ]
-}, {
+} ];
+
+var facilityFilterItems = [ {
 	"fName" : "Restrooms",
 	"vPairs" : [ {
 		"value" : "1",
@@ -101,12 +112,6 @@ var facilityFilterItems = [ {
 	"vPairs" : [ {
 		"value" : "1",
 		"display" : "Picnic Area"
-	} ]
-}, {
-	"fName" : "Backcountr",
-	"vPairs" : [ {
-		"value" : "1",
-		"display" : "Backcountry Use Permit"
 	} ]
 }, {
 	"fName" : "HikingTrai",
