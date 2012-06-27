@@ -19,7 +19,7 @@ L.Control.Search = L.Control.extend({
 	
 	_initLayout: function() {
 		var className = "acert-control-search";
-		var container = this._container = L.DomUtil.create("div", className);	
+		var container = this._container = L.DomUtil.create("div", className + " acert-control");	
 		
 		/// Resolve conflicts between this control the map activities
 		if (!L.Browser.touch) {
@@ -29,7 +29,7 @@ L.Control.Search = L.Control.extend({
 		}
 		
 		/// Create control button element
-		var controlIcon = this._controlIcon = L.DomUtil.create("a", "acert-control acert-control-show", container); /// Control icon
+		var controlIcon = this._controlIcon = L.DomUtil.create("a", "acert-control-icon acert-control-show", container); /// Control icon
 		controlIcon.href = '#';
 		controlIcon.title = 'Search';
 		

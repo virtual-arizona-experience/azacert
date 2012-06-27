@@ -54,52 +54,27 @@
 /*
  * Style for filter popup
  * */
-.acert-control-filter-toggle {
-	background-position: 50% 50%;
-	background-repeat: no-repeat;
-	display: block;
-	width: 30px;
-	height: 30px;
+
+.acert-control-filter form {
+	padding: 5px 0px 10px 0px;
+	background-color: #036;
 }
 
-.acert-control-filter, .acert-control-search {
-	-moz-box-shadow: 0 0 7px #999;
-	-webkit-box-shadow: 0 0 7px #999;
-	box-shadow: 0 0 7px #999;
-	background: #f8f8f9;
-	-webkit-border-radius: 7px;
+.acert-control-filter-group {
+	border: 1px solid #DDD;
+	margin: 0px 10px 0px 10px;
+	padding: 10px 0px 0px 0px;
 	border-radius: 7px;
-}
-.acert-control-filter-toggle {
-	background-image: url(images/view.png);
+	-webkit-border-radius: 7px;
 }
 
-.acert-control-filter-expanded .acert-control-filter-list {
-	display: block;
+.acert-control-filter-group-name {
+	color: #DDD;
 	position: relative;
-}
-.acert-control-filter-expanded {
-	padding: 3px 10px 3px 5px;
-	font: 12px "Helvetica Neue", Arial, Helvetica, sans-serif;
-	color: #333;
-	background: #fff;
-}
-.acert-control-filter input {
-	margin-top: 0.5px;
-	margin-bottom: 0.5px;
-	position: relative;
-}
-.acert-control-filter label {
-	display: block;
-}
-.acert-control-filter-overlays label:hover {
-	color: #036;
-	font-weight: bold;
-}
-.acert-control-filter-separator {
-	height: 0;
-	border-top: 1px solid #ddd;
-	margin: 3px -8px 2px -4px;
+	top: 10px;
+	left: 30px;
+	background-color: #036;
+	padding: 0px 5px;	
 }
 
 /*
@@ -127,7 +102,7 @@
 /*
  * Common used css
  * */
-.acert-control-form {
+.acert-control, .acert-control-form {
 	-moz-box-shadow: 0 0 7px #999;
 	-webkit-box-shadow: 0 0 7px #999;
 	box-shadow: 0 0 7px #999;
@@ -153,14 +128,15 @@
 	display: none;
 }
 
-.acert-control {
+.acert-control-icon {
 	background-position: 50% 50%;
 	background-repeat: no-repeat;
 	width: 30px;
 	height: 30px;
 }
 
-.acert-control {
+.acert-control-icon {
 	background-image: url(images/view.png);
 }
+
 

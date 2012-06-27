@@ -43,8 +43,14 @@ function init(){
 	});
 	map.addControl(searchControl);
 	
-	var filterControl = new L.Control.Filter([agencyItems, accessItems, infoItems, campingItems, facilitiesItems, trailsItems, naturalHistoryItems, waterSportsItems]);
-	//var filterControl = new L.Control.Filter([agencyItems]);
+	var filterControl = new L.Control.Filter([{"category" : "Agency", "items" : agencyItems}, 
+	                                          {"category" : "Access", "items" : accessItems}, 
+	                                          {"category" : "Information", "items" : infoItems}, 
+	                                          {"category" : "Camping", "items" : campingItems}, 
+	                                          {"category" : "Facilities", "items" : facilitiesItems}, 
+	                                          {"category" : "Trails", "items" : trailsItems}, 
+	                                          {"category" : "Natural History", "items" : naturalHistoryItems}, 
+	                                          {"category" : "Water Sports", "items" : waterSportsItems}]);
 	map.addControl(filterControl);
 	
 	map.on("layeradd", function(e){
