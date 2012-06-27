@@ -124,7 +124,7 @@ L.Control.Filter = L.Control.extend({
 		img.toggle = false;
 		img.isBinaryField = obj.isBinaryField;
 		
-		img.src = "style/images/inactive/" + obj.fName + ".png";
+		img.src = "style/images/inactive/" + this._getIconName(obj) + ".png";
 		img.style.width = "32px";
 		img.style.height = "32px";
 		img.style.display = "inline-block";
@@ -143,14 +143,15 @@ L.Control.Filter = L.Control.extend({
 
 		for (var i = 0; i < imgs.length; i ++) {
 			var img = imgs[i];
+			var iconName = this._getIconName(img);
 			
-			if (img.fName == clickImg.fName) {
+			if (img == clickImg) {
 				img.toggle = !img.toggle;
 			}
 			
 			/// 
 			if (img.toggle) {
-				img.src = "style/images/active/" + img.fName + ".png";
+				img.src = "style/images/active/" + iconName + ".png";
 				var category = img.isBinaryField ? "default" : img.category;
 				
 				if(objFilter.hasOwnProperty(category)){
@@ -167,12 +168,21 @@ L.Control.Filter = L.Control.extend({
 				}
 				
 			}else{
-				img.src = "style/images/inactive/" + img.fName + ".png";
+				img.src = "style/images/inactive/" + iconName + ".png";
 			}
 		}
 		
 		this._updateMap(objFilter);
 		
+	},
+	
+	_getIconName: function (obj) {
+		/// Identify the icon name
+		if (obj.isBinaryField) {
+			return obj.fName;
+		} else {
+			return obj.value.split("'")[1];
+		}
 	},
 	
 	_updateMap: function(objFilter) {

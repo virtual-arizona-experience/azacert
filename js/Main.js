@@ -43,7 +43,8 @@ function init(){
 	});
 	map.addControl(searchControl);
 	
-	var filterControl = new L.Control.Filter([accessItems, infoItems]);
+	var filterControl = new L.Control.Filter([agencyItems, accessItems, infoItems, campingItems, facilitiesItems, trailsItems, naturalHistoryItems, waterSportsItems]);
+	//var filterControl = new L.Control.Filter([agencyItems]);
 	map.addControl(filterControl);
 	
 	map.on("layeradd", function(e){

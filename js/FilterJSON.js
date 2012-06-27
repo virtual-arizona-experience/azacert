@@ -1,4 +1,4 @@
-var agencyFilterItems = [ {
+var agencyItems = [ {
 	"fName" : "Agency",
 	"vPairs" : [ {
 		"value" : "'AZGFD'",
@@ -59,7 +59,7 @@ var infoItems = [ {
 	} ]
 } ];
 
-var facilityFilterItems = [ {
+var facilitiesItems = [ {
 	"fName" : "Restrooms",
 	"vPairs" : [ {
 		"value" : "1",
@@ -90,6 +90,14 @@ var facilityFilterItems = [ {
 		"display" : "Electric Hookups"
 	} ]
 }, {
+	"fName" : "PicnicArea",
+	"vPairs" : [ {
+		"value" : "1",
+		"display" : "Picnic Area"
+	} ]
+} ];
+
+var campingItems = [ {
 	"fName" : "DevelopedC",
 	"vPairs" : [ {
 		"value" : "1",
@@ -107,13 +115,9 @@ var facilityFilterItems = [ {
 		"value" : "1",
 		"display" : "Group Camp/Picnic"
 	} ]
-}, {
-	"fName" : "PicnicArea",
-	"vPairs" : [ {
-		"value" : "1",
-		"display" : "Picnic Area"
-	} ]
-}, {
+} ];
+
+var trailsItems = [ {
 	"fName" : "HikingTrai",
 	"vPairs" : [ {
 		"value" : "1",
@@ -137,7 +141,9 @@ var facilityFilterItems = [ {
 		"value" : "1",
 		"display" : "Equestrian Trails"
 	} ]
-}, {
+} ];
+
+var naturalHistoryItems = [ {
 	"fName" : "SelfGuided",
 	"vPairs" : [ {
 		"value" : "1",
@@ -167,7 +173,9 @@ var facilityFilterItems = [ {
 		"value" : "1",
 		"display" : "Scenic View"
 	} ]
-}, {
+} ];
+
+var waterSportsItems = [ {
 	"fName" : "Swimming_H",
 	"vPairs" : [ {
 		"value" : "1",
@@ -203,10 +211,4 @@ var facilityFilterItems = [ {
 		"value" : "1",
 		"display" : "Water Sport"
 	} ]
-}, {
-	"fName" : "WinterSpor",
-	"vPairs" : [ {
-		"value" : "1",
-		"display" : "Winter Sport"
-	} ]
-}];
+} ];
