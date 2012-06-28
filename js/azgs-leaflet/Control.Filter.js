@@ -76,7 +76,7 @@ L.Control.Filter = L.Control.extend({
 		/// The control tool - top category
 		var control = this._control = L.DomUtil.create("a", "acert-control-icon acert-control-show", container);
 		control.href = "#";
-		control.title = "control";
+		control.title = "Select Categories"; /// Displayed as tips
 		L.DomEvent.addListener(control, "click", this.showPopop, this);
 
 		/// The list of sub-categories
@@ -97,7 +97,7 @@ L.Control.Filter = L.Control.extend({
 			categoryLabel.innerHTML = this._categories[id];
 			
 			this._filterList[this._categories[id]] = L.DomUtil.create('div', "acert-control-filter-group", form);
-			this._filterList[this._categories[id]].id = this._categories[id].replace(/ /g, "-");
+			//this._filterList[this._categories[id]].id = this._categories[id].replace(/ /g, "-");
 			
 			isTop = false;
 		}		
@@ -136,6 +136,8 @@ L.Control.Filter = L.Control.extend({
 		img.value = obj.value;
 		img.toggle = false;
 		img.isBinaryField = obj.isBinaryField;
+		
+		img.title = obj.label;
 		
 		img.src = "style/images/inactive/" + this._getIconName(obj) + ".png";
 		img.style.width = "32px";
@@ -223,19 +225,27 @@ L.Control.Filter = L.Control.extend({
 	
 	/// Expand the popup
 	_show: function (dom) {
-		if(dom.classList.contains("acert-control-hide")){
-			dom.classList.remove("acert-control-hide")
+		if(dom.className.indexOf("acert-control-hide") != -1) {
+			dom.className = dom.className.replace("acert-control-hide", "");
 		}
 		
-		dom.classList.add("acert-control-show");
+		if(dom.className.charAt(dom.className.length -1) != " ") {
+			dom.className += " ";
+		}
+		
+		dom.className += "acert-control-show";
 	},
 	
 	/// Collapse the popup
 	_hide: function (dom) {
-		if(dom.classList.contains("acert-control-show")){
-			dom.classList.remove("acert-control-show")
+		if(dom.className.indexOf("acert-control-show") != -1){
+			dom.className = dom.className.replace("acert-control-show", "");
+		}
+	
+		if(dom.className.charAt(dom.className.length -1) != " ") {
+			dom.className += " ";
 		}
 		
-		dom.classList.add("acert-control-hide");
+		dom.className += "acert-control-hide";
 	}
 })

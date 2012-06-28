@@ -41,7 +41,7 @@ var accessItems = [ {
 	"fName" : "Backcountr",
 	"vPairs" : [ {
 		"value" : "1",
-		"display" : "Backcountry Use Permit"
+		"label" : "Backcountry Use Permit"
 	} ]
 } ];
 
@@ -49,13 +49,13 @@ var infoItems = [ {
 	"fName" : "Interpreti",
 	"vPairs" : [ {
 		"value" : "1",
-		"display" : "Interpretive Exhibits"
+		"label" : "Interpretive Exhibits"
 	} ]
 }, {
 	"fName" : "VisitorInf",
 	"vPairs" : [ {
 		"value" : "1",
-		"display" : "Visitor Infomation"
+		"label" : "Visitor Infomation"
 	} ]
 } ];
 
@@ -63,37 +63,37 @@ var facilitiesItems = [ {
 	"fName" : "Restrooms",
 	"vPairs" : [ {
 		"value" : "1",
-		"display" : "Restrooms"
+		"label" : "Restrooms"
 	} ]
 }, {
 	"fName" : "DrinkingWa",
 	"vPairs" : [ {
 		"value" : "1",
-		"display" : "Drinking Water"
+		"label" : "Drinking Water"
 	} ]
 }, {
 	"fName" : "DumpStatio",
 	"vPairs" : [ {
 		"value" : "1",
-		"display" : "Dump Station"
+		"label" : "Dump Station"
 	} ]
 }, {
 	"fName" : "Showers",
 	"vPairs" : [ {
 		"value" : "1",
-		"display" : "Showers"
+		"label" : "Showers"
 	} ]
 }, {
 	"fName" : "ElectricHo",
 	"vPairs" : [ {
 		"value" : "1",
-		"display" : "Electric Hookups"
+		"label" : "Electric Hookups"
 	} ]
 }, {
 	"fName" : "PicnicArea",
 	"vPairs" : [ {
 		"value" : "1",
-		"display" : "Picnic Area"
+		"label" : "Picnic Area"
 	} ]
 } ];
 
@@ -101,19 +101,19 @@ var campingItems = [ {
 	"fName" : "DevelopedC",
 	"vPairs" : [ {
 		"value" : "1",
-		"display" : "Developed Campsites"
+		"label" : "Developed Campsites"
 	} ]
 }, {
 	"fName" : "PrimitiveC",
 	"vPairs" : [ {
 		"value" : "1",
-		"display" : "Primitive Camping"
+		"label" : "Primitive Camping"
 	} ]
 }, {
 	"fName" : "GroupCamp_",
 	"vPairs" : [ {
 		"value" : "1",
-		"display" : "Group Camp/Picnic"
+		"label" : "Group Camp/Picnic"
 	} ]
 } ];
 
@@ -121,25 +121,25 @@ var trailsItems = [ {
 	"fName" : "HikingTrai",
 	"vPairs" : [ {
 		"value" : "1",
-		"display" : "Hiking Trails"
+		"label" : "Hiking Trails"
 	} ]
 }, {
 	"fName" : "BicycleTra",
 	"vPairs" : [ {
 		"value" : "1",
-		"display" : "Bicycle Trails"
+		"label" : "Bicycle Trails"
 	} ]
 }, {
 	"fName" : "OHVTrails",
 	"vPairs" : [ {
 		"value" : "1",
-		"display" : "OHV Trails"
+		"label" : "OHV Trails"
 	} ]
 }, {
 	"fName" : "Equestrian",
 	"vPairs" : [ {
 		"value" : "1",
-		"display" : "Equestrian Trails"
+		"label" : "Equestrian Trails"
 	} ]
 } ];
 
@@ -147,31 +147,31 @@ var naturalHistoryItems = [ {
 	"fName" : "SelfGuided",
 	"vPairs" : [ {
 		"value" : "1",
-		"display" : "Self-Guided Tours"
+		"label" : "Self-Guided Tours"
 	} ]
 }, {
 	"fName" : "Historical",
 	"vPairs" : [ {
 		"value" : "1",
-		"display" : "Historical/Archaeological"
+		"label" : "Historical/Archaeological"
 	} ]
 }, {
 	"fName" : "Geological",
 	"vPairs" : [ {
 		"value" : "1",
-		"display" : "Geological/Natural Area"
+		"label" : "Geological/Natural Area"
 	} ]
 }, {
 	"fName" : "Wildlife_B",
 	"vPairs" : [ {
 		"value" : "1",
-		"display" : "Wildlife/Birding Viewing"
+		"label" : "Wildlife/Birding Viewing"
 	} ]
 }, {
 	"fName" : "ScenicView",
 	"vPairs" : [ {
 		"value" : "1",
-		"display" : "Scenic View"
+		"label" : "Scenic View"
 	} ]
 } ];
 
@@ -179,36 +179,36 @@ var waterSportsItems = [ {
 	"fName" : "Swimming_H",
 	"vPairs" : [ {
 		"value" : "1",
-		"display" : "Swimming/Hot Springs"
+		"label" : "Swimming/Hot Springs"
 	} ]
 }, {
 	"fName" : "Canoe_Raft",
 	"vPairs" : [ {
 		"value" : "1",
-		"display" : "Canoe/Rafting"
+		"label" : "Canoe/Rafting"
 	} ]
 }, {
 	"fName" : "Fishing",
 	"vPairs" : [ {
 		"value" : "1",
-		"display" : "Fishing"
+		"label" : "Fishing"
 	} ]
 }, {
 	"fName" : "BoatingFac",
 	"vPairs" : [ {
 		"value" : "1",
-		"display" : "Boating Facilities"
+		"label" : "Boating Facilities"
 	} ]
 }, {
 	"fName" : "Boating",
 	"vPairs" : [ {
 		"value" : "1",
-		"display" : "Boating"
+		"label" : "Boating"
 	} ]
 }, {
 	"fName" : "WaterSport",
 	"vPairs" : [ {
 		"value" : "1",
-		"display" : "Water Sport"
+		"label" : "Water Sport"
 	} ]
 } ];

@@ -72,7 +72,7 @@
 	position: relative;
 	top: 10px;
 	left: 30px;
-	background-color: #036;
+	background-color: #F8F8F9;
 	padding: 0px 5px;	
 }
 
@@ -88,12 +88,14 @@
 .acert-control-search-input {
 	-webkit-border-radius: 7px;
 	border-radius: 7px;
+	margin: 2px 0px 0px 0px;
 	width: 215px;
+	float: left;
 }
 
 .acert-control-search-icon {
 	background: url("images/search.png") no-repeat;
-	float: right;
+	float: left;
 	margin: 5px;
 	cursor: pointer;
 	width: 20px;
@@ -114,10 +116,9 @@
 	-moz-box-shadow: 0 0 7px #999;
 	-webkit-box-shadow: 0 0 7px #999;
 	box-shadow: 0 0 7px #999;
-	background: #f8f8f9;
+	background: #F8F8F9;
 	-webkit-border-radius: 7px;
 	border-radius: 7px;
-	background-color: #036;
 }
 
 .acert-control-tools {
