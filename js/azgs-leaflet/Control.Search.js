@@ -41,11 +41,12 @@ L.Control.Search = L.Control.extend({
 		var input = this._input = L.DomUtil.create("input", className + "-input", form);
 		input.id = this._input.id = "search-input";
 		
-		var searchIcon = this._searchIcon = L.DomUtil.create("span", "acert-control-tools ui-icon ui-icon-search", form);
-		L.DomEvent.addListener(searchIcon, 'click', this._search, this);
+		/// Add close button
+		var close = L.DomUtil.create("span", "acert-control-close", form);
+		L.DomEvent.addListener(close, "click", this.hidePopup, this);
 		
-		var collapseIcon = this._collapseIcon = L.DomUtil.create("span", "acert-control-tools ui-icon ui-icon-carat-1-e", form);
-		L.DomEvent.addListener(collapseIcon, 'click', this.hidePopup, this);
+		var searchIcon = this._searchIcon = L.DomUtil.create("span", "acert-control-search-icon", form);
+		L.DomEvent.addListener(searchIcon, 'click', this._search, this);
 		
 		container.appendChild(form);
 		

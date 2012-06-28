@@ -83,11 +83,7 @@ L.Control.Filter = L.Control.extend({
 		var form = this._form = L.DomUtil.create("form", "acert-control-form acert-control-hide"); /// List container
 		
 		/// Add close button
-		var close = L.DomUtil.create("img", "acert-control-close", form);
-		close.src = "style/images/popup-close.png";
-		close.style.float = "right";
-		close.style.padding = "0px 5px";
-		close.style.cursor = "pointer";
+		var close = L.DomUtil.create("span", "acert-control-close", form);
 		L.DomEvent.addListener(close, "click", this.hidePopup, this);
 		
 		this._filterList = {};		

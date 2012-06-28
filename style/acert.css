@@ -56,8 +56,7 @@
  * */
 
 .acert-control-filter form {
-	padding: 5px 0px 10px 0px;
-	background-color: #036;
+	padding: 0px 0px 10px 0px;
 }
 
 .acert-control-filter-group {
@@ -83,13 +82,22 @@
 
 .acert-control-search-items {
 	height: 30px;
+	padding: 2px 0px 0px 5px;
 }
 
 .acert-control-search-input {
 	-webkit-border-radius: 7px;
 	border-radius: 7px;
-	margin: 4px;
-	width: 200px;
+	width: 215px;
+}
+
+.acert-control-search-icon {
+	background: url("images/search.png") no-repeat;
+	float: right;
+	margin: 5px;
+	cursor: pointer;
+	width: 20px;
+	height: 20px;	
 }
 
 .acert-control-search-expanded {
@@ -109,6 +117,7 @@
 	background: #f8f8f9;
 	-webkit-border-radius: 7px;
 	border-radius: 7px;
+	background-color: #036;
 }
 
 .acert-control-tools {
@@ -117,7 +126,7 @@
 }
 
 .acert-control-tools:hover {
-	background-image: url(jquery-ui/images/ui-icons_fbb041_256x240.png) !important;
+	background-image: url("jquery-ui/images/ui-icons_fbb041_256x240.png") !important;
 }
 
 .acert-control-show {
@@ -136,7 +145,14 @@
 }
 
 .acert-control-icon {
-	background-image: url(images/view.png);
+	background-image: url("images/view.png");
 }
 
-
+.acert-control-close {
+	background: url("images/popup-close.png") no-repeat;
+	float: right;
+	margin: 5px 5px 5px 0px;
+	cursor: pointer;
+	width: 15px;
+	height: 15px;
+}
