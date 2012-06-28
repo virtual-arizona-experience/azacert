@@ -1,4 +1,4 @@
-var map, searchControl;
+var map, searchControl, filterControl;
 function init(){
 	map = new L.Map("map");
 	
@@ -43,7 +43,7 @@ function init(){
 	});
 	map.addControl(searchControl);
 	
-	var filterControl = new L.Control.Filter([{"category" : "Agency", "items" : agencyItems}, 
+	filterControl = new L.Control.Filter([{"category" : "Agency", "items" : agencyItems}, 
 	                                          {"category" : "Access", "items" : accessItems}, 
 	                                          {"category" : "Information", "items" : infoItems}, 
 	                                          {"category" : "Camping", "items" : campingItems}, 

@@ -85,6 +85,12 @@ L.Control.Filter = L.Control.extend({
 		/// Add close button
 		var close = L.DomUtil.create("span", "acert-control-close", form);
 		L.DomEvent.addListener(close, "click", this.hidePopup, this);
+		close.title = "Collapse";
+		
+		/// Add reset button
+		var reset = L.DomUtil.create("span", "acert-control-reset", form);
+		L.DomEvent.addListener(reset, "click", this.resetFilter, this);
+		reset.title = "Reset";
 		
 		this._filterList = {};		
 		
@@ -134,12 +140,21 @@ L.Control.Filter = L.Control.extend({
 		img.category = obj.category;
 		img.fName = obj.fName;
 		img.value = obj.value;
-		img.toggle = false;
 		img.isBinaryField = obj.isBinaryField;
+		
+		/// The agency category is on by default
+		/// The other categories are off by default
+		if(obj.isBinaryField){
+			img.toggle = false;
+			img.src = "style/images/inactive/" + this._getIconName(obj) + ".png";
+		} else {
+			img.toggle = true;
+			img.src = "style/images/active/" + this._getIconName(obj) + ".png";
+		}
 		
 		img.title = obj.label;
 		
-		img.src = "style/images/inactive/" + this._getIconName(obj) + ".png";
+		
 		img.style.width = "32px";
 		img.style.height = "32px";
 		img.style.display = "inline-block";
@@ -153,7 +168,7 @@ L.Control.Filter = L.Control.extend({
 	_onInputClick: function (evt) {
 		var clickImg = evt.target;
 		
-		var imgs = this._form.getElementsByTagName("img");
+		var imgs = this._imgs = this._form.getElementsByTagName("img");
 		var objFilter = {};
 
 		for (var i = 0; i < imgs.length; i ++) {
@@ -191,6 +206,25 @@ L.Control.Filter = L.Control.extend({
 		
 	},
 	
+	resetFilter: function(){
+		if (!this._imgs) { return ;}
+		
+		for (var i = 0; i < this._imgs.length; i ++){
+			var img = this._imgs[i];
+			img.toggle = false;
+			
+			if(img.isBinaryField){
+				img.toggle = false;
+				img.src = "style/images/inactive/" + this._getIconName(img) + ".png";
+			} else {
+				img.toggle = true;
+				img.src = "style/images/active/" + this._getIconName(img) + ".png";
+			}
+		}
+		
+		this._resetMap();
+	},
+	
 	_getIconName: function (obj) {
 		/// Identify the icon name
 		if (obj.isBinaryField) {
@@ -218,6 +252,28 @@ L.Control.Filter = L.Control.extend({
 			popupOptions: { maxWidth: 1000, centered: true },
 			hoverFld: "Name",
 			filter: new PropertyFilter(objFilter) /// PropertyFilter class is defined in "Filter.js"
+		});
+		
+		this._map.addLayer(wfsLayer);
+	},
+	
+	_resetMap: function() {
+		if(this._map.wfsLayer){
+			this._map.removeLayer(this._map.wfsLayer);
+		}
+		
+		var wfsLayer = map.wfsLayer = new L.GeoJSON.WFS("http://opengis.azexperience.org/geoserver/wfs", "vae:ACERT", {
+			pointToLayer: function(latlng) { 
+				return new L.Marker(latlng, { 
+					icon: new L.Icon({ 
+						iconUrl: "style/images/logos/?Agency?png", /// ? + property name used as the image name + ? + image type
+						iconSize: new L.Point(16, 16) 
+					}) 
+				});
+			},
+			popupObj: new JadeContent("templates/wfsIdentify.jade"),
+			popupOptions: { maxWidth: 1000, centered: true },
+			hoverFld: "Name"
 		});
 		
 		this._map.addLayer(wfsLayer);

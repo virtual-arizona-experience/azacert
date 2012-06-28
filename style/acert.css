@@ -98,8 +98,8 @@
 	float: left;
 	margin: 5px;
 	cursor: pointer;
-	width: 20px;
-	height: 20px;	
+	width: 16px;
+	height: 16px;	
 }
 
 .acert-control-search-expanded {
@@ -149,11 +149,20 @@
 	background-image: url("images/view.png");
 }
 
-.acert-control-close {
-	background: url("images/popup-close.png") no-repeat;
+.acert-control-reset {
+	background: url("images/refresh.png") no-repeat;
 	float: right;
 	margin: 5px 5px 5px 0px;
 	cursor: pointer;
-	width: 15px;
-	height: 15px;
+	width: 16px;
+	height: 16px;	
+}
+
+.acert-control-close {
+	background: url("images/collapse.png") no-repeat;
+	float: right;
+	margin: 5px 5px 5px 0px;
+	cursor: pointer;
+	width: 16px;
+	height: 16px;
 }
