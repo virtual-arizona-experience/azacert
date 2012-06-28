@@ -67,20 +67,39 @@ L.Control.Search = L.Control.extend({
 		
 		var searchTerm = $("#search-input").val()
 		
+		/// Find the feature pair
 		var thisFeature = this._featureKVP[searchTerm];
 		
 		var coors = thisFeature.geometry.coordinates;
 		var latLng = new L.LatLng(coors[1], coors[0]);
 		this._map.panTo(latLng);
 		
+		var highlightSymbolUrl = this._parseIconUrl(this.options.highlightSymbolUrl, thisFeature);
+		
 		var highlight = this._map.highlight = new L.Marker(latLng, {
 			icon: new L.Icon({ 
-				iconUrl: this.options.highlightSymbolUrl || "style/images/red-circle.png",
-				iconSize: new L.Point(16, 16) 
+				iconUrl: highlightSymbolUrl || "style/images/red-circle.png",
+				iconSize: new L.Point(32, 32) 
 			}) 
 		});
 		
 		this._map.addLayer(highlight);
+	},
+	
+	_parseIconUrl: function(origUrl, feature) {
+		
+		var iconUrl = this.options.highlightSymbolUrl;
+		if(iconUrl.split("?").length == 3) { ///If the the iconUrl contains two parameters (with '?')
+			var iconBaseUrl = iconUrl.split("?")[0];
+			var imgName = feature.properties[iconUrl.split("?")[1]].replace(/\s/g, "") + "." + iconUrl.split("?")[2];
+			iconUrl = iconBaseUrl + imgName;	
+		}	
+		
+		return iconUrl;
+	},
+	
+	_clearHighlight: function() {
+		if(this._map.highlight) { map.removeLayer(this._map.highlight); }
 	},
 	
 	setAutocompleteItems: function(jsonLayer, labelField) {

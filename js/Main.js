@@ -39,7 +39,7 @@ function init(){
 	map.addLayer(wfsLayer);
 	
 	searchControl = new L.Control.Search({
-		highlightSymbolUrl: "style/images/red-circle.png"
+		highlightSymbolUrl: "style/images/logos/highlight/?Agency?png"
 	});
 	map.addControl(searchControl);
 	
