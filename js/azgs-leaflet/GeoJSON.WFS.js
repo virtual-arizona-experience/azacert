@@ -7,6 +7,7 @@ L.GeoJSON.WFS = L.GeoJSON.extend({
 		this.getFeatureUrl = serviceUrl + "?request=GetFeature&outputformat=json&version=" + wfsVersion + "&typeName=" + featureType;
 
 		if (options.filter && options.filter.cql) { this.getFeatureUrl += "&CQL_FILTER=" + options.filter.cql; }
+		else if (options.filter) { this.getFeatureUrl += "&" + options.filter; }
 		
 		this.on("featureparse", function(e) {
 			///Parse the icon url

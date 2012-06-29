@@ -74,28 +74,34 @@ L.Control.Search = L.Control.extend({
 		var latLng = new L.LatLng(coors[1], coors[0]);
 		this._map.panTo(latLng);
 		
-		var highlightSymbolUrl = this._parseIconUrl(this.options.highlightSymbolUrl, thisFeature);
+		var filter = "featureid=" + thisFeature.id;
 		
-		var highlight = this._map.highlight = new L.Marker(latLng, {
-			icon: new L.Icon({ 
-				iconUrl: highlightSymbolUrl || "style/images/red-circle.png",
-				iconSize: new L.Point(32, 32) 
-			}) 
-		});
+		this._highlightFeature(filter);
 		
-		this._map.addLayer(highlight);
 	},
 	
-	_parseIconUrl: function(origUrl, feature) {
+	/// Highlight the search result
+	_highlightFeature: function(filter) {
+		if(this._map.highlightLayer){
+			this._map.removeLayer(this._map.highlightLayer);
+		}
 		
-		var iconUrl = this.options.highlightSymbolUrl;
-		if(iconUrl.split("?").length == 3) { ///If the the iconUrl contains two parameters (with '?')
-			var iconBaseUrl = iconUrl.split("?")[0];
-			var imgName = feature.properties[iconUrl.split("?")[1]].replace(/\s/g, "") + "." + iconUrl.split("?")[2];
-			iconUrl = iconBaseUrl + imgName;	
-		}	
+		var highlightLayer = this._map.highlightLayer = new L.GeoJSON.WFS("http://opengis.azexperience.org/geoserver/wfs", "vae:ACERT", {
+			pointToLayer: function(latlng) { 
+				return new L.Marker(latlng, { 
+					icon: new L.Icon({ 
+						iconUrl: "style/images/logos/?Agency?png", 
+						iconSize: new L.Point(32, 32) 
+					}) 
+				});
+			},
+			popupObj: new JadeContent("templates/wfsIdentify.jade"),
+			popupOptions: { maxWidth: 1000, centered: true },
+			hoverFld: "Name",
+			filter: filter /// PropertyFilter class is defined in "Filter.js"
+		});
 		
-		return iconUrl;
+		this._map.addLayer(highlightLayer);
 	},
 	
 	_clearHighlight: function() {
