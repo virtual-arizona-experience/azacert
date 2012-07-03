@@ -1,4 +1,36 @@
-#acert-popup-content
-	a(href=URL).popup-title= Name
-	.media-container
-		.media-content!= Media
+#acert-popup-content(style="width:500px;")
+	a(href=props.URL).popup-title= props.Name
+	.media-content(style="padding:5px 0px;")!= props.Media
+	table#attributes-container
+		tr
+			td(style="width:250px;")
+				table(style="color:white !important;")
+					tr
+						td.td-title Street:
+						td.td-content=props.Street							 
+					tr
+						td.td-title City:
+						td.td-content=props.City
+					tr
+						td.td-title State:
+						td.td-content=props.State
+					tr
+						td.td-title Zip Code:
+						td.td-content=props.Zipcode	
+					tr
+						td.td-title Phone:
+						td.td-content=props.Phone
+			td(style="width:250px;")
+				table(style="color:white !important;")
+					tr		
+						td.td-title Elevation:
+						td.td-content=props.Elevationf+" ft"
+					tr		
+						td.td-title Agency:
+						td.td-content=props.Agency
+					tr
+						td.td-title Resources:
+				div
+					each resource in resources
+						if props[resource.fName] == "1"
+							img(src="style/images/inactive/"+resource.fName+".png", title=resource.vPairs[0].label)

@@ -1,3 +1,8 @@
+/*
+ * Author: Genhan Chen
+ * Email: genhan.chen@azgs.az.gov
+ */
+
 L.Control.Filter = L.Control.extend({
 	options: {
 		collapsed: true,

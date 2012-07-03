@@ -1,36 +1,48 @@
-/* Hover highlight */
 /*
- .leaflet-marker-icon {
- opacity: 0 !important;
- -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)" !important;
- }
-
- .leaflet-marker-icon:hover {
- opacity: 1 !important;
- -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)" !important;
- }*/
+ * Author: Genhan Chen
+ * Email: genhan.chen@azgs.az.gov
+ */
 
 /* Define hover tips style*/
 .custom-hover {
 }
 .custom-control-hover-label {
-	color: #036;
+	color: #464646;
 	font-weight: bold;
 	font-size: 20px;
 	-ms-filter: "progid:DXImageTransform.Microsoft.Glow(Strength=2, Color=#FFFFFF)";
 	text-shadow: -2px -2px 2px white, 2px 2px 2px white;
 }
 /* Define popup style*/
+#acert-popup-content td {
+	vertical-align: top;
+}
+
+#attributes-container img {
+	width: 16px;
+	height: 16px;
+	padding: 3px;
+}
+
+.td-title {
+	font-weight: bold;
+	width: 60px;
+}
+.td-content {
+	
+}
+
 .leaflet-popup-content-wrapper {
-	background-color: #036;
+	background-color: #464646;
 	-ms-filter: "progid:DXImageTransform.Microsoft.Glow(Strength=2, Color=#FFFFFF)";
 	box-shadow: -2px -2px 2px white, 2px 2px 2px white;
 }
 .leaflet-popup-close-button {
-	background-color: transparent;
-	background-repeat: no-repeat;
+	background: url("images/tools/collapse.png") transparent no-repeat;
 	width: 20px;
 	height: 20px;
+	background-size: 12px 12px;
+	margin: 10px 0px 0px 0px;
 }
 .leaflet-popup-content {
 	margin: 12px;
@@ -40,10 +52,6 @@
 	color: white !important;
 	display: block;
 	font-size: 1.17em;
-	-webkit-margin-before: 1em;
-	-webkit-margin-after: 1em;
-	-webkit-margin-start: 0px;
-	-webkit-margin-end: 0px;
 	font-weight: bold;
 	text-decoration: none;
 }
@@ -51,9 +59,23 @@
 .popup-title:hover {
 	text-decoration: underline;
 }
+
+/*
+ * Change jQuery ui
+ * */
+.ui-menu {
+	font-size: 12px !important;
+	width: 260px !important;
+	
+}
+
 /*
  * Style for filter popup
  * */
+.acert-control-filter a {
+	background-image: url("images/tools/filter.png");
+	background-size: 30px 30px;
+}
 
 .acert-control-filter form {
 	padding: 0px 0px 10px 0px;
@@ -72,13 +94,17 @@
 	position: relative;
 	top: 10px;
 	left: 30px;
-	background-color: #F8F8F9;
+	background-color: #464646;
 	padding: 0px 5px;	
 }
 
 /*
  * Style for search function
  * */
+.acert-control-search a {
+	background-image: url("images/tools/search.png");
+	background-size: 30px 30px;
+}
 
 .acert-control-search-items {
 	height: 30px;
@@ -89,12 +115,13 @@
 	-webkit-border-radius: 7px;
 	border-radius: 7px;
 	margin: 2px 0px 0px 0px;
-	width: 215px;
+	width: 187px;
 	float: left;
 }
 
 .acert-control-search-icon {
-	background: url("images/search.png") no-repeat;
+	background: url("images/tools/searchmini.png") no-repeat;
+	background-size: 12px 12px;
 	float: left;
 	margin: 5px;
 	cursor: pointer;
@@ -116,7 +143,7 @@
 	-moz-box-shadow: 0 0 7px #999;
 	-webkit-box-shadow: 0 0 7px #999;
 	box-shadow: 0 0 7px #999;
-	background: #F8F8F9;
+	background: #464646;
 	-webkit-border-radius: 7px;
 	border-radius: 7px;
 }
@@ -124,10 +151,6 @@
 .acert-control-tools {
 	display: inline-block !important;
 	cursor: pointer;
-}
-
-.acert-control-tools:hover {
-	background-image: url("jquery-ui/images/ui-icons_fbb041_256x240.png") !important;
 }
 
 .acert-control-show {
@@ -145,23 +168,22 @@
 	height: 30px;
 }
 
-.acert-control-icon {
-	background-image: url("images/view.png");
-}
 
 .acert-control-reset {
-	background: url("images/refresh.png") no-repeat;
+	background: url("images/tools/refresh.png") no-repeat;
+	background-size: 12px 12px;
 	float: right;
-	margin: 5px 5px 5px 0px;
+	margin: 5px;
 	cursor: pointer;
 	width: 16px;
 	height: 16px;	
 }
 
 .acert-control-close {
-	background: url("images/collapse.png") no-repeat;
+	background: url("images/tools/collapse.png") no-repeat;
+	background-size: 12px 12px;
 	float: right;
-	margin: 5px 5px 5px 0px;
+	margin: 5px;
 	cursor: pointer;
 	width: 16px;
 	height: 16px;

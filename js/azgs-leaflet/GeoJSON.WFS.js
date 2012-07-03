@@ -1,3 +1,10 @@
+/*
+ * Author: Ryan Clark
+ * 
+ * Author: Genhan Chen
+ * Email: genhan.chen@azgs.az.gov
+ */
+
 L.GeoJSON.WFS = L.GeoJSON.extend({
 	initialize: function(serviceUrl, featureType, options) {
 		options = options || {};
@@ -10,15 +17,32 @@ L.GeoJSON.WFS = L.GeoJSON.extend({
 		else if (options.filter) { this.getFeatureUrl += "&" + options.filter; }
 		
 		this.on("featureparse", function(e) {
-			///Parse the icon url
+			
+			//*Set default icon url and highlight icon url********************************************/
+			/// The function to parse icon url
+			var parseIconUrl = function(/*url string needs to be parsed*/url){
+				if(!url) {return ;}
+				
+				if(url.split("?").length == 3) { ///If the the iconUrl contains two parameters (with '?')
+					var baseUrl = url.split("?")[0];
+					var imgName = e.properties[url.split("?")[1]].replace(/\s/g, "") + "." + url.split("?")[2];
+					url = baseUrl + imgName;	
+				}
+				
+				return url;
+			};
+			
+			/// Apply the parseUrl function
 			if(e.layer.hasOwnProperty("options")){
-				var iconUrl = e.layer.options.icon.options.iconUrl;
-				if(iconUrl.split("?").length == 3) { ///If the the iconUrl contains two parameters (with '?')
-					var iconBaseUrl = iconUrl.split("?")[0];
-					var imgName = e.properties[iconUrl.split("?")[1]].replace(/\s/g, "") + "." + iconUrl.split("?")[2];
-					e.layer.options.icon.options.iconUrl = iconBaseUrl + imgName;	
-				}	
-			}	
+				if (e.layer.options.hasOwnProperty("icon")) {
+					if(e.layer.options.icon.hasOwnProperty("options")) {
+						e.layer.options.icon.options.iconUrl = parseIconUrl(e.layer.options.icon.options.iconUrl);
+						e.layer.options.icon.options.iconHighlightUrl = parseIconUrl(e.layer.options.icon.options.iconHighlightUrl);	
+					}					
+				}		
+			}
+			//****************************************************************************************/
+			//****************************************************************************************/
 			
 			if (options.popupObj && options.popupOptions) {
 				e.layer.on("click", function(evt) {
@@ -30,13 +54,27 @@ L.GeoJSON.WFS = L.GeoJSON.extend({
 				e.layer.bindPopup(e.properties[options.popupFld], { maxWidth: 600 });
 			}
 			if (options.hoverObj || options.hoverFld) {
-				e.layer.on("mouseover", function(evt) {
+				e.layer.on("mouseover", function(evt) {				
+					//********************************************************************************/
+					/// Set the highlight symbol
+					this._icon.src = this.options.icon.options.iconHighlightUrl;
+					this._icon.style.width = this.options.icon.options.iconSize.x * 2 + "px";
+					this._icon.style.height = this.options.icon.options.iconSize.x * 2 + "px";
+					//********************************************************************************/					
+					
 					hoverContent = options.hoverObj ? options.hoverObj.generateContent(e) : e.properties[options.hoverFld] || "Invalid field name" ;
 					hoverPoint = e.layer._map.latLngToContainerPoint(e.layer._latlng);
 					e.layer._hoverControl = new L.Control.Hover(hoverPoint, hoverContent);
 					e.layer._map.addControl(e.layer._hoverControl);	
 				});
 				e.layer.on("mouseout", function(evt) {
+					//********************************************************************************/
+					/// Remove the highlight symbol					
+					this._icon.src = this.options.icon.options.iconUrl;
+					this._icon.style.width = this.options.icon.options.iconSize.x + "px";
+					this._icon.style.height = this.options.icon.options.iconSize.x + "px";
+					//********************************************************************************/	
+					
 					e.layer._map.removeControl(e.layer._hoverControl);
 				});
 			}

@@ -14,6 +14,11 @@ DateFilter = L.Class.extend({
 	}
 });
 
+/*
+ * Author: Genhan Chen
+ * Email: genhan.chen@azgs.az.gov
+ */
+
 PropertyFilter = L.Class.extend({
 	initialize: function(objFilter){
 		this._orGroup = [];

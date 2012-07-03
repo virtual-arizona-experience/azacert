@@ -1,3 +1,8 @@
+/*
+ * Author: Genhan Chen
+ * Email: genhan.chen@azgs.az.gov
+ */
+
 L.Control.Search = L.Control.extend({
 	options: {
 		position: "topright"
@@ -40,13 +45,21 @@ L.Control.Search = L.Control.extend({
 		
 		var input = this._input = L.DomUtil.create("input", className + "-input", form);
 		input.id = this._input.id = "search-input";
+		input.title = "Input keyword for search"
 		
 		var searchIcon = this._searchIcon = L.DomUtil.create("span", "acert-control-search-icon", form);
+		searchIcon.title = "Search";
 		L.DomEvent.addListener(searchIcon, 'click', this._search, this);
 		
 		/// Add close button
 		var close = L.DomUtil.create("span", "acert-control-close", form);
+		close.title = "Collapse";
 		L.DomEvent.addListener(close, "click", this.hidePopup, this);
+		
+		/// Add button to clear the highlight feature
+		var clear = L.DomUtil.create("span", "acert-control-reset", form);
+		L.DomEvent.addListener(clear, "click", this._clearHighlight, this);
+		clear.title = "Clear";
 		
 		container.appendChild(form);
 		
@@ -58,6 +71,8 @@ L.Control.Search = L.Control.extend({
 	},
 	
 	hidePopup: function() {
+		this._clearHighlight();
+		this._input.value = "";
 		this._show(this._controlIcon);
 		this._hide(this._form);
 	},
@@ -105,7 +120,7 @@ L.Control.Search = L.Control.extend({
 	},
 	
 	_clearHighlight: function() {
-		if(this._map.highlight) { map.removeLayer(this._map.highlight); }
+		if(this._map.highlightLayer) { map.removeLayer(this._map.highlightLayer); }
 	},
 	
 	setAutocompleteItems: function(jsonLayer, labelField) {
