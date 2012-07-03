@@ -249,6 +249,7 @@ L.Control.Filter = L.Control.extend({
 				return new L.Marker(latlng, { 
 					icon: new L.Icon({ 
 						iconUrl: "style/images/logos/?Agency?png", 
+						iconHighlightUrl: "style/images/logos/highlight/?Agency?png",
 						iconSize: new L.Point(16, 16) 
 					}) 
 				});
@@ -272,6 +273,7 @@ L.Control.Filter = L.Control.extend({
 				return new L.Marker(latlng, { 
 					icon: new L.Icon({ 
 						iconUrl: "style/images/logos/?Agency?png", /// ? + property name used as the image name + ? + image type
+						iconHighlightUrl: "style/images/logos/highlight/?Agency?png",
 						iconSize: new L.Point(16, 16) 
 					}) 
 				});

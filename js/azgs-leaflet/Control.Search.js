@@ -105,7 +105,8 @@ L.Control.Search = L.Control.extend({
 			pointToLayer: function(latlng) { 
 				return new L.Marker(latlng, { 
 					icon: new L.Icon({ 
-						iconUrl: "style/images/logos/?Agency?png", 
+						iconUrl: "style/images/logos/highlight/?Agency?png",
+						iconHighlightUrl: "style/images/logos/highlight/?Agency?png",
 						iconSize: new L.Point(32, 32) 
 					}) 
 				});
