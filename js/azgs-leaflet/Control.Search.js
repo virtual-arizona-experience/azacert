@@ -45,7 +45,12 @@ L.Control.Search = L.Control.extend({
 		
 		var input = this._input = L.DomUtil.create("input", className + "-input", form);
 		input.id = this._input.id = "search-input";
-		input.title = "Input keyword for search"
+		input.title = "Input keyword for search";
+		L.DomEvent.addListener(input, 'keypress', function(evt){
+			if(evt.keyCode == 13) {
+				this._search();
+			}
+		}, this);
 		
 		var searchIcon = this._searchIcon = L.DomUtil.create("span", "acert-control-search-icon", form);
 		searchIcon.title = "Search";
