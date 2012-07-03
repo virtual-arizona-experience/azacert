@@ -111,7 +111,7 @@ L.Control.Search = L.Control.extend({
 				return new L.Marker(latlng, { 
 					icon: new L.Icon({ 
 						iconUrl: "style/images/logos/highlight/?Agency?png",
-						iconHighlightUrl: "style/images/logos/highlight/?Agency?png",
+						//iconHighlightUrl: "style/images/logos/highlight/?Agency?png",
 						iconSize: new L.Point(32, 32) 
 					}) 
 				});
@@ -126,6 +126,7 @@ L.Control.Search = L.Control.extend({
 	},
 	
 	_clearHighlight: function() {
+		this._input.value = "";
 		if(this._map.highlightLayer) { map.removeLayer(this._map.highlightLayer); }
 	},
 	

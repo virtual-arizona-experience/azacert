@@ -37,7 +37,9 @@ L.GeoJSON.WFS = L.GeoJSON.extend({
 				if (e.layer.options.hasOwnProperty("icon")) {
 					if(e.layer.options.icon.hasOwnProperty("options")) {
 						e.layer.options.icon.options.iconUrl = parseIconUrl(e.layer.options.icon.options.iconUrl);
-						e.layer.options.icon.options.iconHighlightUrl = parseIconUrl(e.layer.options.icon.options.iconHighlightUrl);	
+						if(e.layer.options.icon.options.iconHighlightUrl){
+							e.layer.options.icon.options.iconHighlightUrl = parseIconUrl(e.layer.options.icon.options.iconHighlightUrl);
+						}							
 					}					
 				}		
 			}
@@ -57,9 +59,11 @@ L.GeoJSON.WFS = L.GeoJSON.extend({
 				e.layer.on("mouseover", function(evt) {				
 					//********************************************************************************/
 					/// Set the highlight symbol
-					this._icon.src = this.options.icon.options.iconHighlightUrl;
-					this._icon.style.width = this.options.icon.options.iconSize.x * 2 + "px";
-					this._icon.style.height = this.options.icon.options.iconSize.x * 2 + "px";
+					if(this.options.icon.options.iconHighlightUrl){
+						this._icon.src = this.options.icon.options.iconHighlightUrl;
+						this._icon.style.width = this.options.icon.options.iconSize.x * 2 + "px";
+						this._icon.style.height = this.options.icon.options.iconSize.x * 2 + "px";						
+					}
 					//********************************************************************************/					
 					
 					hoverContent = options.hoverObj ? options.hoverObj.generateContent(e) : e.properties[options.hoverFld] || "Invalid field name" ;
