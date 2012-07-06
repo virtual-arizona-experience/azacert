@@ -42,7 +42,8 @@ JadeContent = L.Class.extend({
 		return this.jadeFn(L.Util.extend({props: feature.properties}, {resources: this.options.resources}));
 	},
 	
-	generatePopup: function(feature, options) {		
+	generatePopup: function(feature, options) {	
+		
 		if (options.centered) { popup = new L.Popup.Centered(options); }
 		else { popup = new L.Popup(options); }
 		

@@ -59,9 +59,14 @@ function init(){
 	                                          {"category" : "Water Sports", "items" : waterSportsItems}]);
 	map.addControl(filterControl);
 	
+	/// Add map events
 	map.on("layeradd", function(e){
 		searchControl.setAutocompleteItems(this.wfsLayer, "Name");
 	});
 	
+	map.on("popupopen", function(e){
+		searchControl.hidePopup();
+		filterControl.hidePopup();
+	});
 
 }

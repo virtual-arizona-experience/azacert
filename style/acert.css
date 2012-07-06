@@ -26,10 +26,9 @@
 
 .td-title {
 	font-weight: bold;
-	width: 60px;
 }
 .td-content {
-	
+
 }
 
 .leaflet-popup-content-wrapper {
@@ -122,8 +121,9 @@
 .acert-control-search-icon {
 	background: url("images/tools/searchmini.png") no-repeat;
 	background-size: 12px 12px;
-	float: left;
-	margin: 5px;
+	background-position: center;
+	float: right;
+	margin: 3px 5px;
 	cursor: pointer;
 	width: 16px;
 	height: 16px;	
@@ -172,8 +172,9 @@
 .acert-control-reset {
 	background: url("images/tools/refresh.png") no-repeat;
 	background-size: 12px 12px;
+	background-position: center;
 	float: right;
-	margin: 5px;
+	margin: 3px 5px;
 	cursor: pointer;
 	width: 16px;
 	height: 16px;	
@@ -182,8 +183,9 @@
 .acert-control-close {
 	background: url("images/tools/collapse.png") no-repeat;
 	background-size: 12px 12px;
+	background-position: center;
 	float: right;
-	margin: 5px;
+	margin: 3px 5px;
 	cursor: pointer;
 	width: 16px;
 	height: 16px;

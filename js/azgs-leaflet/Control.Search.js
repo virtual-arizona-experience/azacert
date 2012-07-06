@@ -45,16 +45,13 @@ L.Control.Search = L.Control.extend({
 		
 		var input = this._input = L.DomUtil.create("input", className + "-input", form);
 		input.id = this._input.id = "search-input";
-		input.title = "Input keyword for search";
+		input.title = "Input Search Keyword";
+		input.placeholder = " < Input Search Keyword >";
 		L.DomEvent.addListener(input, 'keypress', function(evt){
 			if(evt.keyCode == 13) {
 				this._search();
 			}
 		}, this);
-		
-		var searchIcon = this._searchIcon = L.DomUtil.create("span", "acert-control-search-icon", form);
-		searchIcon.title = "Search";
-		L.DomEvent.addListener(searchIcon, 'click', this._search, this);
 		
 		/// Add close button
 		var close = L.DomUtil.create("span", "acert-control-close", form);
@@ -65,6 +62,11 @@ L.Control.Search = L.Control.extend({
 		var clear = L.DomUtil.create("span", "acert-control-reset", form);
 		L.DomEvent.addListener(clear, "click", this._clearHighlight, this);
 		clear.title = "Clear";
+		
+		/// Add search button
+		var searchIcon = this._searchIcon = L.DomUtil.create("span", "acert-control-search-icon", form);
+		searchIcon.title = "Search";
+		L.DomEvent.addListener(searchIcon, 'click', this._search, this);
 		
 		container.appendChild(form);
 		
@@ -82,13 +84,15 @@ L.Control.Search = L.Control.extend({
 		this._hide(this._form);
 	},
 	
-	_search: function() {
+	_search: function(searchTerm) {
 		if(this._map.highlight) { map.removeLayer(this._map.highlight); }
 		
-		var searchTerm = $("#search-input").val()
+		var searchTerm = searchTerm || $("#search-input").val();
 		
 		/// Find the feature pair
 		var thisFeature = this._featureKVP[searchTerm];
+		
+		if (!thisFeature) { return ; }
 		
 		var coors = thisFeature.geometry.coordinates;
 		var latLng = new L.LatLng(coors[1], coors[0]);
@@ -150,34 +154,36 @@ L.Control.Search = L.Control.extend({
 		this.autocompleteItems.sort();
 		
 		$("#" + this._input.id).autocomplete({
-			source: that.autocompleteItems
+			source: that.autocompleteItems,
+			select: function(evt, ui) { that._search(ui.item.label); }
 		});
 	},
 	
 	/// Expand the popup
 	_show: function (dom) {
 		if(dom.className.indexOf("acert-control-hide") != -1) {
-			dom.className = dom.className.replace("acert-control-hide", "");
-		}
-		
-		if(dom.className.charAt(dom.className.length -1) != " ") {
-			dom.className += " ";
-		}
-		
-		dom.className += "acert-control-show";
+			dom.className = dom.className.replace("acert-control-hide", "acert-control-show");
+		} else if (dom.className.indexOf("acert-control-show") == -1) {
+			if(dom.className.charAt(dom.className.length -1) != " ") {
+				dom.className += " ";
+			}
+			
+			dom.className += "acert-control-show";			
+		}		
 	},
 	
 	/// Collapse the popup
 	_hide: function (dom) {
 		if(dom.className.indexOf("acert-control-show") != -1){
-			dom.className = dom.className.replace("acert-control-show", "");
+			dom.className = dom.className.replace("acert-control-show", "acert-control-hide");
+		} else if (dom.className.indexOf("acert-control-hide") == -1) {
+			if(dom.className.charAt(dom.className.length -1) != " ") {
+				dom.className += " ";
+			}
+			
+			dom.className += "acert-control-hide";		
 		}
 	
-		if(dom.className.charAt(dom.className.length -1) != " ") {
-			dom.className += " ";
-		}
-		
-		dom.className += "acert-control-hide";
 	}
 		
 })

@@ -289,26 +289,27 @@ L.Control.Filter = L.Control.extend({
 	/// Expand the popup
 	_show: function (dom) {
 		if(dom.className.indexOf("acert-control-hide") != -1) {
-			dom.className = dom.className.replace("acert-control-hide", "");
-		}
-		
-		if(dom.className.charAt(dom.className.length -1) != " ") {
-			dom.className += " ";
-		}
-		
-		dom.className += "acert-control-show";
+			dom.className = dom.className.replace("acert-control-hide", "acert-control-show");
+		} else if (dom.className.indexOf("acert-control-show") == -1) {
+			if(dom.className.charAt(dom.className.length -1) != " ") {
+				dom.className += " ";
+			}
+			
+			dom.className += "acert-control-show";			
+		}		
 	},
 	
 	/// Collapse the popup
 	_hide: function (dom) {
 		if(dom.className.indexOf("acert-control-show") != -1){
-			dom.className = dom.className.replace("acert-control-show", "");
+			dom.className = dom.className.replace("acert-control-show", "acert-control-hide");
+		} else if (dom.className.indexOf("acert-control-hide") == -1) {
+			if(dom.className.charAt(dom.className.length -1) != " ") {
+				dom.className += " ";
+			}
+			
+			dom.className += "acert-control-hide";		
 		}
 	
-		if(dom.className.charAt(dom.className.length -1) != " ") {
-			dom.className += " ";
-		}
-		
-		dom.className += "acert-control-hide";
 	}
 })
