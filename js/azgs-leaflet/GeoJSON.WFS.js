@@ -48,7 +48,8 @@ L.GeoJSON.WFS = L.GeoJSON.extend({
 			
 			if (options.popupObj && options.popupOptions) {
 				e.layer.on("click", function(evt) {
-					e.layer._map.openPopup(options.popupObj.generatePopup(e, options.popupOptions));
+					var popup = options.popupObj.generatePopup(e, options.popupOptions);
+					e.layer._map.openPopup(popup);
 					if (options.popupFn) { options.popupFn(e); }
 				});			
 			}

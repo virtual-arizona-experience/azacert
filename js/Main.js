@@ -67,6 +67,36 @@ function init(){
 	map.on("popupopen", function(e){
 		searchControl.hidePopup();
 		filterControl.hidePopup();
+		
+		this._reopen = false;
+		
+		/***this._resetPopup = jQuery.extend({}, e.popup);****/
+		var linkInPopup = document.getElementById("title-link");
+		
+		L.DomEvent.addListener(linkInPopup, 'click', function(evt) {
+			var url = evt.target.getAttribute("url");
+			
+			/***********************************************************
+			var goBack = L.DomUtil.create("span", "popup-link-back");
+			L.DomEvent.addListener(goBack, 'click', function(evt){
+				this._reopen = true;
+				this.closePopup();				
+			}, this)
+			
+			
+			this._popup._container.appendChild(goBack);
+			***********************************************************/
+			
+			var linkPage = L.DomUtil.create("iframe", "acert-link-frame");
+			linkPage.style.width = "600px";
+			linkPage.style.height = "500px";
+			linkPage.style.marginTop = "15px";
+			linkPage.src = url;
+			
+			this._popup.setContent(linkPage);
+			
+		}, this);
+		
 	});
-
+	
 }

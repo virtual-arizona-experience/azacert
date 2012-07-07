@@ -41,7 +41,7 @@
 	width: 20px;
 	height: 20px;
 	background-size: 12px 12px;
-	margin: 10px 0px 0px 0px;
+	margin: 5px 0px 0px 0px;
 }
 .leaflet-popup-content {
 	margin: 12px;
@@ -57,6 +57,19 @@
 
 .popup-title:hover {
 	text-decoration: underline;
+}
+
+.popup-link-back {
+	float: left;
+	position: absolute;
+	top: 9px;
+	left: 14px;
+	background: url("images/tools/refresh.png") transparent no-repeat;
+	width: 20px;
+	height: 20px;
+	background-size: 12px 12px;
+	margin: 5px 0px 0px 0px;
+	cursor: pointer;
 }
 
 /*
