@@ -4,6 +4,9 @@ var agencyItems = [ {
 		"value" : "'AZGFD'",
 		"label" : "Arizona Game and Fish Department"
 	}, {
+		"value" : "'BLM'",
+		"label" : "The Bureau of Land Management"
+	}, {
 		"value" : "'SP'",
 		"label" : "Arizona State Parks"
 	}, {
@@ -15,7 +18,7 @@ var agencyItems = [ {
 	}, {
 		"value" : "'USFWS'",
 		"label" : "U.S. Fish and Wildlife Service"
-	} ]
+	}]
 } ];
 
 
