@@ -1,6 +1,7 @@
 #acert-popup-content(style="width:500px;")
 	a(href="#", url=props.URL)#title-link.popup-title= props.Name
-	.media-content(style="padding:5px 0px;")!= props.Media
+	if props.Media
+		.media-content(style="padding:5px 0px;")!= props.Media
 	table#attributes-container
 		tr
 			td(style="width:250px;")
