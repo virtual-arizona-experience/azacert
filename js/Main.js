@@ -88,8 +88,8 @@ function init(){
 			***********************************************************/
 			
 			var linkPage = L.DomUtil.create("iframe", "acert-link-frame");
-			linkPage.style.width = "600px";
-			linkPage.style.height = "500px";
+			linkPage.style.width = "800px";
+			linkPage.style.height = "520px";
 			linkPage.style.marginTop = "15px";
 			linkPage.src = url;
 			
