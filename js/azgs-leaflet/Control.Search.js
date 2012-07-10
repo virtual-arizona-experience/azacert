@@ -114,15 +114,15 @@ L.Control.Search = L.Control.extend({
 			pointToLayer: function(latlng) { 
 				return new L.Marker(latlng, { 
 					icon: new L.Icon({ 
-						iconUrl: "style/images/logos/highlight/?Agency?png",
-						//iconHighlightUrl: "style/images/logos/highlight/?Agency?png",
+						iconUrl: "style/images/logos/highlight/?agency?png",
+						//iconHighlightUrl: "style/images/logos/highlight/?agency?png",
 						iconSize: new L.Point(32, 32) 
 					}) 
 				});
 			},
 			popupObj: new JadeContent("templates/wfsIdentify.jade"),
 			popupOptions: { maxWidth: 1000, centered: true },
-			hoverFld: "Name",
+			hoverFld: "name",
 			filter: filter /// PropertyFilter class is defined in "Filter.js"
 		});
 		

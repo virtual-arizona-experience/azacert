@@ -1,7 +1,7 @@
 #acert-popup-content(style="width:500px;")
-	a(href="#", url=props.URL)#title-link.popup-title= props.Name
-	if props.Media
-		.media-content(style="padding:5px 0px;")!= props.Media
+	a(href="#", url=props.url)#title-link.popup-title= props.name
+	if props.media
+		.media-content(style="padding:5px 0px;")!= props.media
 	table#attributes-container
 		tr
 			td(style="width:250px;")
@@ -9,21 +9,21 @@
 					tr
 						td.td-title Contact Information:
 					tr
-						td.td-content=props.Office
+						td.td-content=props.office
 					tr
-						td.td-content=props.Street								 
+						td.td-content=props.street								 
 					tr
-						td.td-content=props.City+", "+props.State+" "+props.Zipcode
+						td.td-content=props.city+", "+props.state+" "+props.zipcode
 					tr
-						td.td-content=props.Phone
+						td.td-content=props.phone
 			td(style="width:250px;")
 				table(style="color:white !important;")
 					tr		
 						td.td-title Elevation:
-						td.td-content=props.Elevationf+" ft"
+						td.td-content=props.elevationf+" ft"
 					tr		
 						td.td-title Agency:
-						td.td-content=props.Agency
+						td.td-content=props.agency
 					tr
 						td.td-title Resources:
 				div

@@ -27,15 +27,15 @@ function init(){
 		pointToLayer: function(latlng) { 
 			return new L.Marker(latlng, { 
 				icon: new L.Icon({ 
-					iconUrl: "style/images/logos/?Agency?png", /// ? + property name used as the image name + ? + image type
-					iconHighlightUrl: "style/images/logos/highlight/?Agency?png",
+					iconUrl: "style/images/logos/?agency?png", /// ? + property name used as the image name + ? + image type
+					iconHighlightUrl: "style/images/logos/highlight/?agency?png",
 					iconSize: new L.Point(16, 16) 
 				}) 
 			});
 		},
 		popupObj: new JadeContent("templates/wfsIdentify.jade"),
 		popupOptions: { maxWidth: 1000, centered: true },
-		hoverFld: "Name"
+		hoverFld: "name"
 	}); 
 	
 	var center = new L.LatLng(34.1618, -111.53332);

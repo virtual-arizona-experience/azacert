@@ -248,15 +248,15 @@ L.Control.Filter = L.Control.extend({
 			pointToLayer: function(latlng) { 
 				return new L.Marker(latlng, { 
 					icon: new L.Icon({ 
-						iconUrl: "style/images/logos/?Agency?png", 
-						iconHighlightUrl: "style/images/logos/highlight/?Agency?png",
+						iconUrl: "style/images/logos/?agency?png", 
+						iconHighlightUrl: "style/images/logos/highlight/?agency?png",
 						iconSize: new L.Point(16, 16) 
 					}) 
 				});
 			},
 			popupObj: new JadeContent("templates/wfsIdentify.jade"),
 			popupOptions: { maxWidth: 1000, centered: true },
-			hoverFld: "Name",
+			hoverFld: "name",
 			filter: new PropertyFilter(objFilter) /// PropertyFilter class is defined in "Filter.js"
 		});
 		
@@ -272,15 +272,15 @@ L.Control.Filter = L.Control.extend({
 			pointToLayer: function(latlng) { 
 				return new L.Marker(latlng, { 
 					icon: new L.Icon({ 
-						iconUrl: "style/images/logos/?Agency?png", /// ? + property name used as the image name + ? + image type
-						iconHighlightUrl: "style/images/logos/highlight/?Agency?png",
+						iconUrl: "style/images/logos/?agency?png", /// ? + property name used as the image name + ? + image type
+						iconHighlightUrl: "style/images/logos/highlight/?agency?png",
 						iconSize: new L.Point(16, 16) 
 					}) 
 				});
 			},
 			popupObj: new JadeContent("templates/wfsIdentify.jade"),
 			popupOptions: { maxWidth: 1000, centered: true },
-			hoverFld: "Name"
+			hoverFld: "name"
 		});
 		
 		this._map.addLayer(wfsLayer);

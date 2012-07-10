@@ -1,5 +1,5 @@
 var agencyItems = [ {
-	"fName" : "Agency",
+	"fName" : "agency",
 	"vPairs" : [ {
 		"value" : "'AZGFD'",
 		"label" : "Arizona Game and Fish Department"
@@ -23,25 +23,25 @@ var agencyItems = [ {
 
 
 var accessItems = [ {
-	"fName" : "FeeArea",
+	"fName" : "feearea",
 	"vPairs" : [ {
 		"value" : "1",
 		"label" : "Fee Area"
 	} ]
 }, {
-	"fName" : "SeasonalUs",
+	"fName" : "seasonalus",
 	"vPairs" : [ {
 		"value" : "1",
 		"label" : "Seasonal Use"
 	} ]
 }, {
-	"fName" : "DisabledAc",
+	"fName" : "disabledac",
 	"vPairs" : [ {
 		"value" : "1",
 		"label" : "Disabled Access"
 	} ]
 }, {
-	"fName" : "Backcountr",
+	"fName" : "backcountr",
 	"vPairs" : [ {
 		"value" : "1",
 		"label" : "Backcountry Use Permit"
@@ -49,13 +49,13 @@ var accessItems = [ {
 } ];
 
 var infoItems = [ {
-	"fName" : "Interpreti",
+	"fName" : "interpreti",
 	"vPairs" : [ {
 		"value" : "1",
 		"label" : "Interpretive Exhibits"
 	} ]
 }, {
-	"fName" : "VisitorInf",
+	"fName" : "visitorinf",
 	"vPairs" : [ {
 		"value" : "1",
 		"label" : "Visitor Infomation"
@@ -63,37 +63,37 @@ var infoItems = [ {
 } ];
 
 var facilitiesItems = [ {
-	"fName" : "Restrooms",
+	"fName" : "restrooms",
 	"vPairs" : [ {
 		"value" : "1",
 		"label" : "Restrooms"
 	} ]
 }, {
-	"fName" : "DrinkingWa",
+	"fName" : "drinkingwa",
 	"vPairs" : [ {
 		"value" : "1",
 		"label" : "Drinking Water"
 	} ]
 }, {
-	"fName" : "DumpStatio",
+	"fName" : "dumpstatio",
 	"vPairs" : [ {
 		"value" : "1",
 		"label" : "Dump Station"
 	} ]
 }, {
-	"fName" : "Showers",
+	"fName" : "showers",
 	"vPairs" : [ {
 		"value" : "1",
 		"label" : "Showers"
 	} ]
 }, {
-	"fName" : "ElectricHo",
+	"fName" : "electricho",
 	"vPairs" : [ {
 		"value" : "1",
 		"label" : "Electric Hookups"
 	} ]
 }, {
-	"fName" : "PicnicArea",
+	"fName" : "picnicarea",
 	"vPairs" : [ {
 		"value" : "1",
 		"label" : "Picnic Area"
@@ -101,19 +101,19 @@ var facilitiesItems = [ {
 } ];
 
 var campingItems = [ {
-	"fName" : "DevelopedC",
+	"fName" : "developedc",
 	"vPairs" : [ {
 		"value" : "1",
 		"label" : "Developed Campsites"
 	} ]
 }, {
-	"fName" : "PrimitiveC",
+	"fName" : "primitivec",
 	"vPairs" : [ {
 		"value" : "1",
 		"label" : "Primitive Camping"
 	} ]
 }, {
-	"fName" : "GroupCamp_",
+	"fName" : "groupcamp_",
 	"vPairs" : [ {
 		"value" : "1",
 		"label" : "Group Camp/Picnic"
@@ -121,25 +121,25 @@ var campingItems = [ {
 } ];
 
 var trailsItems = [ {
-	"fName" : "HikingTrai",
+	"fName" : "hikingtrai",
 	"vPairs" : [ {
 		"value" : "1",
 		"label" : "Hiking Trails"
 	} ]
 }, {
-	"fName" : "BicycleTra",
+	"fName" : "bicycletra",
 	"vPairs" : [ {
 		"value" : "1",
 		"label" : "Bicycle Trails"
 	} ]
 }, {
-	"fName" : "OHVTrails",
+	"fName" : "ohvtrails",
 	"vPairs" : [ {
 		"value" : "1",
 		"label" : "OHV Trails"
 	} ]
 }, {
-	"fName" : "Equestrian",
+	"fName" : "equestrian",
 	"vPairs" : [ {
 		"value" : "1",
 		"label" : "Equestrian Trails"
@@ -147,31 +147,31 @@ var trailsItems = [ {
 } ];
 
 var naturalHistoryItems = [ {
-	"fName" : "SelfGuided",
+	"fName" : "selfguided",
 	"vPairs" : [ {
 		"value" : "1",
 		"label" : "Self-Guided Tours"
 	} ]
 }, {
-	"fName" : "Historical",
+	"fName" : "historical",
 	"vPairs" : [ {
 		"value" : "1",
 		"label" : "Historical/Archaeological"
 	} ]
 }, {
-	"fName" : "Geological",
+	"fName" : "geological",
 	"vPairs" : [ {
 		"value" : "1",
 		"label" : "Geological/Natural Area"
 	} ]
 }, {
-	"fName" : "Wildlife_B",
+	"fName" : "wildlife_b",
 	"vPairs" : [ {
 		"value" : "1",
 		"label" : "Wildlife/Birding Viewing"
 	} ]
 }, {
-	"fName" : "ScenicView",
+	"fName" : "scenicview",
 	"vPairs" : [ {
 		"value" : "1",
 		"label" : "Scenic View"
@@ -179,37 +179,37 @@ var naturalHistoryItems = [ {
 } ];
 
 var waterSportsItems = [ {
-	"fName" : "Swimming_H",
+	"fName" : "swimming_h",
 	"vPairs" : [ {
 		"value" : "1",
 		"label" : "Swimming/Hot Springs"
 	} ]
 }, {
-	"fName" : "Canoe_Raft",
+	"fName" : "canoe_raft",
 	"vPairs" : [ {
 		"value" : "1",
 		"label" : "Canoe/Rafting"
 	} ]
 }, {
-	"fName" : "Fishing",
+	"fName" : "fishing",
 	"vPairs" : [ {
 		"value" : "1",
 		"label" : "Fishing"
 	} ]
 }, {
-	"fName" : "BoatingFac",
+	"fName" : "boatingfac",
 	"vPairs" : [ {
 		"value" : "1",
 		"label" : "Boating Facilities"
 	} ]
 }, {
-	"fName" : "Boating",
+	"fName" : "boating",
 	"vPairs" : [ {
 		"value" : "1",
 		"label" : "Boating"
 	} ]
 }, {
-	"fName" : "WaterSport",
+	"fName" : "watersport",
 	"vPairs" : [ {
 		"value" : "1",
 		"label" : "Water Sport"
