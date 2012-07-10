@@ -61,7 +61,7 @@ function init(){
 	
 	/// Add map events
 	map.on("layeradd", function(e){
-		searchControl.setAutocompleteItems(this.wfsLayer, "Name");
+		searchControl.setAutocompleteItems(this.wfsLayer, "name");
 	});
 	
 	map.on("popupopen", function(e){
