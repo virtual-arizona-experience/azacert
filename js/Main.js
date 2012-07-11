@@ -23,7 +23,7 @@ function init(){
 		}); 
 	
 	/* WFS GeoJSON layer */
-	var wfsLayer = map.wfsLayer = new L.GeoJSON.WFS("http://opengis.azexperience.org/geoserver/wfs", "vae:ACERT", {
+	var wfsLayer = map.wfsLayer = new L.GeoJSON.WFS("http://opengis.azexperience.org/geoserver/wfs", "vae:azacert", {
 		pointToLayer: function(latlng) { 
 			return new L.Marker(latlng, { 
 				icon: new L.Icon({ 

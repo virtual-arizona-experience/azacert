@@ -110,7 +110,7 @@ L.Control.Search = L.Control.extend({
 			this._map.removeLayer(this._map.highlightLayer);
 		}
 		
-		var highlightLayer = this._map.highlightLayer = new L.GeoJSON.WFS("http://opengis.azexperience.org/geoserver/wfs", "vae:ACERT", {
+		var highlightLayer = this._map.highlightLayer = new L.GeoJSON.WFS("http://opengis.azexperience.org/geoserver/wfs", "vae:azacert", {
 			pointToLayer: function(latlng) { 
 				return new L.Marker(latlng, { 
 					icon: new L.Icon({ 
