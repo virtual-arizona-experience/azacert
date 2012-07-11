@@ -21,6 +21,26 @@ var agencyItems = [ {
 	}]
 } ];
 
+var artCultureItems = [ {
+	"fName" : "agency",
+	"vPairs" : [ {
+		"value" : "'art-gallery'",
+		"label" : "Art Gallery"
+	}, {
+		"value" : "'cultural-center'",
+		"label" : "Cultural Center"
+	}, {
+		"value" : "'film'",
+		"label" : "Film"
+	}, {
+		"value" : "'museum'",
+		"label" : "Museum"
+	}, {
+		"value" : "'theater'",
+		"label" : "Theater"
+	} ]
+} ];
+
 
 var accessItems = [ {
 	"fName" : "feearea",

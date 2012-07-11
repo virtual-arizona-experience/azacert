@@ -49,14 +49,15 @@ function init(){
 	});
 	map.addControl(searchControl);
 	
-	filterControl = new L.Control.Filter([{"category" : "Agency", "items" : agencyItems}, 
-	                                          {"category" : "Access", "items" : accessItems}, 
-	                                          {"category" : "Information", "items" : infoItems}, 
-	                                          {"category" : "Camping", "items" : campingItems}, 
-	                                          {"category" : "Facilities", "items" : facilitiesItems}, 
-	                                          {"category" : "Trails", "items" : trailsItems}, 
-	                                          {"category" : "Natural History", "items" : naturalHistoryItems}, 
-	                                          {"category" : "Water Sports", "items" : waterSportsItems}]);
+	filterControl = new L.Control.Filter([{"category" : "Agency", "items" : agencyItems},
+	                                      {"category" : "Art & Culture", "items" : artCultureItems},
+	                                      {"category" : "Access", "items" : accessItems}, 
+	                                      {"category" : "Information", "items" : infoItems}, 
+	                                      {"category" : "Camping", "items" : campingItems}, 
+	                                      {"category" : "Facilities", "items" : facilitiesItems}, 
+	                                      {"category" : "Trails", "items" : trailsItems}, 
+	                                      {"category" : "Natural History", "items" : naturalHistoryItems}, 
+	                                      {"category" : "Water Sports", "items" : waterSportsItems}]);
 	map.addControl(filterControl);
 	
 	/// Add map events
