@@ -8,10 +8,16 @@ function init(){
 	map = new L.Map("map");
 	
 	// Cloudmade / OpenStreetMap tiled layer
-	var cmUrl = 'http://{s}.tile.cloudmade.com/f7d28795be6846849741b30c3e4db9a9/997/256/{z}/{x}/{y}.png',
+	/*var cmUrl = 'http://{s}.tile.cloudmade.com/f7d28795be6846849741b30c3e4db9a9/997/256/{z}/{x}/{y}.png',
 		cmAttribution = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery � <a href="http://cloudmade.com">CloudMade</a>',
 		cmOptions = { maxZoom: 18, attribution: cmAttribution };
-	var cloudmade = new L.TileLayer(cmUrl, cmOptions);
+	var cloudmade = new L.TileLayer(cmUrl, cmOptions);*/
+	
+	// Basemap
+	var basemapUrl = "http://{s}.tiles.mapbox.com/v3/openvae.ACERT/{z}/{x}/{y}.png";
+		basemapAttribution = 'Map data &copy; <a href="http://www.azgs.az.gov/">Arizona Geological Survey</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery <a href="http://cloudmade.com">CloudMade</a>',
+		basemapOptions = { maxZoom: 18, attribution: basemapAttribution };
+	var basemap = new L.TileLayer(basemapUrl, basemapOptions);
 
 	/* WMS layer */
 	var wmsUrl = "http://opengis.azexperience.org/geoserver/wms";
@@ -40,7 +46,7 @@ function init(){
 	
 	var center = new L.LatLng(34.1618, -111.53332);
 	
-	map.setView(center, 7).addLayer(cloudmade).addLayer(wmsLayer);
+	map.setView(center, 7).addLayer(basemap).addLayer(wmsLayer);
 	
 	map.addLayer(wfsLayer);
 	
@@ -50,14 +56,14 @@ function init(){
 	map.addControl(searchControl);
 	
 	filterControl = new L.Control.Filter([{"category" : "Agency", "items" : agencyItems},
-	                                      {"category" : "Art & Culture", "items" : artCultureItems},
 	                                      {"category" : "Access", "items" : accessItems}, 
 	                                      {"category" : "Information", "items" : infoItems}, 
 	                                      {"category" : "Camping", "items" : campingItems}, 
 	                                      {"category" : "Facilities", "items" : facilitiesItems}, 
 	                                      {"category" : "Trails", "items" : trailsItems}, 
 	                                      {"category" : "Natural History", "items" : naturalHistoryItems}, 
-	                                      {"category" : "Water Sports", "items" : waterSportsItems}]);
+	                                      {"category" : "Water Sports", "items" : waterSportsItems},
+	                                      {"category" : "Art & Culture", "items" : artCultureItems}]);
 	map.addControl(filterControl);
 	
 	/// Add map events
