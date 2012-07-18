@@ -1,7 +1,7 @@
 #acert-popup-content(style="width:500px;")
 	a(href="#", url=props.url)#title-link.popup-title= props.name
 	if props.media
-		.media-content(style="padding:5px 0px;")!= props.media
+		.media-content(style="padding:5px 0px;")!= props.media	
 	table#attributes-container
 		tr
 			td(style="width:250px;")
@@ -23,7 +23,7 @@
 						td.td-content=props.elevationf+" ft"
 					tr		
 						td.td-title Agency:
-						td.td-content=props.agency
+						td.td-content=agency
 					tr
 						td.td-title Resources:
 				div

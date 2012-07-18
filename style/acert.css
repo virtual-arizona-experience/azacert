@@ -4,6 +4,9 @@
  */
 
 /* Define hover tips style*/
+.media-content iframe {
+	width: 500px;
+}
 .custom-hover {
 }
 .custom-control-hover-label {

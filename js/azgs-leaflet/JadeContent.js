@@ -24,11 +24,27 @@ JadeContent = L.Class.extend({
 		this.options.resources = resources;
 	},
 	
+	_setAgencies: function(/*Array of agencies (in FilterJSON.js)*/rAgencies){
+		var agencies = {};
+		
+		for (var i = 0; i < rAgencies.length; i ++) {
+			for (var j = 0; j < rAgencies[i].length; j ++){
+				for (var k = 0; k < rAgencies[i][j].vPairs.length; k ++){
+					var thisVP = rAgencies[i][j].vPairs[k];
+					agencies[thisVP.value.replace(/'/g, "")] = thisVP.label;
+				}				
+			}
+		}
+		
+		this.options.agencies = agencies;
+	},
+	
 	initialize: function(templateUrl, options) {
 		L.Util.setOptions(this, options || {});
 		
 		/*Those items are defined in FilterJSON.js*/
 		this._setResources([accessItems, infoItems, facilitiesItems, campingItems, trailsItems, naturalHistoryItems, waterSportsItems])
+		this._setAgencies([agencyItems, artCultureItems]);
 		
 		var that = this;
 		$.ajax({
@@ -39,7 +55,9 @@ JadeContent = L.Class.extend({
 	},
 	
 	generateContent: function(feature) {
-		return this.jadeFn(L.Util.extend({props: feature.properties}, {resources: this.options.resources}));
+		return this.jadeFn(L.Util.extend({props: feature.properties}, 
+				{	resources: this.options.resources, 
+					agency: this.options.agencies[feature.properties.agency]}));
 	},
 	
 	generatePopup: function(feature, options) {

@@ -74,13 +74,16 @@ L.GeoJSON.WFS = L.GeoJSON.extend({
 				});
 				e.layer.on("mouseout", function(evt) {
 					//********************************************************************************/
-					/// Remove the highlight symbol					
-					this._icon.src = this.options.icon.options.iconUrl;
-					this._icon.style.width = this.options.icon.options.iconSize.x + "px";
-					this._icon.style.height = this.options.icon.options.iconSize.x + "px";
+					/// Remove the highlight symbol
+					if (e.layer.options.icon.options.iconHighlightUrl){
+						this._icon.src = this.options.icon.options.iconUrl;
+						
+						this._icon.style.width = this.options.icon.options.iconSize.x + "px";
+						this._icon.style.height = this.options.icon.options.iconSize.x + "px";						
+					}
 					//********************************************************************************/	
 					
-					e.layer._map.removeControl(e.layer._hoverControl);
+					e.layer._hoverControl._map.removeControl(e.layer._hoverControl);
 				});
 			}
 			if (e.layer instanceof L.Marker.AttributeFilter) { e.layer.setIcon(e); }

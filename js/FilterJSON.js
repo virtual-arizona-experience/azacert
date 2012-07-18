@@ -27,14 +27,11 @@ var artCultureItems = [ {
 		"value" : "'art-gallery'",
 		"label" : "Art Gallery"
 	}, {
-		"value" : "'cultural-center'",
-		"label" : "Cultural Center"
-	}, {
 		"value" : "'film'",
 		"label" : "Film"
 	}, {
 		"value" : "'museum'",
-		"label" : "Museum"
+		"label" : "Museum/Cultural Center"
 	}, {
 		"value" : "'theater'",
 		"label" : "Theater"
