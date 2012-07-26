@@ -14,7 +14,7 @@ function init(){
 	var cloudmade = new L.TileLayer(cmUrl, cmOptions);*/
 	
 	// Basemap
-	var basemapUrl = "http://{s}.tiles.mapbox.com/v3/openvae.ACERT/{z}/{x}/{y}.png";
+	var basemapUrl = "http://opengis.azexperience.org/tiles/v2/ACERT/{z}/{x}/{y}.png";
 		basemapAttribution = 'Map data &copy; <a href="http://www.azgs.az.gov/">Arizona Geological Survey</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery <a href="http://cloudmade.com">CloudMade</a>',
 		basemapOptions = { maxZoom: 18, attribution: basemapAttribution };
 	var basemap = new L.TileLayer(basemapUrl, basemapOptions);
