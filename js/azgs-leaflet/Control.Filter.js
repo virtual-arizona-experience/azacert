@@ -101,7 +101,7 @@ L.Control.Filter = L.Control.extend({
 		
 		/// Create 'div' sections for different categories
 		var isTop = true;
-		for(var id in this._categories){
+		for(var id = 0; id < this._categories.length; id ++){
 
 			/// Add category label				
 			var categoryLabel = L.DomUtil.create("label", "acert-control-filter-group-name", form);
@@ -171,7 +171,7 @@ L.Control.Filter = L.Control.extend({
 	},
 	
 	_onInputClick: function (evt) {
-		var clickImg = evt.target;
+		var clickImg = evt.target || evt.srcElement;
 		
 		var imgs = this._imgs = this._form.getElementsByTagName("img");
 		var objFilter = {};
