@@ -77,8 +77,10 @@ function init(){
 		
 		this._reopen = false;
 		
-		/***this._resetPopup = jQuery.extend({}, e.popup);****/
-		var linkInPopup = document.getElementById("title-link");
+		/**************************************************************/
+		/***Add link redirection for 'View Page'***********************/
+		/***this._resetPopup = jQuery.extend({}, e.popup);*************/
+		var linkInPopup = document.getElementById("view-page");
 		
 		L.DomEvent.addListener(linkInPopup, 'click', function(evt) {
 			var url = evt.target.getAttribute("url");
@@ -101,9 +103,13 @@ function init(){
 			linkPage.src = url;
 			
 			this._popup.setContent(linkPage);
-			
-		}, this);
-		
-	});
-	
+		/**************************************************************/	
+		}, this);		
+	});	
+}
+
+/**********************************************************************/
+/***Get google direction for the clicked location**********************/
+function goGoogleDirection(strQuery){
+	window.open(" http://maps.google.com?q=" + strQuery);
 }

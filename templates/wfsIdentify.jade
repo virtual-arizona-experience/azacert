@@ -1,10 +1,10 @@
 #acert-popup-content(style="width:500px;")
-	a(href="#", url=props.url)#title-link.popup-title= props.name
+	#title-link.popup-title(style="text-decoration: none;")= props.name
 	if props.media
 		.media-content(style="padding:5px 0px;")!= props.media	
 	table#attributes-container
 		tr
-			td(style="width:250px;")
+			td(style="width:300px;")
 				table(style="color:white !important;")
 					tr
 						td.td-title Contact Information:
@@ -16,11 +16,16 @@
 						td.td-content=props.city+", "+props.state+" "+props.zipcode
 					tr
 						td.td-content=props.phone
-			td(style="width:250px;")
+					tr
+						td.td-title() 
+							span#view-page(url=props.url, style="text-decoration: underline; margin-right: 30px; cursor: pointer;") View Webpage
+							span#google-direction(onclick="goGoogleDirection('"+props.lat+","+props.lng+"')",style="text-decoration: underline; cursor: pointer; color: #3ac7f3") Get Directions
+			td(style="width:200px;")
 				table(style="color:white !important;")
-					tr		
-						td.td-title Elevation:
-						td.td-content=props.elevationf+" ft"
+					tr
+						if props.elevationf > 0		
+							td.td-title Elevation:
+							td.td-content=props.elevationf+" ft"
 					tr		
 						td.td-title Agency:
 						td.td-content=agency
