@@ -16,8 +16,8 @@ function init(){
 	// Basemap
 	var basemapUrl = "http://opengis.azexperience.org/tiles/v2/ACERT/{z}/{x}/{y}.png";
 		basemapAttribution = 'Map data &copy; <a href="http://www.azgs.az.gov/">AZGS</a>' 
-			+ '<br />Contributors: <a href="http://www.azgs.az.gov/">AZGS</a>, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>' 
-			+ '<br /><div style="width: 130px;" class="fb-like" data-send="true" data-layout="button_count" data-width="30" data-show-faces="false" data-font="arial"></div>',
+			+ '&nbsp;Contributors: <a href="http://www.azgs.az.gov/">AZGS</a>, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>' 
+			+ '&nbsp;<div style="width: 125px;" class="fb-like" data-send="true" data-layout="button_count" data-width="30" data-show-faces="false" data-font="arial"></div>',
 		basemapOptions = { maxZoom: 18, attribution: basemapAttribution };
 	var basemap = new L.TileLayer(basemapUrl, basemapOptions);
 
