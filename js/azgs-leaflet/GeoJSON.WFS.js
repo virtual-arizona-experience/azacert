@@ -82,8 +82,9 @@ L.GeoJSON.WFS = L.GeoJSON.extend({
 						this._icon.style.height = this.options.icon.options.iconSize.x + "px";						
 					}
 					//********************************************************************************/	
-					
-					e.layer._hoverControl._map.removeControl(e.layer._hoverControl);
+					if (e.layer._hoverControl){
+						e.layer._hoverControl._map.removeControl(e.layer._hoverControl);
+					}					
 				});
 			}
 			if (e.layer instanceof L.Marker.AttributeFilter) { e.layer.setIcon(e); }
