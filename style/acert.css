@@ -2,6 +2,9 @@
  * Author: Genhan Chen
  * Email: genhan.chen@azgs.az.gov
  */
+.leaflet-control-attribution {
+	text-align: right;
+}
 
 /* Define hover tips style*/
 .media-content iframe {

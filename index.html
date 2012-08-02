@@ -5,14 +5,16 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta http-equiv="X-UA-Compatible" value="IE=9">
 		<link rel="stylesheet" type="text/css" href="style/leaflet.css" />
-		<link rel="stylesheet" type="text/css" href="style/acert.css" /> <!--Added by Genhan-->
-		<link rel="stylesheet" type="text/css" href="style/jquery-ui/jquery-ui-1.8.21.custom.css" /> <!--Added by Genhan-->
-		
+		<link rel="stylesheet" type="text/css" href="style/acert.css" />
+		<!--Added by Genhan-->
+		<link rel="stylesheet" type="text/css" href="style/jquery-ui/jquery-ui-1.8.21.custom.css" />
+		<!--Added by Genhan-->
 		<link rel="stylesheet" type="text/css" href="style/leaflet.ie.css" />
-		
 		<script type="text/javascript" src="js/lib/leaflet-custom.js"></script>
-		<script type="text/javascript" src="js/lib/jquery-1.7.2.min.js"></script> <!--Changed by Genhan-->
-		<script type="text/javascript" src="js/lib/jquery-ui-1.8.21.custom.min.js"></script> <!--Added by Genhan-->
+		<script type="text/javascript" src="js/lib/jquery-1.7.2.min.js"></script>
+		<!--Changed by Genhan-->
+		<script type="text/javascript" src="js/lib/jquery-ui-1.8.21.custom.min.js"></script>
+		<!--Added by Genhan-->
 		<script type="text/javascript" src="js/lib/less-1.2.2.min.js"></script>
 		<script type="text/javascript" src="js/lib/jade.js"></script>
 		<script type="text/javascript" src="js/lib/proj4js-1.0.3/lib/proj4js-compressed.js"></script>
@@ -20,18 +22,41 @@
 		<script type="text/javascript" src="js/azgs-leaflet/TileLayer.ESRI.js"></script>
 		<script type="text/javascript" src="js/azgs-leaflet/GeoJSON.WFS.js"></script>
 		<script type="text/javascript" src="js/azgs-leaflet/Popup.Centered.js"></script>
-		<script type="text/javascript" src="js/azgs-leaflet/Control.Hover.js"></script>		
+		<script type="text/javascript" src="js/azgs-leaflet/Control.Hover.js"></script>
 		<script type="text/javascript" src="js/azgs-leaflet/Marker.AttributeFilter.js"></script>
 		<script type="text/javascript" src="js/azgs-leaflet/JadeContent.js"></script>
 		<script type="text/javascript" src="js/azgs-leaflet/Filter.js"></script>
 		<script type="text/javascript" src="js/azgs-leaflet/Control.Filter.js"></script>
-		<script type="text/javascript" src="js/azgs-leaflet/Control.Search.js"></script>	
+		<script type="text/javascript" src="js/azgs-leaflet/Control.Search.js"></script>
 		<script type="text/javascript" src="js/Main.js"></script>
 		<script type="text/javascript" src="js/FilterJSON.js"></script>
 	</head>
 	<body onload="init()">
-		<div id="map" style="height: 760px; width: 1000px;">
-			
-		</div>		
+		<div id="map" style="height: 760px; width: 1000px;"></div>
+		<div id="fb-root"></div>
+		<script>
+			( function(d, s, id) {
+				var js, fjs = d.getElementsByTagName(s)[0];
+				if(d.getElementById(id))
+					return;
+				js = d.createElement(s);
+				js.id = id;
+				js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+				fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));
+
+		</script>
+		<script>
+			! function(d, s, id) {
+				var js, fjs = d.getElementsByTagName(s)[0];
+				if(!d.getElementById(id)) {
+					js = d.createElement(s);
+					js.id = id;
+					js.src = "https://platform.twitter.com/widgets.js";
+					fjs.parentNode.insertBefore(js, fjs);
+				}
+			}(document, "script", "twitter-wjs");
+
+		</script>
 	</body>
 </html>
