@@ -16,8 +16,9 @@
 	color: #464646;
 	font-weight: bold;
 	font-size: 20px;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Glow(Strength=2, Color=#FFFFFF)";
+	-ms-filter: "progid:DXImageTransform.Microsoft.Glow(Strength=1, Color=#FFFFFF)";
 	text-shadow: -2px -2px 2px white, 2px 2px 2px white;
+	font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }
 /* Define popup style*/
 #acert-popup-content td {
