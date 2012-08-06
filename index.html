@@ -6,6 +6,7 @@
 		<meta http-equiv="X-UA-Compatible" value="IE=9">
 		<link rel="stylesheet" type="text/css" href="style/leaflet.css" />
 		<link rel="stylesheet" type="text/css" href="style/acert.css" />
+		<link rel="stylesheet" type="text/css" href="style/legend.css" />
 		<!--Added by Genhan-->
 		<link rel="stylesheet" type="text/css" href="style/jquery-ui/jquery-ui-1.8.21.custom.css" />
 		<!--Added by Genhan-->
@@ -33,37 +34,18 @@
 	</head>
 	<body onload="init()">
 		<div id="map" style="height: 760px; width: 1000px;"></div>
-		<div id="social-plugins" style="position:relative; top: -75px; left: 4px; z-index: 1000;">
-			<div class="g-plusone" data-size="medium"></div>
-			<div><a href="https://twitter.com/share" class="twitter-share-button">Tweet</a></div>		
-			<div style="width: 125px;" class="fb-like" data-send="true" data-layout="button_count" data-width="30" data-show-faces="false" data-font="arial"></div>
+		<div id="acert-legend">
+			<div class='legend-title'>Land Status</div>
+			<ul class='legend-labels'>
+			   <li><span style='background:#f5f488;'>Bureau of Land Management</span></li>
+			   <li><span style='background:#f4cf88;'>Tribal Lands</span></li>
+			   <li><span style='background:#cd9dd9;'>National Park Service</span></li>
+			   <li><span style='background:#bccae4;'>State and Local Parks</span></li>
+			   <li><span style='background:#c8dfb1;'>U.S. Fish and Wildlife Service</span></li>
+			   <li><span style='background:#aad387;'>U.S. Forest Service</span></li>
+			   <li><span style='background:#edc68d;'>Urban Areas</span></li>
+			   <li><span style='background:#f5e2b8;'>Other</span></li>
+			</ul>
 		</div>
-		<div id="fb-root"></div>
-		<script type="text/javascript">
-			( function(d, s, id) {
-				var js, fjs = d.getElementsByTagName(s)[0];
-				if(d.getElementById(id))
-					return;
-				js = d.createElement(s);
-				js.id = id;
-				js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-				fjs.parentNode.insertBefore(js, fjs);
-			}(document, 'script', 'facebook-jssdk')); ! function(d, s, id) {
-				var js, fjs = d.getElementsByTagName(s)[0];
-				if(!d.getElementById(id)) {
-					js = d.createElement(s);
-					js.id = id;
-					js.src = "//platform.twitter.com/widgets.js";
-					fjs.parentNode.insertBefore(js, fjs);
-				}
-			}(document, "script", "twitter-wjs"); (function() {
-				var po = document.createElement('script');
-				po.type = 'text/javascript';
-				po.async = true;
-				po.src = 'https://apis.google.com/js/plusone.js';
-				var s = document.getElementsByTagName('script')[0];
-				s.parentNode.insertBefore(po, s);
-			})();
-		</script>
 	</body>
 </html>

@@ -1,0 +1,45 @@
+#acert-legend .legend-title {
+	text-align: center;
+	margin-bottom: 8px;
+	font-weight: bold;
+	font-size: 110%;
+	width: 130px;
+}
+#acert-legend ul {
+	margin: 0;
+	padding: 0;
+	float: left;
+	left: 150px;
+	list-style: none;
+}
+#acert-legend ul li {
+	display: block;
+	float: left;
+	width: 130px;
+	margin-bottom: 6px;
+	text-align: center;
+	font-size: 80%;
+	list-style: none;
+}
+#acert-legend ul.legend-labels li span {
+	display: block;
+	float: left;
+	height: 14px;
+	width: 130px;
+}
+#acert-legend {
+	height: 180px;
+	width: 130px;
+	position: relative;
+	top: -210px;
+	left: 5px;
+	z-index: 1000;
+    font-size: 70%;
+    color: black;
+    clear: both;
+    font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    padding: 10px;
+    border-style: solid;
+	border-width: 2px;
+	background-color: rgba(255, 255, 255, 0.9);
+}
