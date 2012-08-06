@@ -90,7 +90,7 @@ L.Control.Filter = L.Control.extend({
 		/// Add close button
 		var close = L.DomUtil.create("span", "acert-control-close", form);
 		L.DomEvent.addListener(close, "click", this.hidePopup, this);
-		close.title = "Collapse";
+		close.title = "Close";
 		
 		/// Add reset button
 		var reset = L.DomUtil.create("span", "acert-control-reset", form);
@@ -299,7 +299,7 @@ L.Control.Filter = L.Control.extend({
 		}		
 	},
 	
-	/// Collapse the popup
+	/// Close the popup
 	_hide: function (dom) {
 		if(dom.className.indexOf("acert-control-show") != -1){
 			dom.className = dom.className.replace("acert-control-show", "acert-control-hide");

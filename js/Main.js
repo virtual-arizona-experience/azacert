@@ -5,7 +5,10 @@
 
 var map, searchControl, filterControl;
 function init(){
-	map = new L.Map("map");
+	map = new L.Map("map", {
+		minZoom: 7,
+		maxZoom: 12
+	});
 	
 	// Cloudmade / OpenStreetMap tiled layer
 	/*var cmUrl = 'http://{s}.tile.cloudmade.com/f7d28795be6846849741b30c3e4db9a9/997/256/{z}/{x}/{y}.png',
@@ -14,16 +17,15 @@ function init(){
 	var cloudmade = new L.TileLayer(cmUrl, cmOptions);*/
 	
 	// Basemap
-	var basemapUrl = "http://opengis.azexperience.org/tiles/v2/ACERT/{z}/{x}/{y}.png";
+	var basemapUrl = "http://opengis.azexperience.org/tiles/v2/publicLands/{z}/{x}/{y}.png";
 		basemapAttribution = 'Map data &copy; <a href="http://www.azgs.az.gov/">AZGS</a>' 
 			+ '&nbsp;Contributors: <a href="http://www.azgs.az.gov/">AZGS</a>, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
-		basemapOptions = { maxZoom: 18, attribution: basemapAttribution };
+		basemapOptions = { attribution: basemapAttribution };
 	var basemap = new L.TileLayer(basemapUrl, basemapOptions);
 
 	/* WMS layer */
 	var wmsUrl = "http://opengis.azexperience.org/geoserver/wms";
-		wmsLayer = new L.TileLayer.WMS(wmsUrl, {
-			maxZoom: 10, 
+		wmsLayer = new L.TileLayer.WMS(wmsUrl, { 
 			layers: "vae:usa", 
 			format: "image/png", 
 			transparent: true 
@@ -52,7 +54,7 @@ function init(){
 	map.addLayer(wfsLayer);
 	
 	searchControl = new L.Control.Search({
-		highlightSymbolUrl: "style/images/logos/highlight/?Agency?png"
+		highlightSymbolUrl: "style/images/logos/highlight/?agency?png"
 	});
 	map.addControl(searchControl);
 	
@@ -63,8 +65,7 @@ function init(){
 	                                      {"category" : "Facilities", "items" : facilitiesItems}, 
 	                                      {"category" : "Trails", "items" : trailsItems}, 
 	                                      {"category" : "Natural History", "items" : naturalHistoryItems}, 
-	                                      {"category" : "Water Sports", "items" : waterSportsItems},
-	                                      {"category" : "Art & Culture", "items" : artCultureItems}]);
+	                                      {"category" : "Water Sports", "items" : waterSportsItems}]);
 	map.addControl(filterControl);
 	
 	/// Add map events

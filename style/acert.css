@@ -13,11 +13,11 @@
 .custom-hover {
 }
 .custom-control-hover-label {
-	color: #464646;
+	color: black;
 	font-weight: bold;
-	font-size: 20px;
+	font-size: 24px;
 	-ms-filter: "progid:DXImageTransform.Microsoft.Glow(Strength=1, Color=#FFFFFF)";
-	text-shadow: -2px -2px 2px white, 2px 2px 2px white;
+	text-shadow: -1px -1px 1px white, 1px 1px 1px white;
 	font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }
 /* Define popup style*/

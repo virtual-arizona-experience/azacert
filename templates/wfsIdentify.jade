@@ -17,9 +17,9 @@
 					tr
 						td.td-content=props.phone
 					tr
-						td.td-title() 
-							span#view-page(url=props.url, style="text-decoration: underline; margin-right: 30px; cursor: pointer;") View Webpage
-							span#google-direction(onclick="goGoogleDirection('"+props.lat+","+props.lon+"')",style="text-decoration: underline; cursor: pointer; color: #3ac7f3") Get Directions
+						td.td-title
+							span#view-page(url=props.url, style="text-decoration: underline; margin-right: 30px; cursor: pointer; font-weight: normal;") View Webpage
+							span#google-direction(onclick="goGoogleDirection('"+props.lat+","+props.lon+"')",style="text-decoration: underline; cursor: pointer; color: #3ac7f3; font-weight: normal;") Get Directions
 			td(style="width:200px;")
 				table(style="color:white !important;")
 					tr

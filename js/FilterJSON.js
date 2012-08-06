@@ -18,25 +18,32 @@ var agencyItems = [ {
 	}, {
 		"value" : "'USFWS'",
 		"label" : "U.S. Fish and Wildlife Service"
+	}, {
+		"value" : "'AOT'",
+		"label" : "Arizona Office Tourism"
+	}, {
+		"value" : "'art-culture'",
+		"label" : "Art & Culture"
 	}]
 } ];
 
+/*
 var artCultureItems = [ {
 	"fName" : "agency",
 	"vPairs" : [ {
+		"value" : "AOT",
+		"label" : "Arizona Office Tourism"
+	}, {
 		"value" : "'art-gallery'",
 		"label" : "Art Gallery"
 	}, {
 		"value" : "'film'",
 		"label" : "Film"
 	}, {
-		"value" : "'museum'",
+		"value" : "'art-culture'",
 		"label" : "Museum/Cultural Center"
-	}, {
-		"value" : "'theater'",
-		"label" : "Theater"
-	} ]
-} ];
+	}]
+} ];*/
 
 
 var accessItems = [ {
