@@ -13,6 +13,12 @@ L.Control.Filter = L.Control.extend({
 	initialize: function(rFilters, options){
 		L.Util.setOptions(this, options);
 		
+		if(options && options.icon){
+			this._icon = options.icon;
+		}else{
+			this._icon = "url('style/images/tools/filter.png')";
+		}
+		
 		this._listItems = []; /// Item objects in the popup
 		this._categories = []; /// Section IDs in the popup
 		
@@ -82,6 +88,7 @@ L.Control.Filter = L.Control.extend({
 		var control = this._control = L.DomUtil.create("a", "acert-control-icon acert-control-show", container);
 		control.href = "#";
 		control.title = "Select Categories"; /// Displayed as tips
+		control.style.backgroundImage = this._icon;
 		L.DomEvent.addListener(control, "click", this.showPopop, this);
 
 		/// The list of sub-categories
