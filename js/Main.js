@@ -78,7 +78,8 @@ function init(){
 	
 	map.on("popupopen", function(e){
 		searchControl.hidePopup();
-		filterControl.hidePopup();
+		agenciesFilterControl.hidePopup();
+		facilitiesFilterControl.hidePopup();
 		
 		this._reopen = false;
 		

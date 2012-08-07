@@ -48,6 +48,10 @@ L.GeoJSON.WFS = L.GeoJSON.extend({
 			
 			if (options.popupObj && options.popupOptions) {
 				e.layer.on("click", function(evt) {
+					if (e.layer._hoverControl._map){
+						e.layer._hoverControl._map.removeControl(e.layer._hoverControl);
+					}
+					
 					var popup = options.popupObj.generatePopup(e, options.popupOptions);
 					e.layer._map.openPopup(popup);
 					if (options.popupFn) { options.popupFn(e); }
