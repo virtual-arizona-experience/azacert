@@ -61,7 +61,7 @@ L.Control.Search = L.Control.extend({
 		/// Add button to clear the highlight feature
 		var clear = L.DomUtil.create("span", "acert-control-reset", form);
 		L.DomEvent.addListener(clear, "click", this._clearHighlight, this);
-		clear.title = "Clear";
+		clear.title = "Reset";
 		
 		/// Add search button
 		var searchIcon = this._searchIcon = L.DomUtil.create("span", "acert-control-search-icon", form);

@@ -35,17 +35,28 @@
 	<body onload="init()">
 		<div id="map" style="height: 760px; width: 1000px;"></div>
 		<div id="acert-legend">
-			<div class='legend-title'>Land Status</div>
 			<ul class='legend-labels'>
-			   <li><span style='background:#f5f488;'>Bureau of Land Management</span></li>
-			   <li><span style='background:#f4cf88;'>Tribal Lands</span></li>
-			   <li><span style='background:#cd9dd9;'>National Park Service</span></li>
-			   <li><span style='background:#bccae4;'>State and Local Parks</span></li>
-			   <li><span style='background:#c8dfb1;'>U.S. Fish and Wildlife Service</span></li>
-			   <li><span style='background:#aad387;'>U.S. Forest Service</span></li>
-			   <li><span style='background:#edc68d;'>Urban Areas</span></li>
-			   <li><span style='background:#f5e2b8;'>Other</span></li>
+			   <li><span style='background:#f5f488;' title='Bureau of Land Management'>BLM</span></li>
+			   <li><span style='background:#f4cf88;' title='Tribal Lands'>Tribes</span></li>
+			   <li><span style='background:#cd9dd9;' title='National Park Service'>NPS</span></li>
+			   <li><span style='background:#bccae4;' title='State and Local Parks'>Parks</span></li>
+			   <li><span style='background:#c8dfb1;' title='U.S. Fish and Wildlife Service'>USFWS</span></li>
+			   <li><span style='background:#aad387;' title='U.S. Forest Service'>USFS</span></li>
+			   <li><span style='background:#edc68d;' title='Urban Areas'>Urban</span></li>
+			   <li><span style='background:#f5e2b8;' title='Other'>Other</span></li>
 			</ul>
 		</div>
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-33930890-1']);
+			_gaq.push(['_trackPageview']);
+			
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();		
+		</script>
+
 	</body>
 </html>

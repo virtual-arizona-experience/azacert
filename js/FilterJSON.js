@@ -44,7 +44,31 @@ var artCultureItems = [ {
 		"label" : "Museum/Cultural Center"
 	}]
 } ];*/
-
+var artCultureItems = [ {
+	"fName" : "film",
+	"vPairs" : [ {
+		"value" : "1",
+		"label" : "Film"
+	} ]
+}, {
+	"fName" : "museum",
+	"vPairs" : [ {
+		"value" : "1",
+		"label" : "Museum/Culture Center"
+	} ]
+}, {
+	"fName" : "artgallery",
+	"vPairs" : [ {
+		"value" : "1",
+		"label" : "Art Gallery"
+	} ]
+}, {
+	"fName" : "theater",
+	"vPairs" : [ {
+		"value" : "1",
+		"label" : "Theater"
+	} ]
+} ];
 
 var accessItems = [ {
 	"fName" : "feearea",

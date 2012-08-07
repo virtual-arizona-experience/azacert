@@ -15,7 +15,7 @@
 .custom-control-hover-label {
 	color: black;
 	font-weight: bold;
-	font-size: 24px;
+	font-size: 20px;
 	-ms-filter: "progid:DXImageTransform.Microsoft.Glow(Strength=1, Color=#FFFFFF)";
 	text-shadow: -1px -1px 1px white, 1px 1px 1px white;
 	font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
@@ -105,12 +105,14 @@
 }
 
 .acert-control-filter-group-name {
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
 	color: #DDD;
 	position: relative;
 	top: 10px;
 	left: 30px;
 	background-color: #464646;
-	padding: 0px 5px;	
+	padding: 0px 5px;
+	font-size: 16px;	
 }
 
 /*
