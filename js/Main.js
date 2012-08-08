@@ -7,7 +7,8 @@ var map, searchControl, filterControl;
 function init(){
 	map = new L.Map("map", {
 		minZoom: 7,
-		maxZoom: 12
+		maxZoom: 12,
+		maxBounds: new L.LatLngBounds(new L.LatLng(29, -118), new L.LatLng(39, -104)) 
 	});
 	
 	// Cloudmade / OpenStreetMap tiled layer
