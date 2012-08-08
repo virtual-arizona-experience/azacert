@@ -9,14 +9,18 @@ L.Control.Filter = L.Control.extend({
 		position: "topright"
 	},
 	
+	_icon: "url('style/images/tools/filter.png')",
+	_toolClear: false,
+	_tooTip: "Select Categories",
+	
 	/// 1st step
 	initialize: function(rFilters, options){
 		L.Util.setOptions(this, options);
 		
-		if(options && options.icon){
-			this._icon = options.icon;
-		}else{
-			this._icon = "url('style/images/tools/filter.png')";
+		if(options){
+			this._icon = options.icon || "url('style/images/tools/filter.png')";
+			this._toolClear = options.toolClear || false;
+			this._tooTip = options.toolTip || "Select Categories";
 		}
 		
 		this._listItems = []; /// Item objects in the popup
@@ -69,6 +73,7 @@ L.Control.Filter = L.Control.extend({
 	onAdd: function(map){
 		this._initLayout();
 		this._update();
+		this._imgs = this._form.getElementsByTagName("img");
 		
 		return this._container;
 	},
@@ -87,7 +92,7 @@ L.Control.Filter = L.Control.extend({
 		/// The control tool - top category
 		var control = this._control = L.DomUtil.create("a", "acert-control-icon acert-control-show", container);
 		control.href = "#";
-		control.title = "Select Categories"; /// Displayed as tips
+		control.title = this._tooTip; /// Displayed as tips
 		control.style.backgroundImage = this._icon;
 		L.DomEvent.addListener(control, "click", this.showPopop, this);
 
@@ -104,6 +109,13 @@ L.Control.Filter = L.Control.extend({
 		L.DomEvent.addListener(reset, "click", this.resetFilter, this);
 		reset.title = "Reset";
 		
+		/// Add clear button
+		if(this._toolClear){
+			var clear = L.DomUtil.create("span", "acert-control-clear", form);
+			L.DomEvent.addListener(clear, "click", this.clearFilter, this);
+			clear.title = "Clear";
+		}
+	
 		this._filterList = {};		
 		
 		/// Create 'div' sections for different categories
@@ -237,6 +249,20 @@ L.Control.Filter = L.Control.extend({
 		this._resetMap();
 	},
 	
+	clearFilter: function(){
+		if (!this._imgs) { return ;}
+		
+		for (var i = 0; i < this._imgs.length; i ++){
+			var img = this._imgs[i];
+			img.toggle = false;
+			
+			img.toggle = false;
+			img.src = "style/images/inactive/" + this._getIconName(img) + ".png";
+		}
+		
+		this._clearMap();
+	},
+	
 	_getIconName: function (obj) {
 		/// Identify the icon name
 		if (obj.isBinaryField) {
@@ -291,6 +317,12 @@ L.Control.Filter = L.Control.extend({
 		});
 		
 		this._map.addLayer(wfsLayer);
+	},
+	
+	_clearMap: function() {
+		if(this._map.wfsLayer){
+			this._map.removeLayer(this._map.wfsLayer);
+		}
 	},
 	
 	/// Expand the popup

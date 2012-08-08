@@ -186,6 +186,16 @@
 	height: 30px;
 }
 
+.acert-control-clear {
+	background: url("images/tools/clear.png") no-repeat;
+	background-size: 12px 12px;
+	background-position: center;
+	float: right;
+	margin: 3px 5px;
+	cursor: pointer;
+	width: 16px;
+	height: 16px;	
+}
 
 .acert-control-reset {
 	background: url("images/tools/refresh.png") no-repeat;

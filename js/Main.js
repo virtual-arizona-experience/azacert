@@ -53,8 +53,10 @@ function init(){
 	
 	map.addLayer(wfsLayer);
 	
-	var agenciesFilterControl = new L.Control.Filter([{"category" : "Agency", "items" : agencyItems}],
-				{icon: "url('style/images/tools/partners.png')"});
+	var agenciesFilterControl = new L.Control.Filter([{category : "Agency", items : agencyItems}],
+				{icon: "url('style/images/tools/partners.png')",
+				toolClear : true,
+				toolTip: "Select Partners"});
 	map.addControl(agenciesFilterControl);
 	
 	searchControl = new L.Control.Search({
@@ -62,14 +64,14 @@ function init(){
 	});
 	map.addControl(searchControl);
 	
-	var facilitiesFilterControl = new L.Control.Filter([{"category" : "Access", "items" : accessItems}, 
-	          	                                      {"category" : "Information", "items" : infoItems}, 
-	          	                                      {"category" : "Camping", "items" : campingItems}, 
-	          	                                      {"category" : "Facilities", "items" : facilitiesItems}, 
-	          	                                      {"category" : "Trails", "items" : trailsItems}, 
-	          	                                      {"category" : "Natural History", "items" : naturalHistoryItems}, 
-	          	                                      {"category" : "Water Sports", "items" : waterSportsItems},
-	          	                                      {"category" : "Art & Culture", "items" : artCultureItems}]);
+	var facilitiesFilterControl = new L.Control.Filter([{category : "Access", items : accessItems}, 
+	          	                                      {category : "Information", items : infoItems}, 
+	          	                                      {category : "Camping", items : campingItems}, 
+	          	                                      {category : "Facilities", items : facilitiesItems}, 
+	          	                                      {category : "Trails", items : trailsItems}, 
+	          	                                      {category : "Natural History", items : naturalHistoryItems}, 
+	          	                                      {category : "Water Sports", items : waterSportsItems},
+	          	                                      {category : "Art & Culture", items : artCultureItems}]);
 	map.addControl(facilitiesFilterControl);
 	
 	/// Add map events
