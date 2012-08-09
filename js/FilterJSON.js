@@ -18,13 +18,7 @@ var agencyItems = [ {
 	}, {
 		"value" : "'USFWS'",
 		"label" : "U.S. Fish and Wildlife Service"
-	}, {
-		"value" : "'AOT'",
-		"label" : "Arizona Office Tourism"
-	}, {
-		"value" : "'art-culture'",
-		"label" : "Art & Culture"
-	}]
+	} ]
 } ];
 
 /*
@@ -32,7 +26,7 @@ var artCultureItems = [ {
 	"fName" : "agency",
 	"vPairs" : [ {
 		"value" : "AOT",
-		"label" : "Arizona Office Tourism"
+		"label" : "Designated Arizona Tourist Information"
 	}, {
 		"value" : "'art-gallery'",
 		"label" : "Art Gallery"

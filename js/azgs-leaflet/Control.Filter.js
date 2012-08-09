@@ -142,11 +142,19 @@ L.Control.Filter = L.Control.extend({
 	showPopop: function () {
 		this._show(this._form);
 		this._hide(this._control);
+		
+		/// Make the toolbar draggable
+		$(".acert-control-filter").draggable({ cursor: 'move'});
 	},
 	
 	hidePopup: function () {
+		this._hide(this._form);	
+		
+		/// Put the dragged toolbar back to the original place
+		this._container.style.left = 0;
+		this._container.style.top = 0;
+		
 		this._show(this._control);
-		this._hide(this._form);
 	},
 	
 	_update: function () {
@@ -183,8 +191,8 @@ L.Control.Filter = L.Control.extend({
 		img.title = obj.label;
 		
 		
-		img.style.width = "32px";
-		img.style.height = "32px";
+		img.style.width = "24px";
+		img.style.height = "24px";
 		img.style.display = "inline-block";
 		img.style.cursor = "pointer";
 		img.style.margin = "5px";

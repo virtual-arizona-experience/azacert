@@ -13,12 +13,17 @@
 .custom-hover {
 }
 .custom-control-hover-label {
-	color: black;
+	color: white;
 	font-weight: bold;
-	font-size: 20px;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Glow(Strength=1, Color=#FFFFFF)";
-	text-shadow: -1px -1px 1px white, 1px 1px 1px white;
+	font-size: 12px;
+	/*-ms-filter: "progid:DXImageTransform.Microsoft.Glow(Strength=1, Color=#FFFFFF)";
+	text-shadow: -1px -1px 1px white, 1px 1px 1px white;*/
 	font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+	background-color: #464646;
+	padding: 5px;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: 2px white solid;
 }
 /* Define popup style*/
 #acert-popup-content td {
@@ -100,7 +105,7 @@
 	border: 1px solid #DDD;
 	margin: 0px 10px 0px 10px;
 	padding: 3px 0px 0px 0px;
-	height: 42px;
+	height: 35px;
 	border-radius: 7px;
 	-webkit-border-radius: 7px;
 }
@@ -110,10 +115,10 @@
 	color: #DDD;
 	position: relative;
 	top: 10px;
-	left: 30px;
+	left: 25px;
 	background-color: #464646;
 	padding: 0px 5px;
-	font-size: 14px;	
+	font-size: 12px;	
 }
 
 /*
@@ -133,8 +138,9 @@
 	-webkit-border-radius: 7px;
 	border-radius: 7px;
 	margin: 2px 0px 0px 0px;
-	width: 187px;
+	width: 139px;
 	float: left;
+	font-style: italic;
 }
 
 .acert-control-search-icon {

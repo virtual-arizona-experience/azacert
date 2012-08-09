@@ -46,7 +46,7 @@ L.Control.Search = L.Control.extend({
 		var input = this._input = L.DomUtil.create("input", className + "-input", form);
 		input.id = this._input.id = "search-input";
 		input.title = "Input Search Keyword";
-		input.placeholder = " < Input Search Keyword >";
+		input.placeholder = " < Search >";
 		L.DomEvent.addListener(input, 'keypress', function(evt){
 			if(evt.keyCode == 13) {
 				this._search();
