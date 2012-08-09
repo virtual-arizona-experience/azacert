@@ -20,7 +20,7 @@ L.Control.Filter = L.Control.extend({
 		if(options){
 			this._icon = options.icon || "url('style/images/tools/filter.png')";
 			this._toolClear = options.toolClear || false;
-			this._tooTip = options.toolTip || "Select Categories";
+			this._tooTip = options.toolTip || "Select Categories";			
 		}
 		
 		this._listItems = []; /// Item objects in the popup
@@ -53,6 +53,10 @@ L.Control.Filter = L.Control.extend({
 			}
 			
 		}
+	},
+	
+	setRelatedControl: function(control){
+		this._extraForm = control._form;
 	},
 	
 	/// name: field name in attribute table
@@ -193,8 +197,18 @@ L.Control.Filter = L.Control.extend({
 		var clickImg = evt.target || evt.srcElement;
 		
 		var imgs = this._imgs = this._form.getElementsByTagName("img");
+		var objFilter = this._getObjFilter(clickImg, imgs);
+		
+		if (this._extraForm){
+			var objExtraFilter = this._getObjFilter(clickImg, this._extraForm.getElementsByTagName("img"));
+		}
+		
+		this._updateMap(L.Util.extend(objFilter, objExtraFilter));
+		
+	},
+	
+	_getObjFilter: function(clickImg, imgs){
 		var objFilter = {};
-
 		for (var i = 0; i < imgs.length; i ++) {
 			var img = imgs[i];
 			var iconName = this._getIconName(img);
@@ -226,8 +240,7 @@ L.Control.Filter = L.Control.extend({
 			}
 		}
 		
-		this._updateMap(objFilter);
-		
+		return objFilter; 
 	},
 	
 	resetFilter: function(){

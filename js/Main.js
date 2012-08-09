@@ -75,6 +75,10 @@ function init(){
 	          	                                      {category : "Art & Culture", items : artCultureItems}]);
 	map.addControl(facilitiesFilterControl);
 	
+	/// Build connection between two filters
+	agenciesFilterControl.setRelatedControl(facilitiesFilterControl);
+	facilitiesFilterControl.setRelatedControl(agenciesFilterControl);
+	
 	/// Add map events
 	map.on("layeradd", function(e){
 		searchControl.setAutocompleteItems(this.wfsLayer, "name");
