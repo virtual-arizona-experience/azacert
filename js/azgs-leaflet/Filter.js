@@ -14,9 +14,22 @@ DateFilter = L.Class.extend({
 	}
 });
 
-/*
+/**
  * Author: Genhan Chen
  * Email: genhan.chen@azgs.az.gov
+ * 
+ * Summary:
+ * 		Generate cql string used to filter the features in GeoJSON.WFS.js
+ * Parameters:
+ * 		objFilter - the object format is like: 
+ * 						{"...": [
+ * 							{fName: "...", value: "..."}, 
+ * 							{fName: "...", value: "..."}
+ * 						]}
+ * Properties:
+ * 		_orGroup - binary data array
+ * 		_andGroup - multi-value data array
+ * 		cql - CQL string used to filter features
  */
 
 PropertyFilter = L.Class.extend({

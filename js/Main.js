@@ -1,9 +1,9 @@
-/*
+/**
  * Author: Genhan Chen
  * Email: genhan.chen@azgs.az.gov
  */
 
-var map, searchControl, filterControl;
+var map, searchControl, facilitiesFilterControl;
 function init(){
 	map = new L.Map("map", {
 		minZoom: 7,
@@ -32,7 +32,15 @@ function init(){
 			transparent: true 
 		}); 
 	
-	/* WFS GeoJSON layer */
+	/***********************************************************************************************************************
+	 * Configure the initial WFS GeoJSON layer
+	 * Settings:
+	 * 		initFilter - set up the features needs to be displayed initially 
+	 */
+	var initFilter = {cql: escape(
+				"agency<>'AOT'" /// Can be changed
+			)}	;
+	
 	var wfsLayer = map.wfsLayer = new L.GeoJSON.WFS("http://opengis.azexperience.org/geoserver/wfs", "vae:azacert", {
 		pointToLayer: function(latlng) { 
 			return new L.Marker(latlng, { 
@@ -45,8 +53,10 @@ function init(){
 		},
 		popupObj: new JadeContent("templates/wfsIdentify.jade"),
 		popupOptions: { maxWidth: 1000, centered: true },
-		hoverFld: "name"
+		hoverFld: "name",
+		filter: initFilter
 	}); 
+	/***********************************************************************************************************************/
 	
 	var center = new L.LatLng(34.1618, -111.53332);
 	
@@ -60,18 +70,21 @@ function init(){
 	});
 	map.addControl(searchControl);
 	
-	/// Add agency filter control
-	/*var agenciesFilterControl = new L.Control.Filter([{category : "Agency", items : agencyItems}],
-			{icon: "url('style/images/tools/partners.png')",
-			toolClear : true,
-			toolTip: "Select Partners"});
-	map.addControl(agenciesFilterControl);*/
-
-	var artcultureFilterControl = new L.Control.Filter([{category : "Art & Culture", items : artCultureItems}]);
+	/// Add a single filter control for AOT
+	var aotControl = new L.Control.Layer({fName: "agency", value: "'AOT'"},{
+		icon: "url('style/images/tools/partners.png')",
+		activeIcon: "url('style/images/tools/activePartners.png')",
+		toolTip: "Designated Arizona Tourist Information"
+	});
+	map.addControl(aotControl);
+	
+	/// Add the art and cultural filter
+	var artcultureFilterControl = new L.Control.Filter([{category : "Art & Culture", items : artCultureItems}],
+			{icon: "url('style/images/tools/arts-culture.png')"});
 	map.addControl(artcultureFilterControl);
 	
 	/// Add facility filter control
-	var facilitiesFilterControl = new L.Control.Filter([{category : "Agency", items : agencyItems},
+	facilitiesFilterControl = new L.Control.Filter([{category : "Agency", items : agencyItems},
 	                                                  {category : "Access", items : accessItems}, 
 	          	                                      {category : "Information", items : infoItems}, 
 	          	                                      {category : "Camping", items : campingItems}, 
@@ -83,8 +96,7 @@ function init(){
 	map.addControl(facilitiesFilterControl);
 	
 	/// Build connection between two filters
-	//agenciesFilterControl.setRelatedControl(facilitiesFilterControl);
-	//facilitiesFilterControl.setRelatedControl(agenciesFilterControl);
+	
 	
 	/// Add map events
 	map.on("layeradd", function(e){
@@ -93,7 +105,7 @@ function init(){
 	
 	map.on("popupopen", function(e){
 		searchControl.hidePopup();
-		agenciesFilterControl.hidePopup();
+		artcultureFilterControl.hidePopup();
 		facilitiesFilterControl.hidePopup();
 		
 		this._reopen = false;

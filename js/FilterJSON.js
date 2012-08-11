@@ -1,3 +1,18 @@
+/**
+ * Author: Genhan Chen
+ * Email: genhan.chen@gmail.com
+ * 
+ * Summary:
+ * 		There are two types of item array: binary type and multi-value type
+ *		For binary type, only 1 item exists in the "vPairs" array
+ *		For multi-value type, more than 1 items exist in the "vPair" array
+ * Keys:
+ * 		fName - the field name in the attribute table, whose value is used to filter the features
+ * 		vPairs - the array of unique value and its label shown as the image tip
+ * 		value - the unique value for this field; string type needs to be set like "'...'"
+ *		label - the value used to be the image tip 		  	
+ */
+
 var agencyItems = [ {
 	"fName" : "agency",
 	"vPairs" : [ {
