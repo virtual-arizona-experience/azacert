@@ -15,12 +15,14 @@ L.Control.Layer = L.Control.extend({
 	_tooTip: "Select Categories",
 	_layerName: null,
 	_layer: null,
+	filter: {},
 	
 	/// 1st step
 	initialize: function(filter, options){
 		L.Util.setOptions(this, options);
 		this._layerName = filter.fName;
-		this._setLayer(filter || {});
+		this.filter[this._layerName] = [filter];
+		this._setLayer(filter || {});	
 		
 		if(options){
 			this._icon = options.icon || "url('style/images/tools/partners.png')";
@@ -79,9 +81,8 @@ L.Control.Layer = L.Control.extend({
 	},
 	
 	_setLayer: function(filter) {
-		var objFilter = {};
-		objFilter[this._layerName] = [filter];
-		
+        var that = this;
+        
 		this._layer = new L.GeoJSON.WFS("http://opengis.azexperience.org/geoserver/wfs", "vae:azacert", {
 			pointToLayer: function(latlng) { 
 				return new L.Marker(latlng, { 
@@ -95,7 +96,7 @@ L.Control.Layer = L.Control.extend({
 			popupObj: new JadeContent("templates/wfsIdentify.jade"),
 			popupOptions: { maxWidth: 1000, centered: true },
 			hoverFld: "name",
-			filter: new PropertyFilter(objFilter) /// PropertyFilter class is defined in "Filter.js"
+			filter: new PropertyFilter(that.filter) /// PropertyFilter class is defined in "Filter.js"
 		});		
 	}
 	

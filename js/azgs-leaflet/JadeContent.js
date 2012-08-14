@@ -43,7 +43,7 @@ JadeContent = L.Class.extend({
 		L.Util.setOptions(this, options || {});
 		
 		/*Those items are defined in FilterJSON.js*/
-		this._setResources([accessItems, infoItems, facilitiesItems, campingItems, trailsItems, naturalHistoryItems, waterSportsItems, artCultureItems])
+		this._setResources([accessItems, infoItems, facilitiesItems, campingItems, trailsItems, naturalHistoryItems, waterSportsItems])
 		this._setAgencies([agencyItems]);
 		
 		var that = this;

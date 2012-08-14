@@ -33,26 +33,37 @@ var agencyItems = [ {
 	}, {
 		"value" : "'USFWS'",
 		"label" : "U.S. Fish and Wildlife Service"
+	}, {
+		"value" : "'ADOT'",
+		"label" : "Arizona Department of Transportation"
+	}, {
+		"value" : "'art-culture'",
+		"label" : "Arizona Commission of the Arts"
 	} ]
 } ];
 
-/*
+/**
 var artCultureItems = [ {
-	"fName" : "agency",
+	"fName" : "agency_bkp",
 	"vPairs" : [ {
-		"value" : "AOT",
-		"label" : "Designated Arizona Tourist Information"
+		"value" : "'film'",
+		"label" : "Film"
+	}, {
+		"value" : "'museum'",
+		"label" : "Museum/Culture Center"
 	}, {
 		"value" : "'art-gallery'",
 		"label" : "Art Gallery"
 	}, {
-		"value" : "'film'",
-		"label" : "Film"
+		"value" : "'theater'",
+		"label" : "Performing Arts"
 	}, {
-		"value" : "'art-culture'",
-		"label" : "Museum/Cultural Center"
-	}]
+		"value" : "'tribe'",
+		"label" : "Tribal Communities"
+	} ]
 } ];*/
+
+
 var artCultureItems = [ {
 	"fName" : "film",
 	"vPairs" : [ {
@@ -76,6 +87,12 @@ var artCultureItems = [ {
 	"vPairs" : [ {
 		"value" : "1",
 		"label" : "Theater"
+	} ]
+}, {
+	"fName" : "tribe",
+	"vPairs" : [ {
+		"value" : "1",
+		"label" : "Tribal Communities"
 	} ]
 } ];
 

@@ -1,4 +1,4 @@
-/*
+/**
  * Author: Genhan Chen
  * Email: genhan.chen@azgs.az.gov
  */
@@ -134,25 +134,37 @@ L.Control.Search = L.Control.extend({
 		if(this._map.highlightLayer) { map.removeLayer(this._map.highlightLayer); }
 	},
 	
-	setAutocompleteItems: function(jsonLayer, labelField) {
-		if(!jsonLayer.jsonData) { return ; }
-		
-		var that = this;
+	/**
+	 * Summary:
+	 * 		Set up the autocomplete items for the search box
+	 * Parameters:
+	 * 		jsonLayers - the layers applied by the search functions, array type
+	 * 		labelField - which property field used for search
+	 */
+	setAutocompleteItems: function(jsonLayers, labelField) {
+		if (!jsonLayers) { return; }
 		this.autocompleteItems = [];
 		this._featureKVP = {};
 		
-		var features = jsonLayer.jsonData.features;
-		
-		for(var i = 0; i < features.length; i ++) {
-			var thisFeature = features[i];
-			var thisKey = thisFeature.properties[labelField];
-			this._featureKVP[thisKey] = thisFeature;
+		for (var i = 0; i < jsonLayers.length; i ++){
+			var jsonLayer = jsonLayers[i];
 			
-			this.autocompleteItems.push(thisKey);
+			if(!(jsonLayer ? jsonLayer.jsonData : false)) { continue; }
+					
+			var features = jsonLayer.jsonData.features;
+			
+			for(var i = 0; i < features.length; i ++) {
+				var thisFeature = features[i];
+				var thisKey = thisFeature.properties[labelField];
+				this._featureKVP[thisKey] = thisFeature;
+				
+				this.autocompleteItems.push(thisKey);
+			}			
 		}
-		
+
 		this.autocompleteItems.sort();
 		
+		var that = this;
 		$("#" + this._input.id).autocomplete({
 			source: that.autocompleteItems,
 			select: function(evt, ui) { that._search(ui.item.label); }

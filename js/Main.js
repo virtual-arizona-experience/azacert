@@ -32,43 +32,38 @@ function init(){
 			transparent: true 
 		}); 
 	
-	/***********************************************************************************************************************
-	 * Configure the initial WFS GeoJSON layer
-	 * Settings:
-	 * 		initFilter - set up the features needs to be displayed initially 
-	 */
-	var initFilter = {cql: escape(
-				"agency<>'AOT'" /// Can be changed
-			)}	;
-	
-	var wfsLayer = map.wfsLayer = new L.GeoJSON.WFS("http://opengis.azexperience.org/geoserver/wfs", "vae:azacert", {
-		pointToLayer: function(latlng) { 
-			return new L.Marker(latlng, { 
-				icon: new L.Icon({ 
-					iconUrl: "style/images/logos/?agency?png", /// ? + property name used as the image name + ? + image type
-					iconHighlightUrl: "style/images/logos/highlight/?agency?png",
-					iconSize: new L.Point(16, 16) 
-				}) 
-			});
-		},
-		popupObj: new JadeContent("templates/wfsIdentify.jade"),
-		popupOptions: { maxWidth: 1000, centered: true },
-		hoverFld: "name",
-		filter: initFilter
-	}); 
-	/***********************************************************************************************************************/
-	
-	var center = new L.LatLng(34.1618, -111.53332);
+	var center = new L.LatLng(34.1618, -110.43332);
 	
 	map.setView(center, 7).addLayer(basemap).addLayer(wmsLayer);
 	
-	map.addLayer(wfsLayer);
+	//map.addLayer(wfsLayer);
 	
-	/// Add search control
+	/** Add search control **/
 	searchControl = new L.Control.Search({
 		highlightSymbolUrl: "style/images/logos/highlight/?agency?png"
 	});
 	map.addControl(searchControl);
+	searchControl.showPopup();
+	
+	/// Add facility filter control
+	facilitiesFilterControl = new L.Control.Filter([{category : "Agency", items : agencyItems},
+	                                                {category : "Art & Culture", items : artCultureItems},
+	                                                  {category : "Access", items : accessItems}, 
+	          	                                      {category : "Information", items : infoItems}, 
+	          	                                      {category : "Camping", items : campingItems}, 
+	          	                                      {category : "Facilities", items : facilitiesItems}, 
+	          	                                      {category : "Trails & Routes", items : trailsItems}, 
+	          	                                      {category : "Natural History", items : naturalHistoryItems}, 
+	          	                                      {category : "Water Sports", items : waterSportsItems}],
+	          	                                      {toolClear: true});
+	map.addControl(facilitiesFilterControl);
+	facilitiesFilterControl._control.click()
+
+	/** Add the art and cultural filter
+	var artcultureFilterControl = new L.Control.Filter([{category : "Art & Culture", items : artCultureItems}],
+			{icon: "url('style/images/tools/arts-culture.png')",
+			toolClear: true});
+	map.addControl(artcultureFilterControl);**/	
 	
 	/// Add a single filter control for AOT
 	var aotControl = new L.Control.Layer({fName: "agency", value: "'AOT'"},{
@@ -78,29 +73,11 @@ function init(){
 	});
 	map.addControl(aotControl);
 	
-	/// Add the art and cultural filter
-	var artcultureFilterControl = new L.Control.Filter([{category : "Art & Culture", items : artCultureItems}],
-			{icon: "url('style/images/tools/arts-culture.png')"});
-	map.addControl(artcultureFilterControl);
-	
-	/// Add facility filter control
-	facilitiesFilterControl = new L.Control.Filter([{category : "Agency", items : agencyItems},
-	                                                  {category : "Access", items : accessItems}, 
-	          	                                      {category : "Information", items : infoItems}, 
-	          	                                      {category : "Camping", items : campingItems}, 
-	          	                                      {category : "Facilities", items : facilitiesItems}, 
-	          	                                      {category : "Trails", items : trailsItems}, 
-	          	                                      {category : "Natural History", items : naturalHistoryItems}, 
-	          	                                      {category : "Water Sports", items : waterSportsItems}],
-	          	                                      {toolClear: true});
-	map.addControl(facilitiesFilterControl);
-	
-	/// Build connection between two filters
-	
-	
 	/// Add map events
 	map.on("layeradd", function(e){
-		searchControl.setAutocompleteItems(this.wfsLayer, "name");
+		searchControl.setAutocompleteItems([//(artcultureFilterControl.layer || null), 
+		                                    (facilitiesFilterControl.layer || null)], 
+		                                    "name");
 	});
 	
 	map.on("popupopen", function(e){
@@ -130,7 +107,7 @@ function init(){
 			***********************************************************/
 			
 			var linkPage = L.DomUtil.create("iframe", "acert-link-frame");
-			linkPage.style.width = "800px";
+			linkPage.style.width = "900px";
 			linkPage.style.height = "520px";
 			linkPage.style.marginTop = "15px";
 			linkPage.src = url;
