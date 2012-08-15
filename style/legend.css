@@ -11,20 +11,20 @@
 	display: block;
 	float: left;
 	text-align: center;
-	font-size: 80%;
+	font-size: 100%;
 	list-style: none;
 }
 #acert-legend ul.legend-labels li span {
 	display: block;
 	float: left;
-	height: 14px;
-	width: 75px;
+	height: 16px;
+	width: 66px;
 }
 #acert-legend {
-	height: 14px;
-	width: 600px;
+	height: 16px;
+	width: 726px;
 	position: relative;
-	top: -16px;
+	top: -18px;
 	left: 0px;
 	z-index: 1000;
     font-size: 70%;

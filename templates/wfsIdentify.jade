@@ -8,13 +8,13 @@
 				table(style="color:black !important;")
 					if props.agency!="ADOT"
 						tr
-							td.td-title Contact Information:
+							td.td-title More Information:
 						tr
 							td.td-content=props.office
 						tr
 							td.td-content=props.street								 
 						tr
-							td.td-content=props.city+", "+props.state+" "+props.zipcode
+							td.td-content=props.city+" "+props.state+" "+props.zipcode
 						tr
 							td.td-content=props.phone
 					tr
@@ -32,6 +32,7 @@
 							td.td-title Agency:
 							td.td-content=agency
 					tr
+					if props.agency!="ADOT"
 						td.td-title Resources:
 				div
 					each resource in resources

@@ -10,6 +10,7 @@ L.Popup.Centered = L.Popup.extend({
 	_initLayout: function() {
 		L.Popup.prototype._initLayout.call(this);
 		this._container.removeChild(this._tipContainer);
+				/// Make the filter control/popup draggable	  =
 	},
 
 	_updatePosition: function() {

@@ -35,10 +35,16 @@ var agencyItems = [ {
 		"label" : "U.S. Fish and Wildlife Service"
 	}, {
 		"value" : "'ADOT'",
-		"label" : "Arizona Department of Transportation"
+		"label" : "Scenic Routes/Arizona Highways"
 	}, {
 		"value" : "'art-culture'",
 		"label" : "Arizona Commission of the Arts"
+	}, {
+		"value" : "'tribe'",
+		"label" : "Tribal Communities"
+	}, {
+		"value" : "'AOT'",
+		"label" : "Designated Arizona Tourist Information"
 	} ]
 } ];
 
@@ -88,12 +94,12 @@ var artCultureItems = [ {
 		"value" : "1",
 		"label" : "Theater"
 	} ]
-}, {
+/**}, {
 	"fName" : "tribe",
 	"vPairs" : [ {
 		"value" : "1",
 		"label" : "Tribal Communities"
-	} ]
+	} ]*/
 } ];
 
 var accessItems = [ {

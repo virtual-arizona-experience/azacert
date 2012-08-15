@@ -253,11 +253,11 @@ L.Control.Filter = L.Control.extend({
 		img.title = obj.label;
 		
 		
-		img.style.width = "24px";
-		img.style.height = "24px";
+		img.style.width = "28px";
+		img.style.height = "28px";
 		img.style.display = "inline-block";
 		img.style.cursor = "pointer";
-		img.style.margin = "5px";
+		img.style.margin = "4px";
 		
 		L.DomEvent.addListener(img, "click", this._onInputClick, this);
 

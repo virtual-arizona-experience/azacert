@@ -18,7 +18,7 @@ L.Control.Hover = L.Control.extend({
 		this._container = L.DomUtil.create('div', 'custom-control-hover-label');
 		this._container.innerHTML = this._content;
 		
-		this.options.offset.x = 0 - this._content.length * 12 / 2;
+		this.options.offset.x = 0 - this._content.length * 12/2;
 		
 		if (this.options.position == "hover") {
 			this._container.style.top = this._point.y + this.options.offset.y + "px";

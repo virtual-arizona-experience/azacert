@@ -19,8 +19,8 @@ function init(){
 	
 	// Basemap
 	var basemapUrl = "http://opengis.azexperience.org/tiles/v2/publicLands/{z}/{x}/{y}.png";
-		basemapAttribution = 'Map data &copy; <a href="http://www.azgs.az.gov/">AZGS</a>' 
-			+ '&nbsp;Contributors: <a href="http://www.azgs.az.gov/">AZGS</a>, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+		basemapAttribution = 'Map compilation: <a href="http://www.azgs.az.gov/" target="_blank">AZGS</a>' 
+//			+ '&nbsp;Contributors: <a href="http://www.azgs.az.gov/">AZGS</a>, <a href="http://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC-BY-SA</a>',
 		basemapOptions = { attribution: basemapAttribution };
 	var basemap = new L.TileLayer(basemapUrl, basemapOptions);
 
@@ -32,7 +32,7 @@ function init(){
 			transparent: true 
 		}); 
 	
-	var center = new L.LatLng(34.1618, -110.43332);
+	var center = new L.LatLng(34.1618, -110.7);
 	
 	map.setView(center, 7).addLayer(basemap).addLayer(wmsLayer);
 	
@@ -66,12 +66,12 @@ function init(){
 	map.addControl(artcultureFilterControl);**/	
 	
 	/// Add a single filter control for AOT
-	var aotControl = new L.Control.Layer({fName: "agency", value: "'AOT'"},{
+	/*var aotControl = new L.Control.Layer({fName: "agency", value: "'AOT'"},{
 		icon: "url('style/images/tools/partners.png')",
 		activeIcon: "url('style/images/tools/activePartners.png')",
 		toolTip: "Designated Arizona Tourist Information"
 	});
-	map.addControl(aotControl);
+	map.addControl(aotControl);*/
 	
 	/// Add map events
 	map.on("layeradd", function(e){
@@ -82,7 +82,7 @@ function init(){
 	
 	map.on("popupopen", function(e){
 		searchControl.hidePopup();
-		artcultureFilterControl.hidePopup();
+		//artcultureFilterControl.hidePopup();
 		facilitiesFilterControl.hidePopup();
 		
 		this._reopen = false;
