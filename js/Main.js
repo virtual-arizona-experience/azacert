@@ -18,14 +18,14 @@ function init(){
 	var cloudmade = new L.TileLayer(cmUrl, cmOptions);*/
 	
 	// Basemap
-	var basemapUrl = "http://opengis.azexperience.org/tiles/v2/publicLands/{z}/{x}/{y}.png";
+	var basemapUrl = "/tiles/v2/publicLands/{z}/{x}/{y}.png";
 		basemapAttribution = 'Map compilation: <a href="http://www.azgs.az.gov/" target="_blank">AZGS</a>' 
 //			+ '&nbsp;Contributors: <a href="http://www.azgs.az.gov/">AZGS</a>, <a href="http://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC-BY-SA</a>',
 		basemapOptions = { attribution: basemapAttribution };
 	var basemap = new L.TileLayer(basemapUrl, basemapOptions);
 
 	/* WMS layer */
-	var wmsUrl = "http://opengis.azexperience.org/geoserver/wms";
+	var wmsUrl = "/geoserver/wms";
 		wmsLayer = new L.TileLayer.WMS(wmsUrl, { 
 			layers: "vae:usa", 
 			format: "image/png", 
@@ -48,11 +48,11 @@ function init(){
 	/// Add facility filter control
 	facilitiesFilterControl = new L.Control.Filter([{category : "Agency", items : agencyItems},
 	                                                {category : "Art & Culture", items : artCultureItems},
-	                                                  {category : "Access", items : accessItems}, 
+	                                                  {category : "Accessibility", items : accessItems}, 
 	          	                                      {category : "Information", items : infoItems}, 
-	          	                                      {category : "Camping", items : campingItems}, 
+	          	                                      {category : "Sites with Camping", items : campingItems}, 
 	          	                                      {category : "Facilities", items : facilitiesItems}, 
-	          	                                      {category : "Trails & Routes", items : trailsItems}, 
+	          	                                      {category : "Sites with Trails", items : trailsItems}, 
 	          	                                      {category : "Natural History", items : naturalHistoryItems}, 
 	          	                                      {category : "Water Sports", items : waterSportsItems}],
 	          	                                      {toolClear: true});
@@ -93,7 +93,13 @@ function init(){
 		var linkInPopup = document.getElementById("view-page");
 		
 		L.DomEvent.addListener(linkInPopup, 'click', function(evt) {
-			var url = evt.target.getAttribute("url");
+			var url = ''
+				if ($.browser.msie && $.browser.version.substring(0,2) == '8.') {
+				url = evt.srcElement.getAttribute("url");
+				} else {
+				url = evt.target.getAttribute("url");
+				}
+
 			
 			/***********************************************************
 			var goBack = L.DomUtil.create("span", "popup-link-back");

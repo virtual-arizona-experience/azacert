@@ -83,7 +83,7 @@ L.Control.Layer = L.Control.extend({
 	_setLayer: function(filter) {
         var that = this;
         
-		this._layer = new L.GeoJSON.WFS("http://opengis.azexperience.org/geoserver/wfs", "vae:azacert", {
+		this._layer = new L.GeoJSON.WFS("/geoserver/wfs", "vae:azacert", {
 			pointToLayer: function(latlng) { 
 				return new L.Marker(latlng, { 
 					icon: new L.Icon({ 

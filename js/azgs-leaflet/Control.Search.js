@@ -46,7 +46,7 @@ L.Control.Search = L.Control.extend({
 		var input = this._input = L.DomUtil.create("input", className + "-input", form);
 		input.id = this._input.id = "search-input";
 		input.title = "Input Search Keyword";
-		input.placeholder = " < Search >";
+		input.placeholder = " < Search for Site >";
 		L.DomEvent.addListener(input, 'keypress', function(evt){
 			if(evt.keyCode == 13) {
 				this._search();
@@ -110,7 +110,7 @@ L.Control.Search = L.Control.extend({
 			this._map.removeLayer(this._map.highlightLayer);
 		}
 		
-		var highlightLayer = this._map.highlightLayer = new L.GeoJSON.WFS("http://opengis.azexperience.org/geoserver/wfs", "vae:azacert", {
+		var highlightLayer = this._map.highlightLayer = new L.GeoJSON.WFS("/geoserver/wfs", "vae:azacert", {
 			pointToLayer: function(latlng) { 
 				return new L.Marker(latlng, { 
 					icon: new L.Icon({ 
