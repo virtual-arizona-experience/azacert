@@ -1,5 +1,6 @@
 /*
  * Author: Ryan Clark
+ * Email: ryan.clark@azgs.az.gov
  * 
  * Author: Genhan Chen
  * Email: genhan.chen@azgs.az.gov

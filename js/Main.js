@@ -47,7 +47,7 @@ function init(){
 	
 	/// Add facility filter control
 	facilitiesFilterControl = new L.Control.Filter([{category : "Agency", items : agencyItems},
-	                                                {category : "Art & Culture", items : artCultureItems},
+	                                                  {category : "Art & Culture", items : artCultureItems},
 	                                                  {category : "Accessibility", items : accessItems}, 
 	          	                                      {category : "Information", items : infoItems}, 
 	          	                                      {category : "Sites with Camping", items : campingItems}, 
@@ -90,7 +90,7 @@ function init(){
 		/**************************************************************/
 		/***Add link redirection for 'View Page'***********************/
 		/***this._resetPopup = jQuery.extend({}, e.popup);*************/
-		var linkInPopup = document.getElementById("view-page");
+		/*var linkInPopup = document.getElementById("view-page");
 		
 		L.DomEvent.addListener(linkInPopup, 'click', function(evt) {
 			var url = ''
@@ -112,7 +112,7 @@ function init(){
 			this._popup._container.appendChild(goBack);
 			***********************************************************/
 			
-			var linkPage = L.DomUtil.create("iframe", "acert-link-frame");
+		/*	var linkPage = L.DomUtil.create("iframe", "acert-link-frame");
 			linkPage.style.width = "900px";
 			linkPage.style.height = "520px";
 			linkPage.style.marginTop = "15px";
@@ -121,7 +121,7 @@ function init(){
 			this._popup.setContent(linkPage);
 		/**************************************************************/	
 		}, this);		
-	});	
+	//});	
 }
 
 /**********************************************************************/

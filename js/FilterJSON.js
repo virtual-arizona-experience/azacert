@@ -1,6 +1,6 @@
 /**
  * Author: Genhan Chen
- * Email: genhan.chen@gmail.com
+ * Email: genhan.chen@azgs.az.gov
  * 
  * Summary:
  * 		There are two types of item array: binary type and multi-value type
@@ -30,15 +30,12 @@ var agencyItems = [ {
 	}, {
 		"value" : "'USFS'",
 		"label" : "USDA Forest Service"
-	}, {
+	},{
 		"value" : "'USFWS'",
 		"label" : "U.S. Fish and Wildlife Service"
 	}, {
 		"value" : "'ADOT'",
 		"label" : "Scenic Routes/Arizona Highways"
-	}, {
-		"value" : "'art-culture'",
-		"label" : "Arizona Commission of the Arts"
 	}, {
 		"value" : "'tribe'",
 		"label" : "Tribal Communities"
@@ -48,58 +45,12 @@ var agencyItems = [ {
 	} ]
 } ];
 
-/**
 var artCultureItems = [ {
-	"fName" : "agency_bkp",
-	"vPairs" : [ {
-		"value" : "'film'",
-		"label" : "Film"
-	}, {
-		"value" : "'museum'",
-		"label" : "Museum/Culture Center"
-	}, {
-		"value" : "'art-gallery'",
-		"label" : "Art Gallery"
-	}, {
-		"value" : "'theater'",
-		"label" : "Performing Arts"
-	}, {
-		"value" : "'tribe'",
-		"label" : "Tribal Communities"
-	} ]
-} ];*/
-
-
-var artCultureItems = [ {
-	"fName" : "film",
-	"vPairs" : [ {
-		"value" : "1",
-		"label" : "Film"
-	} ]
-}, {
 	"fName" : "museum",
 	"vPairs" : [ {
 		"value" : "1",
 		"label" : "Museum/Culture Center"
 	} ]
-}, {
-	"fName" : "artgallery",
-	"vPairs" : [ {
-		"value" : "1",
-		"label" : "Art Gallery"
-	} ]
-}, {
-	"fName" : "theater",
-	"vPairs" : [ {
-		"value" : "1",
-		"label" : "Theater"
-	} ]
-/**}, {
-	"fName" : "tribe",
-	"vPairs" : [ {
-		"value" : "1",
-		"label" : "Tribal Communities"
-	} ]*/
 } ];
 
 var accessItems = [ {
