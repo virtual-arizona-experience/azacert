@@ -19,7 +19,7 @@
 							td.td-content=props.phone
 					tr
 						td.td-title(style="font-style: italic;")
-							span#view-page(url=props.url, style="text-decoration: underline; margin-right: 30px; cursor: pointer; font-weight: normal; color: #da70d6;") View Webpage
+							a#view-page(href=props.url, style="text-decoration: underline; margin-right: 30px; cursor: pointer; font-weight: normal; color: #da70d6;", target="_blank") View Webpage
 							span#google-direction(onclick="goGoogleDirection('"+props.lat+","+props.lon+"')",style="text-decoration: underline; cursor: pointer; color: #777777; font-weight: normal;") Get Directions
 			td(style="width:200px;")
 				table(style="color:black !important;")
