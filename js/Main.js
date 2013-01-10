@@ -46,7 +46,7 @@ function init(){
 	searchControl.showPopup();
 	
 	/// Add facility filter control
-	facilitiesFilterControl = new L.Control.Filter([{category : "Agency", items : agencyItems},
+	facilitiesFilterControl = new L.Control.Filter([{category : "Agencies", items : agencyItems},
 	                                                  {category : "Art & Culture", items : artCultureItems},
 	                                                  {category : "Accessibility", items : accessItems}, 
 	          	                                      {category : "Information", items : infoItems}, 

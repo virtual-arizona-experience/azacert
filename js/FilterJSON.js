@@ -40,9 +40,12 @@ var agencyItems = [ {
 		"value" : "'tribe'",
 		"label" : "Tribal Communities"
 	}, {
+		"value" : "'art-culture'",
+		"label" : "Arts and Culture"
+	},{
 		"value" : "'AOT'",
-		"label" : "Designated Arizona Tourist Information"
-	} ]
+		"label" : "Arizona Office of Tourism"
+	}]
 } ];
 
 var artCultureItems = [ {
