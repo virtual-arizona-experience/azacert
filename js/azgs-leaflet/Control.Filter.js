@@ -348,7 +348,7 @@ L.Control.Filter = L.Control.extend({
 		
 		if(this._isEmpty(objFilter)) { return; } /// If the filter is empty, do not add this layer into the map
 		
-		var wfsLayer = this.layer = new L.GeoJSON.WFS("http://opengis.azexperience.org/geoserver/wfs", "vae:azacert", {
+		var wfsLayer = this.layer = new L.GeoJSON.WFS("/geoserver/wfs", "vae:azacert", {
 			pointToLayer: function(latlng) { 
 				return new L.Marker(latlng, { 
 					icon: new L.Icon({ 

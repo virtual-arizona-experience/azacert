@@ -21,17 +21,16 @@
 	width: 66px;
 }
 #acert-legend {
-	height: 16px;
+	height: 32px;
 	width: 726px;
 	position: relative;
-	top: -18px;
+	top: -31px;
 	left: 0px;
 	z-index: 1000;
-    font-size: 70%;
-    color: black;
-    clear: both;
-    font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
-    border-style: solid;
-	border-width: 1px;
-	background-color: #FFFFFF;
+	font-size: 70%;
+	color: black;
+	clear: both;
+	font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+	border-style: solid;
+	border-width: 0px;
 }
