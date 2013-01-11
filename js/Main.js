@@ -18,7 +18,7 @@ function init(){
 	var cloudmade = new L.TileLayer(cmUrl, cmOptions);*/
 	
 	// Basemap
-	var basemapUrl = "/tiles/v2/publicLands/{z}/{x}/{y}.png";
+	var basemapUrl = "http://opengis.azexperience.org/tiles/v2/publicLands/{z}/{x}/{y}.png";
 		basemapAttribution = 'Map compilation: <a href="http://www.azgs.az.gov/" target="_blank">AZGS</a>' 
 //			+ '&nbsp;Contributors: <a href="http://www.azgs.az.gov/">AZGS</a>, <a href="http://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC-BY-SA</a>',
 		basemapOptions = { attribution: basemapAttribution };

@@ -33,6 +33,9 @@ var agencyItems = [ {
 	},{
 		"value" : "'USFWS'",
 		"label" : "U.S. Fish and Wildlife Service"
+	},  {
+		"value" : "'AOT'",
+		"label" : "Arizona Office of Tourism"
 	}, {
 		"value" : "'ADOT'",
 		"label" : "Scenic Routes/Arizona Highways"
@@ -43,8 +46,8 @@ var agencyItems = [ {
 		"value" : "'art-culture'",
 		"label" : "Arts and Culture"
 	},{
-		"value" : "'AOT'",
-		"label" : "Arizona Office of Tourism"
+		"value" : "'tourist-info'",
+		"label" : "Designated Arizona Tourist Information"
 	}]
 } ];
 
