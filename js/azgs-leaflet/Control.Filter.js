@@ -383,7 +383,7 @@ L.Control.Filter = L.Control.extend({
 	_resetFilterForm: function(isClear) {
 		var isClear = isClear || false;
 		
-		for (var i = 0; i < this._imgs.length; i ++) {
+		for (var i = 0; i <this._imgs.length; i ++) {
 			var img = this._imgs[i];
 			
 			/// The agency category is on by default
