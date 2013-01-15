@@ -110,13 +110,13 @@ L.Control.Search = L.Control.extend({
 			this._map.removeLayer(this._map.highlightLayer);
 		}
 		
-		var highlightLayer = this._map.highlightLayer = new L.GeoJSON.WFS("/geoserver/wfs", "vae:azacert", {
+		var highlightLayer = this._map.highlightLayer = new L.GeoJSON.WFS("/geoserver/wfs", "vae:azacert20130115", {
 			pointToLayer: function(latlng) { 
 				return new L.Marker(latlng, { 
 					icon: new L.Icon({ 
 						iconUrl: "style/images/logos/highlight/?agency?png",
 						//iconHighlightUrl: "style/images/logos/highlight/?agency?png",
-						iconSize: new L.Point(64, 64) 
+						iconSize: new L.Point(32,32) 
 					}) 
 				});
 			},
