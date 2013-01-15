@@ -97,7 +97,7 @@ L.Control.Search = L.Control.extend({
 		var coors = thisFeature.geometry.coordinates;
 		var latLng = new L.LatLng(coors[1], coors[0]);
 		this._map.panTo(latLng); 
-		this._map.zoomIn();
+		this._map.setZoom(8);
 		
 		var filter = "featureid=" + thisFeature.id;
 		
