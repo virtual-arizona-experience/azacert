@@ -116,7 +116,7 @@ L.Control.Search = L.Control.extend({
 					icon: new L.Icon({ 
 						iconUrl: "style/images/logos/highlight/?agency?png",
 						//iconHighlightUrl: "style/images/logos/highlight/?agency?png",
-						iconSize: new L.Point(32, 32) 
+						iconSize: new L.Point(64, 64) 
 					}) 
 				});
 			},
